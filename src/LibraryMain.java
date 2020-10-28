@@ -6,9 +6,16 @@ public class LibraryMain {
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		Books book = new Books(123123, "Harry Potter", 200, 700, "jk rowling");
+		//Books book = new Books(123123, "Harry Potter", 200, 700, "jk rowling");
 		
-		System.out.println("Article number: " + book.articleNumber );
+		//System.out.println("Article number: " + book.articleNumber );
+		
+		while (true) {
+			
+			System.out.println(">");
+			
+			String userInput = scanner.nextLine();
+		}
 
 		
 	}
