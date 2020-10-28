@@ -3,14 +3,14 @@ public class Commands {
 
 	protected enum Command{
 		
-		list,
-		checkout,
-		checkin,
-		register,
-		deregister,
-		info,
-		quit,
-		unknown
+		LIST,
+		CHECKOUT,
+		CHECKIN,
+		REGISTER,
+		DEREGISTER,
+		INFO,
+		QUIT,
+		UNKNOWN
 	}
 	
 public static Command parseCommand(String playerInput){ 
