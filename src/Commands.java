@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Commands {
 
@@ -15,6 +16,10 @@ public class Commands {
 	
 public static Command parseCommand(String playerInput){ 
 		
+	Scanner scanner = new Scanner (System.in);
+	
+	String userInput = scanner.nextLine(); // read wich command the user enter (LIST, CHECKOUT ETC.)
+	
 		//splitting input and adding it to index [0] so that the code knows that the first word in input is a command
 		String commandString = playerInput.split(" ")[0]; 
 		
