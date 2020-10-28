@@ -22,28 +22,28 @@ public static Command parseCommand(String playerInput){
 		switch (commandString) {
 		
 		case "list":
-			return Command.list;
+			return Command.LIST;
 			
 		case "checkout":
-			return Command.checkout;
+			return Command.CHECKOUT;
 		
 		case "checkin":
-			return Command.checkin;
+			return Command.CHECKIN;
 			
 		case "register":
-			return Command.register;
+			return Command.REGISTER;
 			
 		case "deregister":
-			return Command.deregister;
+			return Command.DEREGISTER;
 			
 		case "info":
-			return Command.info;
+			return Command.INFO;
 			
 		case "quit":
-			return Command.quit;
+			return Command.QUIT;
 			
 		default:
-			return Command.unknown;
+			return Command.UNKNOWN;
 		}
 		
 	}
