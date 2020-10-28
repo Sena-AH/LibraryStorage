@@ -57,5 +57,13 @@ public static Command parseCommand(String playerInput){
 			return Command.UNKNOWN;
 		}
 		
-	}
 }
+		
+		public static void handleQuitCommand (String [] arguments) { // close the application
+			System.exit(0);
+			System.out.println("You have closed the library system. Goodbye! ");
+		}
+
+		
+	}
+
