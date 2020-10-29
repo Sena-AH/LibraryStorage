@@ -5,13 +5,13 @@ import java.util.LinkedList;
 public class LibraryMain {
 
 		
-		// lägg in arrayList 
+		// lï¿½gg in arrayList 
 	
 	LinkedList library = new LinkedList();  // funkar som en ArrayList 
 	
 		}
 
-
+//HEJ THITI
 		
 	
 
