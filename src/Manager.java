@@ -20,6 +20,8 @@ public class Manager { // Manager tolkar vad du vill göra och startar funktion i
 		
 		public static void main(String[] args) {
 			
+			Manager manager = new Manager(); // Instans av hela klassen
+			
 			Scanner scanner = new Scanner(System.in);
 			
 			//Books book = new Books(123123, "Harry Potter", 200, 700, "jk rowling");
@@ -40,10 +42,19 @@ public class Manager { // Manager tolkar vad du vill göra och startar funktion i
 				String userInput = scanner.nextLine();
 			}
 
+			// Konstruktor
+			// instansiera 
 			
 		}
 
 	
+		public Manager() { // konstruktor
+			library = new Library //libpath - filen man vill spara
+
+			// try catch exceptions
+		}
+
+
 public static Command parseCommand(String playerInput){ 
 	
 	Scanner scanner = new Scanner (System.in);

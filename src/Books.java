@@ -2,17 +2,31 @@
 public class Books extends Products {
 	
 	
-	protected int pages;
-	protected String author;
+	private int pages;
+	private String author;
 	
-	protected Books(int article, String name, int price, int pageNumber, String writer) {
+	public Books(int article, String name, int price, int pageNumber, String writer) {
 	super(article, name, price);
 	this.pages = pageNumber;
 	this.author = writer;
+	 // om vi skriver super kommer vi kunna köra en set-funktion i products-filen : super.set
 	
-	// hejhejhej
-	
-	
+	}
+
+	public int getPages() {
+		return pages;
+	}
+
+	public void setPages(int pages) {
+		this.pages = pages;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	
 }

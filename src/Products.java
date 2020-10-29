@@ -5,13 +5,12 @@ public class Products {
 	private String productName;
 	private int value;
 	
-	protected Products(int article, String name, int price) {
+	public Products(int article, String name, int price) {
 		
 		this.articleNumber = article;
 		this.productName = name;
 		this.value = price;
-		
-		
+			
 		
 	}
 
