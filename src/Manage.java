@@ -65,14 +65,14 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	
         			} else if(command == Command.CHECKIN) {
         		
-        				
         		
         				System.out.print("\n\tEnter next command: \n\t > ");
         				continue;
         				
         			} else if(command == Command.REGISTER) {
                 		
-        				
+        				// use .add method for list
+
                 		
         				System.out.print("\n\tEnter next command: \n\t > ");
         				continue;
@@ -183,6 +183,21 @@ public static Command parseCommand(String playerInput){
         
         
 }
+
+	public static String[] parseArgument(String playerInput) {
+		
+		// CHANGE SO IT WORKS WITH ARRAY LIST AND NOT JUST ARRAY!!
+		
+		String[] fullInput = playerInput.split(" ");
+		String[] arguments = new String[fullInput.length-1];
+		
+			for (int i=1; i<fullInput.length; i++) {
+			arguments[i-1] = fullInput[i];
+			
+			}
+			return arguments;
+		}
+
         
         public static void handleQuitCommand (String [] arguments) { // close the application
             System.exit(0);
