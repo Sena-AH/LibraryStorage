@@ -187,6 +187,7 @@ public static Command parseCommand(String playerInput){
 	public static String[] parseArgument(String playerInput) {
 		
 		// CHANGE SO IT WORKS WITH ARRAY LIST AND NOT JUST ARRAY!!
+		// MAKE IT PARSE ARTICLENUMBERS
 		
 		String[] fullInput = playerInput.split(" ");
 		String[] arguments = new String[fullInput.length-1];
