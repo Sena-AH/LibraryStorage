@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class LibraryMain {
 
 		
-		// lï¿½gg in arrayList 
+		// lägg in arrayList 
 	
 	LinkedList library = new LinkedList();  // funkar som en ArrayList 
 	
