@@ -23,13 +23,15 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     
     }
         
+    public static Scanner scanner = new Scanner (System.in);
+    
         public static void main(String[] args) {
             
             Manage manager = new Manage(); // Instans av hela klassen ("bygga ett hus av ritningen")
             
             manager.Start();
             
-            Scanner scanner = new Scanner (System.in);
+            
             
             //Books book = new Books(123123, "Harry Potter", 200, 700, "jk rowling");
             
