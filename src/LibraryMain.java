@@ -7,7 +7,8 @@ public class LibraryMain {
 		
 		// lägg in arrayList 
 	
-	LinkedList library = new LinkedList();  // funkar som en ArrayList 
+	//LinkedList library = new LinkedList(); 
+	
 	
 		}
 
