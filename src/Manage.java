@@ -45,16 +45,10 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             
             while (on) {
         		
-        		//initialize string as user input
         		String playerInput = scanner.nextLine();
         		
-        		//initialize command to parse command from input
         		Command command = parseCommand(playerInput);
-        		//initialize string array to parse arguments from input
-        		//String[] arguments = parseArgument(playerInput);
         		
-        		//if statements for different commands
-        		//if statement for command put
         		if (command == Command.LIST) {
         		
         			
