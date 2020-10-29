@@ -1,9 +1,9 @@
 
 public class Products {
 
-	protected int articleNumber;
-	protected String productName;
-	protected int value;
+	private int articleNumber;
+	private String productName;
+	private int value;
 	
 	protected Products(int article, String name, int price) {
 		
@@ -11,5 +11,31 @@ public class Products {
 		this.productName = name;
 		this.value = price;
 		
+		
+		
+	}
+
+	public int getArticleNumber() {
+		return articleNumber;
+	}
+
+	public void setArticleNumber(int articleNumber) {
+		this.articleNumber = articleNumber;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
 	}
 }
