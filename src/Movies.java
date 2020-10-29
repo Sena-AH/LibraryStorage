@@ -15,17 +15,13 @@ public class Movies extends Products{
 		return lengthInMinutes;
 	}
 
-	public void setLengthInMinutes(int lengthInMinutes) {
-		this.lengthInMinutes = lengthInMinutes;
-	}
+	
 
 	public int getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
+	
 	
 	
 }

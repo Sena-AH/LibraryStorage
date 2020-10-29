@@ -1,7 +1,7 @@
 
 public class Customer {
 	
-	// Kan vara bra att lägga till ID-nr annars måste man ha HELA NAMNET
+	// Kan vara bra att lï¿½gga till ID-nr annars mï¿½ste man ha HELA NAMNET
 
 	private String customerName;
 	private String phoneNumber;
@@ -16,17 +16,13 @@ public class Customer {
 		return customerName;
 	}
 
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
+	
 
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
+	
 	
 	
 	
