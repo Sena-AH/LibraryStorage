@@ -1,8 +1,9 @@
 import java.util.Scanner;
-
 import java.util.ArrayList;
 
-public class Manager {
+public class Manager { // Manager tolkar vad du vill göra och startar funktion i libraryklassen. 
+						//Library kommer skapa instanser av böcker och filmer.
+	
 	
 	protected enum Command{
 	
@@ -16,7 +17,6 @@ public class Manager {
 	UNKNOWN
 	
 	}
-
 		
 		public static void main(String[] args) {
 			
