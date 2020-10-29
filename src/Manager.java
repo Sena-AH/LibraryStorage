@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Manager { // Manager tolkar vad du vill göra och startar funktion i libraryklassen. 
 						//Library kommer skapa instanser av böcker och filmer.
-	
+	boolean isRunning;
 	
 	protected enum Command{
 	
@@ -20,9 +20,9 @@ public class Manager { // Manager tolkar vad du vill göra och startar funktion i
 		
 		public static void main(String[] args) {
 			
-			Manager manager = new Manager(); // Instans av hela klassen
+			Manager manager = new Manager(); // Instans av hela klassen ("bygga ett hus av ritningen")
 			
-			Scanner scanner = new Scanner(System.in);
+			manager.Start();
 			
 			//Books book = new Books(123123, "Harry Potter", 200, 700, "jk rowling");
 			
@@ -35,12 +35,6 @@ public class Manager { // Manager tolkar vad du vill göra och startar funktion i
 			// List on all the products should shows here!
 			
 			
-			while (true) {
-				
-				System.out.println(">");
-				
-				String userInput = scanner.nextLine();
-			}
 
 			// Konstruktor
 			// instansiera 
@@ -49,11 +43,24 @@ public class Manager { // Manager tolkar vad du vill göra och startar funktion i
 
 	
 		public Manager() { // konstruktor
-			library = new Library //libpath - filen man vill spara
-
+			LibraryMain library = new LibraryMain (); //libpath - filen man vill spara
+			
+			
 			// try catch exceptions
 		}
-
+		
+		public void Start () {//ny funktion (ritningn för metoden)
+			//System.out.println("Detta är start!");
+			Scanner scanner = new Scanner(System.in);
+			
+	while (isRunning) {
+				
+				System.out.println(">");
+				
+				String userInput = scanner.nextLine();
+			}
+			
+		}
 
 public static Command parseCommand(String playerInput){ 
 	
