@@ -1,5 +1,8 @@
 
 import java.util.Scanner;
+
+import Queue.Command;
+
 import java.util.ArrayList;
 
  
@@ -27,6 +30,8 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             
             manager.Start();
             
+            Scanner scanner = new Scanner (System.in);
+            
             //Books book = new Books(123123, "Harry Potter", 200, 700, "jk rowling");
             
             //System.out.println("Article number: " + book.articleNumber );
@@ -36,9 +41,78 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             
             
             // List on all the products should shows here!
+            boolean on = true;
             
-            
-
+            while (on) {
+        		
+        		//initialize string as user input
+        		String playerInput = scanner.nextLine();
+        		
+        		//initialize command to parse command from input
+        		Command command = parseCommand(playerInput);
+        		//initialize string array to parse arguments from input
+        		//String[] arguments = parseArgument(playerInput);
+        		
+        		//if statements for different commands
+        		//if statement for command put
+        		if (command == Command.LIST) {
+        		
+        			
+        			
+        			System.out.print("\n\tEnter next command: \n\t > ");
+        			continue;
+        		
+        			} else if (command == Command.CHECKOUT) {
+        		
+        				
+        				System.out.print("\n\tEnter next command: \n\t > ");
+        				continue;
+        	
+        			} else if(command == Command.CHECKIN) {
+        		
+        				
+        		
+        				System.out.print("\n\tEnter next command: \n\t > ");
+        				continue;
+        				
+        			} else if(command == Command.REGISTER) {
+                		
+        				
+                		
+        				System.out.print("\n\tEnter next command: \n\t > ");
+        				continue;
+        				
+        			} else if(command == Command.DEREGISTER) {
+                		
+        				
+                		
+        				System.out.print("\n\tEnter next command: \n\t > ");
+        				continue;
+        				
+        			} else if(command == Command.INFO) {
+                		
+        				
+                		
+        				System.out.print("\n\tEnter next command: \n\t > ");
+        				continue;
+        				
+        			} else if (command == Command.UNKNOWN) {
+        				
+        				System.out.println("\nERROR: Unknown command.\n");
+        				
+        				
+        				System.out.print("\n\tEnter next command: \n\t > ");
+        				continue;
+        		
+        				//if statement to stop while loop by changing boolean from true to false, resulting in end of game
+        			} else if (command == Command.QUIT) {
+        		
+        				System.out.println("\n\tExiting library.. ");
+        				on = false;
+        				break;
+        		
+        			}
+        		}
  
 
             // Konstruktor
@@ -73,7 +147,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 
 public static Command parseCommand(String playerInput){ 
     
-    Scanner scanner = new Scanner (System.in);
+   
     
     String playerInput1 = scanner.nextLine(); // read wich command the user enter (LIST, CHECKOUT ETC.)
         
