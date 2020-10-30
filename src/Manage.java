@@ -1,11 +1,7 @@
-
 import java.util.Scanner;
-
-
 import java.util.ArrayList;
 
  
-
 public class Manage { // Manager tolkar vad du vill göra och startar funktion i libraryklassen. 
                         //Library kommer skapa instanser av böcker och filmer.
     boolean isRunning;
@@ -25,7 +21,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         
     public static Scanner scanner = new Scanner (System.in);
     
-        public static void main(String[] args) {
+        public static void main(String[] args, int arguments) {
             
            // Manage manager = new Manage(); // Instans av hela klassen ("bygga ett hus av ritningen")
             
@@ -59,14 +55,14 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         		
         			} else if (command == Command.CHECKOUT) {
         		
-        				handleCheckoutCommand();
+        				handleCheckoutCommand(arguments);
             			System.out.print("\n\tEnter next command: \n\t > ");
 
         				continue;
         	
         			} else if(command == Command.CHECKIN) {
         		
-        				handleCheckinCommand();
+        				handleCheckinCommand(arguments);
             			System.out.print("\n\tEnter next command: \n\t > ");
 
         				continue;
@@ -80,14 +76,14 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         				
         			} else if(command == Command.DEREGISTER) {
                 		
-        				handleDeregisterCommand();
+        				handleDeregisterCommand(arguments);
             			System.out.print("\n\tEnter next command: \n\t > ");
 
         				continue;
         				
         			} else if(command == Command.INFO) {
                 		
-        				handleInfoCommand();
+        				handleInfoCommand(arguments);
             			System.out.print("\n\tEnter next command: \n\t > ");
 
         				continue;
@@ -205,13 +201,13 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	System.out.println("list command handled");
         }
         
-        public static void handleCheckoutCommand() {
+        public static void handleCheckoutCommand(int articleNum) {
         	//enter code
         	System.out.println("checkout command handled");
 
         }
         
-        public static void handleCheckinCommand() {
+        public static void handleCheckinCommand(int articleNum) {
         	//enter code
         	System.out.println("checkin command handled");
 
@@ -223,13 +219,13 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 
         }
         
-        public static void handleDeregisterCommand() {
+        public static void handleDeregisterCommand(int articleNum) {
         	//enter code
         	System.out.println("deregister command handled");
 
         }
         
-        public static void handleInfoCommand() {
+        public static void handleInfoCommand(int articleNum) {
         	//enter code
         	System.out.println("info command handled");
 
