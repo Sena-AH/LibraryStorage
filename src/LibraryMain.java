@@ -7,6 +7,10 @@ public class LibraryMain {
 		
 		// lägg in arrayList 
 	
+	ArrayList <String> products = new ArrayList <String>();
+	
+	
+	
 	//LinkedList library = new LinkedList(); 
 	
 	
@@ -15,6 +19,62 @@ public class LibraryMain {
 //HEJ THITI
 		
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 	
