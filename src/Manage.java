@@ -1,11 +1,7 @@
-
 import java.util.Scanner;
-
-
 import java.util.ArrayList;
 
  
-
 public class Manage { // Manager tolkar vad du vill göra och startar funktion i libraryklassen. 
                         //Library kommer skapa instanser av böcker och filmer.
     boolean isRunning;
@@ -27,9 +23,9 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     
         public static void main(String[] args) {
             
-            Manage manager = new Manage(); // Instans av hela klassen ("bygga ett hus av ritningen")
+           // Manage manager = new Manage(); // Instans av hela klassen ("bygga ett hus av ritningen")
             
-            manager.Start();
+            //manager.Start();
             
             
             
@@ -52,54 +48,53 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         		
         		if (command == Command.LIST) {
         		
-        			
-        			
+        			handleListCommand();
         			System.out.print("\n\tEnter next command: \n\t > ");
+
         			continue;
         		
         			} else if (command == Command.CHECKOUT) {
         		
-        				
-        				System.out.print("\n\tEnter next command: \n\t > ");
+        				handleCheckoutCommand(arguments);
+            			System.out.print("\n\tEnter next command: \n\t > ");
+
         				continue;
         	
         			} else if(command == Command.CHECKIN) {
         		
-        		
-        				System.out.print("\n\tEnter next command: \n\t > ");
+        				handleCheckinCommand(arguments);
+            			System.out.print("\n\tEnter next command: \n\t > ");
+
         				continue;
         				
         			} else if(command == Command.REGISTER) {
                 		
-        				// use .add method for list
+        				handleRegisterCommand();
+            			System.out.print("\n\tEnter next command: \n\t > ");
 
-                		
-        				System.out.print("\n\tEnter next command: \n\t > ");
         				continue;
         				
         			} else if(command == Command.DEREGISTER) {
                 		
-        				
-                		
-        				System.out.print("\n\tEnter next command: \n\t > ");
+        				handleDeregisterCommand(arguments);
+            			System.out.print("\n\tEnter next command: \n\t > ");
+
         				continue;
         				
         			} else if(command == Command.INFO) {
                 		
-        				
-                		
-        				System.out.print("\n\tEnter next command: \n\t > ");
+        				handleInfoCommand(arguments);
+            			System.out.print("\n\tEnter next command: \n\t > ");
+
         				continue;
         				
         			} else if (command == Command.UNKNOWN) {
         				
         				System.out.println("\nERROR: Unknown command.\n");
-        				
-        				
-        				System.out.print("\n\tEnter next command: \n\t > ");
+            			System.out.print("\n\tEnter next command: \n\t > ");
+
         				continue;
         		
-        				//if statement to stop while loop by changing boolean from true to false, resulting in end of game
         			} else if (command == Command.QUIT) {
         		
         				System.out.println("\n\tExiting library.. ");
@@ -107,6 +102,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         				break;
         		
         			}
+				
         		}
  
 
@@ -125,64 +121,64 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             // try catch exceptions
         }
         
-        public void Start () {//ny funktion (ritningn f�r metoden)
-            //System.out.println("Detta �r start!");
-            Scanner scanner = new Scanner(System.in);
+      //  public void Start () {//ny funktion (ritningn f�r metoden)
+            //System.out.println("Detta �r start!");
+          //  Scanner scanner = new Scanner(System.in);
             
-    while (isRunning) {
+  //  while (isRunning) {
                 
-                System.out.println(">");
+            //    System.out.println(">");
                 
-                String userInput = scanner.nextLine();
-            }
+              //  String userInput = scanner.nextLine();
+          //  }
             
-        }
+     //   }
 
  
 
-public static Command parseCommand(String playerInput){ 
+        public static Command parseCommand(String playerInput){ 
     
    
-    
-    String playerInput1 = scanner.nextLine(); // read wich command the user enter (LIST, CHECKOUT ETC.)
+        	String commandString = playerInput.split(" ")[0];
+   // String playerInput1 = scanner.nextLine(); // read wich command the user enter (LIST, CHECKOUT ETC.)
         
     //Scanner scanner = new Scanner (System.in);
     
     //String userInput = scanner.nextLine(); // read wich command the user enter (LIST, CHECKOUT ETC.)
     
         //splitting input and adding it to index [0] so that the code knows that the first word in input is a command
-        String commandString = playerInput.split(" ")[0]; 
+        //String commandString = playerInput.split(" ")[0]; 
         
         //switch statement for words from input that turns them into the commands in the enumeration
-        switch (commandString) {
+        	switch (commandString) {
         
-        case "list":
+        	case "list":
             return Command.LIST;
             
-        case "checkout":
+        	case "checkout":
             return Command.CHECKOUT;
         
-        case "checkin":
+        	case "checkin":
             return Command.CHECKIN;
             
-        case "register":
+        	case "register":
             return Command.REGISTER;
             
-        case "deregister":
+        	case "deregister":
             return Command.DEREGISTER;
             
-        case "info":
+        	case "info":
             return Command.INFO;
             
-        case "quit":
+        	case "quit":
             return Command.QUIT;
             
-        default:
+        	default:
             return Command.UNKNOWN;
+        	}
+        
+        
         }
-        
-        
-}
 
 	public static String[] parseArgument(String playerInput) {
 		
@@ -200,8 +196,39 @@ public static Command parseCommand(String playerInput){
 		}
 
         
-        public static void handleQuitCommand (String [] arguments) { // close the application
-            System.exit(0);
-            System.out.println("You have closed the library system. Goodbye! ");
+        public static void handleListCommand() {
+        	//enter code
+        	System.out.println("list command handled");
         }
+        
+        public static void handleCheckoutCommand(int articleNum) {
+        	//enter code
+        	System.out.println("checkout command handled");
+
+        }
+        
+        public static void handleCheckinCommand(int articleNum) {
+        	//enter code
+        	System.out.println("checkin command handled");
+
+        }
+        
+        public static void handleRegisterCommand() {
+        	//enter code
+        	System.out.println("register command handled");
+
+        }
+        
+        public static void handleDeregisterCommand(int articleNum) {
+        	//enter code
+        	System.out.println("deregister command handled");
+
+        }
+        
+        public static void handleInfoCommand(int articleNum) {
+        	//enter code
+        	System.out.println("info command handled");
+
+        }
+        
 }
