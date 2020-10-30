@@ -125,8 +125,8 @@ public class Manage { // Manager tolkar vad du vill gÃ¶ra och startar funktion i
             // try catch exceptions
         }
         
-        public void Start () {//ny funktion (ritningn fÃ¶r metoden)
-            //System.out.println("Detta Ã¤r start!");
+        public void Start () {//ny funktion (ritningn för metoden)
+            //System.out.println("Detta är start!");
             Scanner scanner = new Scanner(System.in);
             
     while (isRunning) {
