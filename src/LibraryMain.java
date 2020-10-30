@@ -7,7 +7,7 @@ public class LibraryMain {
 		
 		// lägg in arrayList 
 	
-	ArrayList <String> products = new ArrayList <String>();
+	ArrayList <String> products = new ArrayList <String>(); // Måste lägga till produkter innan jag kan använda Arraylist
 	
 	
 	
