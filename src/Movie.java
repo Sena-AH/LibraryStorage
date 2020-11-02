@@ -20,11 +20,11 @@ public class Movie extends Product implements Serializable{
 	public int getRating() {
 		return rating;
 	}
-
+/*
 	@Override
 	public String toString() {
 		return "Movie name: " + productName + " Length in minutes: " + lengthInMinutes;
 	}
 	
-	
+	*/
 }
