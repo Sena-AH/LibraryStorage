@@ -10,12 +10,9 @@ public class LibraryMain {
 		
 		// l�gg in arrayList 
 	
-<<<<<<< HEAD
-	ArrayList <Movies> movies = new ArrayList<Movies>();
-	ArrayList <Books> books = new ArrayList <Books>();
-=======
-	ArrayList <String> products = new ArrayList <String>(); // M�ste l�gga till produkter innan jag kan anv�nda Arraylist
->>>>>>> 7e33e37f53978744eaa79994c42cec7dec4c6c3e
+
+	ArrayList <Products> products = new ArrayList <Products>(); // M�ste l�gga till produkter innan jag kan anv�nda Arraylist
+
 	
 	// arraylist for books and movies and arraylist for ALL Products
 	
@@ -44,7 +41,7 @@ public class LibraryMain {
 	
 	//LinkedList library = new LinkedList(); 
 	
-	//arraylist <products>
+	
 		}
 
 //HEJ THITI
