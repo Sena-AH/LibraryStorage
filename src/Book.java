@@ -1,11 +1,11 @@
 
-public class Books extends Products {
+public class Book extends Product {
 	
 	
 	private int pages;
 	private String author;
 	
-	public Books(int article, String name, int price, int pageNumber, String writer) {
+	public Book(int article, String name, int price, int pageNumber, String writer) {
 	super(article, name, price);
 	this.pages = pageNumber;
 	this.author = writer;

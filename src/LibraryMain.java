@@ -11,7 +11,7 @@ public class LibraryMain {
 		// l�gg in arrayList 
 	
 
-	ArrayList <Products> products = new ArrayList <Products>(); // M�ste l�gga till produkter innan jag kan anv�nda Arraylist
+	ArrayList <Product> products = new ArrayList <Product>(); // M�ste l�gga till produkter innan jag kan anv�nda Arraylist
 
 	
 	// arraylist for books and movies and arraylist for ALL Products
