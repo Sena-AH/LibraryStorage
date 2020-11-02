@@ -24,6 +24,8 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     public static ArrayList <Product> products = new ArrayList <Product>();
     
         public static void main(String[] args) {
+        	
+        	System.out.println("LibraryProducts.csv");
             
            // Manage manager = new Manage(); // Instans av hela klassen ("bygga ett hus av ritningen")
             
