@@ -3,9 +3,9 @@ import java.io.Serializable;
 public class Movie extends Product implements Serializable{
 
 	private int lengthInMinutes;
-	private int rating;
+	private double rating;
 	
-	public Movie(int article, String name, int price, int minutes, int imdb) {
+	public Movie(int article, String name, int price, int minutes, double imdb) {
 		
 		super(article, name, price);
 		this.lengthInMinutes = minutes;
@@ -17,7 +17,7 @@ public class Movie extends Product implements Serializable{
 	}
 
 
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
 /*
