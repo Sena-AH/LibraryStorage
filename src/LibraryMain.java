@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -15,7 +16,9 @@ public class LibraryMain {
 
 	Product harrypotter = new Book(1234, "Harry Potter and the philosophers stone", 200, 300, "J.K Rowling");
 	
-	// arraylist for books and movies and arraylist for ALL Products
+	
+	products.add(harrypotter);
+	
 	
 	// Serialize data
 	public void saveData() {
