@@ -124,9 +124,9 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             products = new ArrayList<Product>();
             
             products.add(new Book(1234, "Harry Potter and the Philosopher's stone", 179, 223, "J.K Rowling"));
-        	products.add(new Movie(9001, "Attack on Titan", 150, 120, 8));
+        	products.add(new Movie(9001, "Attack on Titan", 150, 120, 8.8));
         	products.add(new Book(1235, "The Hitchhiker's Guide to the Galaxy", 100, 208, "Douglas Adams"));
-        	products.add(new Movie(9002, "Spirited Away", 80, 125, 8));
+        	products.add(new Movie(9002, "Spirited Away", 80, 125, 8.6));
         	
         	
         }
