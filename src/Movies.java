@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Movies extends Products{
+public class Movies extends Products implements Serializable{
 
 	private int lengthInMinutes;
 	private int rating;
@@ -15,7 +16,6 @@ public class Movies extends Products{
 		return lengthInMinutes;
 	}
 
-	
 
 	public int getRating() {
 		return rating;
