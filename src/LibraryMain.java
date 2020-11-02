@@ -9,7 +9,7 @@ public class LibraryMain {
 	
 	ArrayList <String> products = new ArrayList <String>(); // Måste lägga till produkter innan jag kan använda Arraylist
 	
-	
+	// arraylist for books and movies and arraylist for ALL Products
 	
 	//LinkedList library = new LinkedList(); 
 	
