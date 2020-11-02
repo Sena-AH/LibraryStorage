@@ -2,6 +2,8 @@
 public class Customer {
 	
 	// Kan vara bra att l�gga till ID-nr annars m�ste man ha HELA NAMNET
+	
+	// Mabey this class has to have a ArrayList customer = to add and remove customers
 
 	private String customerName;
 	private String phoneNumber;
