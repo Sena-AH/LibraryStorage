@@ -11,13 +11,14 @@ public class LibraryMain {
 		
 		// l�gg in arrayList 
 	
-	protected void allProducts() {
+	protected ArrayList<Product> allProducts() {
 	ArrayList <Product> products = new ArrayList <Product>(); // M�ste l�gga till produkter innan jag kan anv�nda Arraylist
 
 	Product harrypotter = new Book(1234, "Harry Potter and the philosophers stone", 200, 300, "J.K Rowling");
 	
 	
 	products.add(harrypotter);
+	return products;
 	
 	}
 	// Serialize data
