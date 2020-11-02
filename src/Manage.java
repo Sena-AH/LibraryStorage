@@ -21,6 +21,8 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         
     public static Scanner scanner = new Scanner (System.in);
     
+    
+    
         public static void main(String[] args) {
             
            // Manage manager = new Manage(); // Instans av hela klassen ("bygga ett hus av ritningen")
@@ -135,7 +137,24 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
           //  }
             
      //   }
+    	
+    	protected ArrayList<Product> allProducts() {
+    	ArrayList <Product> products = new ArrayList <Product>();
 
+    	Product harrypotter = new Book(1234, "Harry Potter and the Philosopher's stone", 179, 223, "J.K Rowling");
+    	Product attackontitan = new Movie(9001, "Attack on Titan", 150, 120, 8);
+    	Product hitchhiker = new Book(1235, "The Hitchhiker's Guide to the Galaxy", 100, 208, "Douglas Adams");
+    	Product spiritedaway = new Movie(9002, "Spirited Away", 80, 125, 8);
+    	
+    	products.add(harrypotter);
+    	products.add(attackontitan);
+    	products.add(hitchhiker);
+    	products.add(spiritedaway);
+    	
+    	
+    	return products;
+    	
+    	}
  
 
         public static Command parseCommand(String playerInput){ 
@@ -201,6 +220,9 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         public static void handleListCommand() {
         	//enter code
         	System.out.println("list command handled");
+        	
+        	System.out.println(products);
+        	
         }
         
         public static void handleCheckoutCommand(String[] articleNum) {
