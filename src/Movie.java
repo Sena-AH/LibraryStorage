@@ -1,10 +1,10 @@
 
-public class Movies extends Products{
+public class Movie extends Products{
 
 	private int lengthInMinutes;
 	private int rating;
 	
-	public Movies(int article, String name, int price, int minutes, int imdb) {
+	public Movie(int article, String name, int price, int minutes, int imdb) {
 		
 		super(article, name, price);
 		this.lengthInMinutes = minutes;

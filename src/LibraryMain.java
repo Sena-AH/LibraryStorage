@@ -5,15 +5,15 @@ import java.util.LinkedList;
 public class LibraryMain {
 
 		
-		// lägg in arrayList 
+		// lï¿½gg in arrayList 
 	
-	ArrayList <String> products = new ArrayList <String>(); // Måste lägga till produkter innan jag kan använda Arraylist
+	ArrayList <String> products = new ArrayList <String>(); // Mï¿½ste lï¿½gga till produkter innan jag kan anvï¿½nda Arraylist
 	
 	// arraylist for books and movies and arraylist for ALL Products
 	
 	//LinkedList library = new LinkedList(); 
 	
-	
+	//arraylist <products>
 		}
 
 //HEJ THITI
