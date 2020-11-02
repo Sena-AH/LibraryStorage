@@ -1,10 +1,11 @@
+import java.io.Serializable;
 
-public class Movie extends Products{
+public class Movies extends Products implements Serializable{
 
 	private int lengthInMinutes;
 	private int rating;
 	
-	public Movie(int article, String name, int price, int minutes, int imdb) {
+	public Movies(int article, String name, int price, int minutes, int imdb) {
 		
 		super(article, name, price);
 		this.lengthInMinutes = minutes;
@@ -15,7 +16,6 @@ public class Movie extends Products{
 		return lengthInMinutes;
 	}
 
-	
 
 	public int getRating() {
 		return rating;
