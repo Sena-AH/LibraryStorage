@@ -8,10 +8,14 @@ import java.util.LinkedList;
 public class LibraryMain {
 
 		
-		// lägg in arrayList 
+		// lï¿½gg in arrayList 
 	
+<<<<<<< HEAD
 	ArrayList <Movies> movies = new ArrayList<Movies>();
 	ArrayList <Books> books = new ArrayList <Books>();
+=======
+	ArrayList <String> products = new ArrayList <String>(); // Mï¿½ste lï¿½gga till produkter innan jag kan anvï¿½nda Arraylist
+>>>>>>> 7e33e37f53978744eaa79994c42cec7dec4c6c3e
 	
 	// arraylist for books and movies and arraylist for ALL Products
 	
@@ -40,7 +44,7 @@ public class LibraryMain {
 	
 	//LinkedList library = new LinkedList(); 
 	
-	
+	//arraylist <products>
 		}
 
 //HEJ THITI
