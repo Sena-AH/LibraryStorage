@@ -1,10 +1,14 @@
 import java.util.Scanner;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+
 
 public class LibraryMain {
 
@@ -29,17 +33,17 @@ public class LibraryMain {
 	}
 	*/
 	// Serialize data
-	public void saveData() {
+	//public void saveData() {
 		// the massive object to store all our objects!
-		ArrayList <Object> data = new ArrayList<Object>();
+		//ArrayList <Object> data = new ArrayList<Object>();
 		/*data.add(myName);
 		data.add(myAge);
 		data.add(myHobbies);
 		data.add(myFriends);*/
 		
 		// the actuall serilazation 
-		
-		try {
+	
+	/*	try {
 			FileOutputStream fileOut = new FileOutputStream("data.ser");
 			ObjectOutputStream out = new ObjectOutputStream (fileOut);
 			out.writeObject(data);
@@ -47,70 +51,85 @@ public class LibraryMain {
 			fileOut.close();
 			System.out.println("Serialized data is saved in data.ser");
 		}catch (IOException i) {
-			i.printStackTrace();
-		}
-		}
+			i.printStackTrace(); */
+		//}
+		//}
 	
 	//LinkedList library = new LinkedList(); 
 	
+	public static String filePath = "C:\\java\\csv\\user.csv";
 	
+	public static void writeCsv(String filepath) {
+		
+		ArrayList <Product> products = new ArrayList <Product>();
+		
+		//demo users
+		
+		Product harrypotter = new Book(1234, "Harry Potter and the Philosopher's stone", 179, 223, "J.K Rowling");
+		products.add(harrypotter);
+		
+		FileWriter fileWriter = null;
+		try {
+			fileWriter =new FileWriter(filePath);
+			fileWriter.append("article number, name, price, pages, author");
+			
+			for(Product p: products) {
+				//fileWriter.append(p.getArticleNumber());
+				fileWriter.append(",");
+				fileWriter.append(p.getProductName());
+				fileWriter.append(",");
+				//fileWriter.append(p.getValue());
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				fileWriter.flush();
+				fileWriter.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
-//HEJ THITI
-		
+	}
 	
+	public static void readCsv(String filePath) {
+		BufferedReader reader = null;
+		
+		try {
+			ArrayList <Product> products = new ArrayList <Product>();
+			String line = "";
+			reader = new BufferedReader (new FileReader(filePath));
+			reader.readLine();
+			
+			while((line = reader.readLine()) != null) {
+				String[] fields = line.split(",");
+				
+				if(fields.length > 0) {
+					Product product = new Product(0, line, 0);
+					product.getArticleNumber();
+					product.getProductName();
+					products.add(product);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+					
+				}
+ 			}
+			for(Product p: products) {
+				System.out.printf("articlenum = %, name = %s",p.getArticleNumber(), p.getProductName());
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			try {
+				reader.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+		}
 
 
 
