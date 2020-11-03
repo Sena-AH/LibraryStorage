@@ -173,7 +173,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	}
         }
         */
-        
+       /* 
         public static void addArrayCsv() {
           String csvFile = "LibraryProducts.csv";
     BufferedReader br = null;
@@ -203,7 +203,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     }
     System.out.print(products);
 }
-     
+     */
 		public Manage() { // konstruktor
            // LibraryMain library = new LibraryMain (); //libpath - filen man vill spara
      /*       
