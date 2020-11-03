@@ -1,6 +1,9 @@
 
 
 public class Movie extends Product{
+	
+	private boolean movie = true;
+	
 
 	private int lengthInMinutes;
 	private double rating;

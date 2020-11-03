@@ -1,6 +1,7 @@
 
 public class Book extends Product {
 	
+	private boolean book = true;
 	
 	private int pages;
 	private String author;
