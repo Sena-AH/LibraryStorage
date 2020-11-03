@@ -204,6 +204,32 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     System.out.print(products);
 }
      */
+        
+        public static Product parseProducts(String csvRecord) {
+        	
+        		String[] values = csvRecord.split(",");
+        		String title = values[0];
+        		
+        		
+        		int articleNumber = Integer.parseInt(values[1]);
+        		String productName = values[2];
+        		int value = Integer.parseInt(values[3]);
+       if() { 		
+        		int pages = Integer.parseInt(values[4]);
+        		String author = values[5];
+        		return new Book(articleNumber,productName, value, pages, author);
+       		
+       }else if (values.length >= 6){
+       			
+        		int lengthInMinutes = Integer.parseInt(values[6]);
+        		double rating = Double.parseDouble(values[7]);
+        		
+       		return new Movie(articleNumber,productName, value, lengthInMinutes, rating);
+       		}
+        		
+        	
+        
+        
 		public Manage() { // konstruktor
            // LibraryMain library = new LibraryMain (); //libpath - filen man vill spara
      /*       
