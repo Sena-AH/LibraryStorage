@@ -214,7 +214,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         		int articleNumber = Integer.parseInt(values[1]);
         		String productName = values[2];
         		int value = Integer.parseInt(values[3]);
-       if() { 		
+       if(articleNum ) { 		
         		int pages = Integer.parseInt(values[4]);
         		String author = values[5];
         		return new Book(articleNumber,productName, value, pages, author);
@@ -226,6 +226,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         		
        		return new Movie(articleNumber,productName, value, lengthInMinutes, rating);
        		}
+        }
         		
         	
         
@@ -365,16 +366,20 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     		
     		// CHANGE SO IT WORKS WITH ARRAY LIST AND NOT JUST ARRAY!!
     		// MAKE IT PARSE ARTICLENUMBERS
+        	
     		
-    		String[] fullInput = playerInput.split(" ");
+    	String[] fullInput = playerInput.split(" ");
     		String[] arguments = new String[fullInput.length-1];
     		
     			for (int i=1; i<fullInput.length; i++) {
-    			arguments[i-1] = fullInput[i];
+    		arguments[i-1] = fullInput[i]; 
     			
+    		
     			}
-    			return arguments;
+    			return arguments;  
     		}
+        
+        
         
         public static Command parseCommand(String playerInput){ 
             
