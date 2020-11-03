@@ -1,6 +1,7 @@
 import java.util.Scanner;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 
 
@@ -8,6 +9,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+=======
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+>>>>>>> Stashed changes
 =======
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
