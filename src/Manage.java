@@ -37,7 +37,8 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
    
   // public static List<String[]> content = new ArrayList<>();
    
-   public static List<List<String>> records = new ArrayList<>();
+   //public static List<List<String>> records = new ArrayList<>();
+    public static List<List<Object>> records = new ArrayList<>();
 
     
     public static ArrayList <Customer> customers = new ArrayList <Customer>();
@@ -280,7 +281,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         
         public static void handleRegisterCommand() {
         	//enter code
-        	records.add(products);
+        	//records.add(products);
         	
         	System.out.println("register command handled");
 
