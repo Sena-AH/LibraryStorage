@@ -1,6 +1,6 @@
-import java.io.Serializable;
 
-public class Movie extends Product implements Serializable{
+
+public class Movie extends Product{
 
 	private int lengthInMinutes;
 	private double rating;

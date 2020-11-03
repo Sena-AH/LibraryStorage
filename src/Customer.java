@@ -1,5 +1,5 @@
 
-public class Customer {
+public class Customer  {
 	
 	// Kan vara bra att l�gga till ID-nr annars m�ste man ha HELA NAMNET
 	

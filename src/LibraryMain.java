@@ -57,7 +57,13 @@ public class LibraryMain {
 	
 	//LinkedList library = new LinkedList(); 
 	
-	public static String filePath = "C:\\java\\csv\\user.csv";
+	
+	// Manipulera filen via koden så vi kan ändra. Koppla listan till filen så att programmet vet vilken artikelnr den ska ta bort.
+	
+	public static String filePath = "LibraryProducts.csv";
+	
+	
+	
 	
 	public static void writeCsv(String filepath) {
 		

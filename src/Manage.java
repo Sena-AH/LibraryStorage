@@ -1,4 +1,5 @@
 import java.util.Scanner;
+<<<<<<< Updated upstream
 
 
 
@@ -6,6 +7,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+=======
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+>>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +53,20 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             //Books book = new Books(123123, "Harry Potter", 200, 700, "jk rowling");
             
             //System.out.println("Article number: " + book.articleNumber );
+        	
+        	String filePath = "LibraryProducts.csv"; // CSV-FILEN VISAS
+        	FileInputStream fin;
+        	try {
+        		fin = new FileInputStream(filePath);
+        		} catch (FileNotFoundException e) {
+        			return;
+        		}
+        	Scanner scanner = new Scanner (fin);
+        	while (scanner.hasNextLine()) {
+        		String line = scanner.nextLine();
+        		System.out.println(line);
+        	}
+        	scanner.close();
             
             System.out.println(" Welcome to the Library system. ");
             System.out.println(" Below you can see the current inventory: ");
