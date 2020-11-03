@@ -1,26 +1,12 @@
 import java.util.Scanner;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-=======
+
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
->>>>>>> Stashed changes
-=======
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
->>>>>>> Stashed changes
-=======
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
->>>>>>> Stashed changes
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,19 +50,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             
             //System.out.println("Article number: " + book.articleNumber );
         	
-        	String filePath = "LibraryProducts.csv"; // CSV-FILEN VISAS
-        	FileInputStream fin;
-        	try {
-        		fin = new FileInputStream(filePath);
-        		} catch (FileNotFoundException e) {
-        			return;
-        		}
-        	Scanner scanner = new Scanner (fin);
-        	while (scanner.hasNextLine()) {
-        		String line = scanner.nextLine();
-        		System.out.println(line);
-        	}
-        	scanner.close();
+       
             
             System.out.println(" Welcome to the Library system. ");
             System.out.println(" Below you can see the current inventory: ");
@@ -156,8 +130,24 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             // Konstruktor
             // instansiera 
             
-        }
+		}
 
+		public static void Csv() {
+			String filePath = "LibraryProducts.csv"; // CSV-FILEN VISAS
+
+			FileInputStream fin;
+			try {
+				fin = new FileInputStream(filePath);
+			} catch (FileNotFoundException e) {
+				return;
+			}
+			Scanner scanner = new Scanner(fin);
+			while (scanner.hasNextLine()) {
+				String line = scanner.nextLine();
+				System.out.println(line);
+			}
+			scanner.close();
+		}
  
 
     
@@ -298,17 +288,19 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
    	          System.out.println(p); 		
    	      }
        */
-        	for (String[] list : content) {
+        	//for (String[] list : content) {
         		
-     	          System.out.println(list); 		
+     	      //    System.out.println(list); 		
 
-        	}
+        	//}
+        	
+        	Csv();
         	
         	System.out.println("list command handled");
         	
         	
         	
-        }
+       }
         
         public static void handleCheckoutCommand(String[] articleNum) {
         	//enter code
