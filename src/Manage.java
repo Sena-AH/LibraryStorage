@@ -23,6 +23,8 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     
     public static ArrayList <Product> products = new ArrayList <Product>();
     
+    public static ArrayList <Customer> customers = new ArrayList <Customer>();
+    
         public static void main(String[] args) {
         	// add csv code from video in main method!!!!!!!!!!!
             
