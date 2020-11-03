@@ -214,7 +214,8 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         		int articleNumber = Integer.parseInt(values[1]);
         		String productName = values[2];
         		int value = Integer.parseInt(values[3]);
-       if(articleNum ) { 		
+       boolean book;
+	if(book = true ) { 		
         		int pages = Integer.parseInt(values[4]);
         		String author = values[5];
         		return new Book(articleNumber,productName, value, pages, author);
