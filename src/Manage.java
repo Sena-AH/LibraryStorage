@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
  
@@ -32,9 +33,11 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         
     public static Scanner scanner = new Scanner (System.in);
     
-   public static ArrayList <Product> products = new ArrayList <Product>();
+    public static Collection<Product> products = new ArrayList <Product>();
    
-   public static List<String[]> content = new ArrayList<>();
+  // public static List<String[]> content = new ArrayList<>();
+   
+   public static List<List<String>> records = new ArrayList<>();
 
     
     public static ArrayList <Customer> customers = new ArrayList <Customer>();
@@ -70,7 +73,6 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         		
         		
         		if (command == Command.LIST) {
-        			allProducts();
         			handleListCommand();
         			System.out.print("\n\tEnter next command: \n\t > ");
 
@@ -128,7 +130,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 				
         		}
  
-
+            Product got = new Book (777, "Game of thrones", 300, 750, "Sena och Thiti");
             // Konstruktor
             // instansiera 
             
@@ -152,23 +154,22 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 			
 		} //Works but has no array but prints code
  */
-
         public static void csvArray() throws FileNotFoundException, IOException {
         	
-        	List<List<String>> records = new ArrayList<>();
+        //	List<List<String>> records = new ArrayList<>();
         	try (BufferedReader br = new BufferedReader(new FileReader("LibraryProducts.csv"))) {
         	    String line;
         	    while ((line = br.readLine()) != null) {
         	        String[] values = line.split(line);
         	        records.add(Arrays.asList(values));
     				System.out.println(line);
-
+    				//FUNKAR
         	    }
         	}
         }
        
 		public Manage() { // konstruktor
-            LibraryMain library = new LibraryMain (); //libpath - filen man vill spara
+           // LibraryMain library = new LibraryMain (); //libpath - filen man vill spara
      /*       
             products = new ArrayList<Product>();
             
@@ -200,14 +201,15 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             
      //   }
     	
-    	public static ArrayList<Product> allProducts() {
+    	public static Collection<Product> allProducts() {
     	//ArrayList <Product> products = new ArrayList <Product>();
 /*
     	Product harrypotter = new Book(1234, "Harry Potter and the Philosopher's stone", 179, 223, "J.K Rowling");
     	Product attackontitan = new Movie(9001, "Attack on Titan", 150, 120, 8);
     	Product hitchhiker = new Book(1235, "The Hitchhiker's Guide to the Galaxy", 100, 208, "Douglas Adams");
     	Product spiritedaway = new Movie(9002, "Spirited Away", 80, 125, 8);
-  */ 	
+  */
+   
     	products.add(new Book(1234, "Harry Potter and the Philosopher's stone", 179, 223, "J.K Rowling"));
     	products.add(new Movie(9001, "Attack on Titan", 150, 120, 8));
     	products.add(new Book(1235, "The Hitchhiker's Guide to the Galaxy", 100, 208, "Douglas Adams"));
@@ -278,6 +280,8 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         
         public static void handleRegisterCommand() {
         	//enter code
+        	records.add(products);
+        	
         	System.out.println("register command handled");
 
         }
