@@ -1,5 +1,13 @@
 import java.util.Scanner;
+
+
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
  
 public class Manage { // Manager tolkar vad du vill göra och startar funktion i libraryklassen. 
@@ -21,7 +29,10 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         
     public static Scanner scanner = new Scanner (System.in);
     
-   // public static ArrayList <Product> products = new ArrayList <Product>();
+   public static ArrayList <Product> products = new ArrayList <Product>();
+   
+   public static List<String[]> content = new ArrayList<>();
+
     
     public static ArrayList <Customer> customers = new ArrayList <Customer>();
     
@@ -154,8 +165,8 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             
      //   }
     	
-    	protected static ArrayList<Product> allProducts() {
-    	ArrayList <Product> products = new ArrayList <Product>();
+    	public static ArrayList<Product> allProducts() {
+    	//ArrayList <Product> products = new ArrayList <Product>();
 /*
     	Product harrypotter = new Book(1234, "Harry Potter and the Philosopher's stone", 179, 223, "J.K Rowling");
     	Product attackontitan = new Movie(9001, "Attack on Titan", 150, 120, 8);
@@ -231,16 +242,38 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 			}
 			return arguments;
 		}
+	
+	public List<String[]> readData() throws IOException { 
+	    int count = 0;
+	    String file = "LibraryProducts.csv";
+	   // List<String[]> content = new ArrayList<>();
+	    try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+	        String line = "";
+	        while ((line = br.readLine()) != null) {
+	            content.add(line.split(";"));
+	        }
+	    } catch (FileNotFoundException e) {
+	      //Some error logging
+	    	System.out.println("EROOR ERROOROROR");
+	    }
+	    return content;
+	}
 
         
         public static void handleListCommand() {
         	//enter code
         	
-        	
-        	 for (Product p : products)
-   	      { 		      
-   	           System.out.println(p); 		
+       /*	
+       	 for (Product p : products)
+   	     { 		      
+   	          System.out.println(p); 		
    	      }
+       */
+        	for (String[] list : content) {
+        		
+     	          System.out.println(list); 		
+
+        	}
         	
         	System.out.println("list command handled");
         	
