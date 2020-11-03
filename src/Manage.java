@@ -135,7 +135,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 				
         		}
  
-            Product got = new Book (777, "Game of thrones", 300, 750, "Sena och Thiti");
+           // Product got = new Book (777, "Game of thrones", 300, 750, "Sena och Thiti");
             // Konstruktor
             // instansiera 
             
