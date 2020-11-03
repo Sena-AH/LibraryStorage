@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.io.IOException;
 import java.io.FileInputStream;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
  
@@ -37,7 +39,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     
     public static ArrayList <Customer> customers = new ArrayList <Customer>();
     
-        public static void main(String[] args) {
+        public static void main(String[] args) throws FileNotFoundException, IOException {
         	// add csv code from video in main method!!!!!!!!!!!
             
            // Manage manager = new Manage(); // Instans av hela klassen ("bygga ett hus av ritningen")
@@ -131,7 +133,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             // instansiera 
             
 		}
-
+/*
 		public static void Csv() {
 			String filePath = "LibraryProducts.csv"; // CSV-FILEN VISAS
 
@@ -147,11 +149,25 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 				System.out.println(line);
 			}
 			scanner.close();
-		}
- 
+			
+		} //Works but has no array but prints code
+ */
 
-    
-        public Manage() { // konstruktor
+        public static void csvArray() throws FileNotFoundException, IOException {
+        	
+        	List<List<String>> records = new ArrayList<>();
+        	try (BufferedReader br = new BufferedReader(new FileReader("LibraryProducts.csv"))) {
+        	    String line;
+        	    while ((line = br.readLine()) != null) {
+        	        String[] values = line.split(line);
+        	        records.add(Arrays.asList(values));
+    				System.out.println(line);
+
+        	    }
+        	}
+        }
+       
+		public Manage() { // konstruktor
             LibraryMain library = new LibraryMain (); //libpath - filen man vill spara
      /*       
             products = new ArrayList<Product>();
@@ -201,11 +217,102 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     	return products;
     	
     	}
- 
 
+	
+	/*
+	public List<String[]> readData() throws IOException { 
+	    int count = 0;
+	    String file = "LibraryProducts.csv";
+	   // List<String[]> content = new ArrayList<>();
+	    try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+	        String line = "";
+	        while ((line = br.readLine()) != null) {
+	            content.add(line.split(";"));
+	        }
+	    } catch (FileNotFoundException e) {
+	      //Some error logging
+	    	System.out.println("EROOR ERROOROROR");
+	    }
+	    return content;
+	}
+	
+	//FUNKADE EJ
+*/
+        
+        public static void handleListCommand() throws FileNotFoundException, IOException {
+        	//enter code
+        	
+       /*	
+       	 for (Product p : products)
+   	     { 		      
+   	          System.out.println(p); 		
+   	      }
+       */
+        	//for (String[] list : content) {
+        		
+     	      //    System.out.println(list); 		
+
+        	//}
+        	
+        	//Csv();
+        	
+        	csvArray();
+        	
+        	System.out.println("list command handled");
+        	
+        	
+        	
+       }
+        
+        public static void handleCheckoutCommand(String[] articleNum) {
+        	//enter code
+        	System.out.println("checkout command handled");
+
+        }
+        
+        public static void handleCheckinCommand(String[] articleNum) {
+        	//enter code
+        	System.out.println("checkin command handled");
+
+        }
+        
+        public static void handleRegisterCommand() {
+        	//enter code
+        	System.out.println("register command handled");
+
+        }
+        
+        public static void handleDeregisterCommand(String[] articleNum) {
+        	//enter code
+        	System.out.println("deregister command handled");
+
+        }
+        
+        public static void handleInfoCommand(String[] articleNum) {
+        	//enter code
+        	System.out.println("info command handled");
+
+        }
+        
+        
+        public static String[] parseArgument(String playerInput) {
+    		
+    		// CHANGE SO IT WORKS WITH ARRAY LIST AND NOT JUST ARRAY!!
+    		// MAKE IT PARSE ARTICLENUMBERS
+    		
+    		String[] fullInput = playerInput.split(" ");
+    		String[] arguments = new String[fullInput.length-1];
+    		
+    			for (int i=1; i<fullInput.length; i++) {
+    			arguments[i-1] = fullInput[i];
+    			
+    			}
+    			return arguments;
+    		}
+        
         public static Command parseCommand(String playerInput){ 
-    
-   
+            
+        	   
         	String commandString = playerInput.split(" ")[0];
    // String playerInput1 = scanner.nextLine(); // read wich command the user enter (LIST, CHECKOUT ETC.)
         
@@ -245,91 +352,6 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	}
         
         
-        }
-
-	public static String[] parseArgument(String playerInput) {
-		
-		// CHANGE SO IT WORKS WITH ARRAY LIST AND NOT JUST ARRAY!!
-		// MAKE IT PARSE ARTICLENUMBERS
-		
-		String[] fullInput = playerInput.split(" ");
-		String[] arguments = new String[fullInput.length-1];
-		
-			for (int i=1; i<fullInput.length; i++) {
-			arguments[i-1] = fullInput[i];
-			
-			}
-			return arguments;
-		}
-	
-	public List<String[]> readData() throws IOException { 
-	    int count = 0;
-	    String file = "LibraryProducts.csv";
-	   // List<String[]> content = new ArrayList<>();
-	    try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-	        String line = "";
-	        while ((line = br.readLine()) != null) {
-	            content.add(line.split(";"));
-	        }
-	    } catch (FileNotFoundException e) {
-	      //Some error logging
-	    	System.out.println("EROOR ERROOROROR");
-	    }
-	    return content;
-	}
-
-        
-        public static void handleListCommand() {
-        	//enter code
-        	
-       /*	
-       	 for (Product p : products)
-   	     { 		      
-   	          System.out.println(p); 		
-   	      }
-       */
-        	//for (String[] list : content) {
-        		
-     	      //    System.out.println(list); 		
-
-        	//}
-        	
-        	Csv();
-        	
-        	System.out.println("list command handled");
-        	
-        	
-        	
-       }
-        
-        public static void handleCheckoutCommand(String[] articleNum) {
-        	//enter code
-        	System.out.println("checkout command handled");
-
-        }
-        
-        public static void handleCheckinCommand(String[] articleNum) {
-        	//enter code
-        	System.out.println("checkin command handled");
-
-        }
-        
-        public static void handleRegisterCommand() {
-        	//enter code
-        	System.out.println("register command handled");
-
-        }
-        
-        public static void handleDeregisterCommand(String[] articleNum) {
-        	//enter code
-        	System.out.println("deregister command handled");
-
-        }
-        
-        public static void handleInfoCommand(String[] articleNum) {
-        	//enter code
-        	System.out.println("info command handled");
-
         }
         
 }
