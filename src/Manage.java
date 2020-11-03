@@ -33,13 +33,17 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         
     public static Scanner scanner = new Scanner (System.in);
     
-    public static Collection<Product> products = new ArrayList <Product>();
+    public static List<Product> products = new ArrayList <Product>();
    
   // public static List<String[]> content = new ArrayList<>();
    
    //public static List<List<String>> records = new ArrayList<>();
-    public static List<List<Object>> records = new ArrayList<>();
+   // public static List<List<Object>> records = new ArrayList<>();
+    
+    
+    
 
+    
     
     public static ArrayList <Customer> customers = new ArrayList <Customer>();
     
@@ -155,7 +159,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 			
 		} //Works but has no array but prints code
  */
-        public static void csvArray() throws FileNotFoundException, IOException {
+     /*   public static void csvArray() throws FileNotFoundException, IOException {
         	
         //	List<List<String>> records = new ArrayList<>();
         	try (BufferedReader br = new BufferedReader(new FileReader("LibraryProducts.csv"))) {
@@ -168,7 +172,38 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	    }
         	}
         }
-       
+        */
+        
+        public static void addArrayCsv() {
+          String csvFile = "LibraryProducts.csv";
+    BufferedReader br = null;
+    String line = "";
+    String cvsSplitBy = ",";
+   // List<Entry> People = new ArrayList<>();
+    try {
+        br = new BufferedReader(new FileReader(csvFile));
+        while ((line = br.readLine()) != null) {
+            // use comma as separator
+            String[] Labels = line.split(cvsSplitBy);                 
+            Product pro = new Product(Labels[0], Labels[1], Labels[2], Labels[3], Labels[4], Labels[5], Labels[6], Labels[7]);
+            products.add(pro);
+        }
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    } finally {
+        if (br != null) {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    System.out.print(products);
+}
+     
 		public Manage() { // konstruktor
            // LibraryMain library = new LibraryMain (); //libpath - filen man vill spara
      /*       
@@ -202,7 +237,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             
      //   }
     	
-    	public static Collection<Product> allProducts() {
+    	//public static Collection<Product> allProducts() {
     	//ArrayList <Product> products = new ArrayList <Product>();
 /*
     	Product harrypotter = new Book(1234, "Harry Potter and the Philosopher's stone", 179, 223, "J.K Rowling");
@@ -210,7 +245,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     	Product hitchhiker = new Book(1235, "The Hitchhiker's Guide to the Galaxy", 100, 208, "Douglas Adams");
     	Product spiritedaway = new Movie(9002, "Spirited Away", 80, 125, 8);
   */
-   
+   /*
     	products.add(new Book(1234, "Harry Potter and the Philosopher's stone", 179, 223, "J.K Rowling"));
     	products.add(new Movie(9001, "Attack on Titan", 150, 120, 8));
     	products.add(new Book(1235, "The Hitchhiker's Guide to the Galaxy", 100, 208, "Douglas Adams"));
@@ -220,7 +255,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     	return products;
     	
     	}
-
+*/
 	
 	/*
 	public List<String[]> readData() throws IOException { 
@@ -259,7 +294,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	
         	//Csv();
         	
-        	csvArray();
+        	//csvArray();
         	
         	System.out.println("list command handled");
         	
@@ -282,7 +317,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         public static void handleRegisterCommand() {
         	//enter code
         	//records.add(products);
-        	
+        	//records.addAll(products);
         	System.out.println("register command handled");
 
         }
