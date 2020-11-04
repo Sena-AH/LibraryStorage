@@ -99,7 +99,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         				continue;
         				
         			} else if(command == Command.REGISTER) {
-                		
+                	
         				handleRegisterCommand();
             			System.out.print("\n\tEnter next command: \n\t > ");
 
@@ -335,10 +335,16 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 	 
 */
       
-        
-        public static void printMovieAndBook() {
+        /*
+         * JÄTTEBRA KOD MEN NÅR EJ IF SATSERNA!!!!!
+         
+        public static void printMovieAndBook(String playerInput) {
     		
-    		if playerInput == "m" {
+        	System.out.println("this is the print book and movie method");
+        	
+    
+        	if (playerInput == "m") {
+    			System.out.println("you have chosen movie");
     		String filePathMovie = "Movie.csv";
     		FileInputStream fin;
     		try {
@@ -354,7 +360,9 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
                 movies.add(movie);
     			
     		} 
-    		} else if (Book.isBook() == true){
+    		} else if (playerInput == "b"){
+    			System.out.println("you have chosen book");
+
     		String filePathBook = "Book.csv";
     		FileInputStream fin;
     		try {
@@ -368,13 +376,54 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     			System.out.println(lineBook);
     			Book book = parseBook(lineBook);
                 books.add(book);
-    	}
-    		}
+    	} 
+    		} 
     		
     	//scanner.close();
     	}
     		
-        
+        */
+       public static void printMovie() {
+    	   
+       
+    		System.out.println("you have chosen movie");
+    		String filePathMovie = "Movie.csv";
+    		FileInputStream fin;
+    		try {
+    			fin = new FileInputStream(filePathMovie);
+    		} catch (FileNotFoundException e) {
+    			return;
+    		}
+    		Scanner scanner = new Scanner(fin);
+    		while (scanner.hasNextLine()) {
+    			String lineMovie = scanner.nextLine();
+    			System.out.println(lineMovie);
+    			Movie movie = parseMovie(lineMovie);
+                movies.add(movie);
+    	   
+    		}
+       }
+       
+       public static void printBook() {
+    	   
+    	   System.out.println("you have chosen book");
+
+   		String filePathBook = "Book.csv";
+   		FileInputStream fin;
+   		try {
+   			fin = new FileInputStream(filePathBook);
+   		} catch (FileNotFoundException e) {
+   			return;
+   		}
+   		Scanner scanner = new Scanner(fin);
+   		while (scanner.hasNextLine()) {
+   			String lineBook = scanner.nextLine();
+   			System.out.println(lineBook);
+   			Book book = parseBook(lineBook);
+               books.add(book);
+       }
+       }
+
        
         
         public static void handleListCommand() throws FileNotFoundException, IOException {
@@ -394,7 +443,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	
         	//Csv();
         	
-        	csvArray();
+        	//csvArray();
         	
         	//printMovieAndBook();
         	
@@ -421,8 +470,19 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	//records.add(products);
         	//records.addAll(products);
         	
-        	book.add(parseBook(got));
+        	//book.add(parseBook(got));
+        	System.out.println("hej enter b or m:");
+        	String input= scanner.nextLine();
+        	char c = input.charAt(0);
         	
+        	if(c == 'm') {
+        		printMovie();
+        	} else if (c == 'b') {
+        		printBook();
+        	}
+        	
+        	
+        	//printMovieAndBook(input);
         	
         	
         	System.out.println("register command handled");
