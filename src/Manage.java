@@ -5,7 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.io.FileInputStream;
 
 import java.util.ArrayList;
@@ -34,8 +35,8 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     public static Scanner scanner = new Scanner (System.in);
     
     public static List<Product> products = new ArrayList <Product>();
-    public static List<Movie> movie = new ArrayList<>();
-    public static List<Book> book = new ArrayList<>();
+    public static List<Movie> movies = new ArrayList<>();
+    public static List<Book> books = new ArrayList<>();
 
    
   // public static List<String[]> content = new ArrayList<>();
@@ -53,6 +54,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             
             //manager.Start();
             
+        	
             
             
             //Books book = new Books(123123, "Harry Potter", 200, 700, "jk rowling");
@@ -156,8 +158,11 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 			scanner.close();
 			
 		} //Works but has no array but prints code
+		
+	
+		
  */
-        public static void csvArray() throws FileNotFoundException, IOException {
+      /*  public static void csvArray() throws FileNotFoundException, IOException {
         	
         //	List<List<String>> records = new ArrayList<>();
         	try (BufferedReader br = new BufferedReader(new FileReader("LibraryProducts.csv"))) {
@@ -169,7 +174,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     				//FUNKAR Fast ej kunnat l�gga till i arraylist
         	    }
         	}
-        }
+        }*/
         
        /* 
         public static void addArrayCsv() {
@@ -227,7 +232,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
        		}
         }
         */		
-        	
+       
         public static Book parseBook(String csvLine) {
         	
     		String[] values = csvLine.split(",");
@@ -327,11 +332,13 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 	}
 	
 	//FUNKADE EJ
+	 
 */
+      
         
         public static void printMovieAndBook() {
     		
-    		if(Book.isBook() == false) {
+    		if playerInput == "m" {
     		String filePathMovie = "Movie.csv";
     		FileInputStream fin;
     		try {
@@ -343,6 +350,8 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     		while (scanner.hasNextLine()) {
     			String lineMovie = scanner.nextLine();
     			System.out.println(lineMovie);
+    			Movie movie = parseMovie(lineMovie);
+                movies.add(movie);
     			
     		} 
     		} else if (Book.isBook() == true){
@@ -357,7 +366,8 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     		while (scanner.hasNextLine()) {
     			String lineBook = scanner.nextLine();
     			System.out.println(lineBook);
-    			
+    			Book book = parseBook(lineBook);
+                books.add(book);
     	}
     		}
     		
@@ -412,6 +422,8 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	//records.addAll(products);
         	
         	book.add(parseBook(got));
+        	
+        	
         	
         	System.out.println("register command handled");
 
