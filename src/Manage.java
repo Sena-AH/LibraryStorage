@@ -333,11 +333,12 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     			String line = scanner.nextLine();
     			System.out.println(line);
     	}
+    		}
     	scanner.close();
     	}
     		
         
-       }
+       
         
         public static void handleListCommand() throws FileNotFoundException, IOException {
         	//enter code
