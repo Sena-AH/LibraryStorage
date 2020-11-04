@@ -1,5 +1,5 @@
 
-public class Product {
+public abstract class Product {
 
 	private int articleNumber;
 	private String productName;
@@ -30,5 +30,52 @@ public class Product {
 		return value;
 	}
 
+	public boolean isBook() {
+		return true;
+		
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
