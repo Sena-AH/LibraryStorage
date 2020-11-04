@@ -412,7 +412,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
    		FileInputStream fin;
    		try {
    			fin = new FileInputStream(filePathBook);
-   		} catch (FileNotFoundException e) {
+   		} catch (FileNotFoundException e)  {
    			return;
    		}
    		Scanner scanner = new Scanner(fin);
@@ -421,6 +421,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
    			System.out.println(lineBook);
    			Book book = parseBook(lineBook);
                books.add(book);
+               
        }
        }
 
