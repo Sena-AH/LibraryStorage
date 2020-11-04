@@ -5,12 +5,34 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 
 
 
 public class LibraryMain {
+	
+	
+
+	public static void main(String[] args) {
+		String filePath = "Movie.csv";
+		FileInputStream fin;
+		try {
+			fin = new FileInputStream(filePath);
+		} catch (FileNotFoundException e) {
+			return;
+		}
+		Scanner scanner = new Scanner(fin);
+		while (scanner.hasNextLine()) {
+			String line = scanner.nextLine();
+			System.out.println(line);
+	}
+	scanner.close();
+	}
+	
+	
 
 		
 	/*
