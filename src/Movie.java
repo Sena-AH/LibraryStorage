@@ -22,7 +22,7 @@ public class Movie extends Product{
 		return rating;
 	}
 	
-	public boolean isBook() {
+	public static boolean isBook() {
 		return false;
 	}
 /*
