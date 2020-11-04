@@ -458,8 +458,19 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         
         public static void handleCheckoutCommand(String[] articleNum) {
         	//enter code
-        	System.out.println("checkout command handled");
+        	
+        	//customer enters name and phonenumber
+        	System.out.println("Enter name: ");
+        	String customerName = scanner.nextLine();
+        	System.out.println("Enter phonenumber: ");
+        	String phoneNumber = scanner.nextLine();
+        	
+        	System.out.printf("This product has now been borrowed by %s , %s", customerName, phoneNumber);
 
+        	
+        	
+        	System.out.println("\ncheckout command handled");
+        	
         }
         
         public static void handleCheckinCommand(String[] articleNum) {
