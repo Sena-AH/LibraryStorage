@@ -34,15 +34,14 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     public static Scanner scanner = new Scanner (System.in);
     
     public static List<Product> products = new ArrayList <Product>();
+    public static List<Movie> movie = new ArrayList<>();
+    public static List<Book> book = new ArrayList<>();
+
    
   // public static List<String[]> content = new ArrayList<>();
    
    public static List<List<String>> records = new ArrayList<>();
    // public static List<List<Object>> records = new ArrayList<>();
-    
-    
-    
-
     
     
     public static ArrayList <Customer> customers = new ArrayList <Customer>();
@@ -59,7 +58,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
             //Books book = new Books(123123, "Harry Potter", 200, 700, "jk rowling");
             
             //System.out.println("Article number: " + book.articleNumber );
-        	
+        	Book got = new Book (777, "Game of thrones", 300, 750, "Sena och Thiti");
        
             
             System.out.println(" Welcome to the Library system. ");
@@ -135,7 +134,6 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 				
         		}
  
-           // Product got = new Book (777, "Game of thrones", 300, 750, "Sena och Thiti");
             // Konstruktor
             // instansiera 
             
@@ -204,17 +202,17 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     System.out.print(products);
 }
      */
-        
-        /*public static Product parseProducts(String csvRecord) {
+      /*  
+        public static Product parseProducts(String lineMovie) {
         	
-        		String[] values = csvRecord.split(",");
+        		String[] values = lineMovie.split(",");
         		String title = values[0];
         		
         		
         		int articleNumber = Integer.parseInt(values[1]);
         		String productName = values[2];
         		int value = Integer.parseInt(values[3]);
-       boolean book;
+    
 	if(book = true ) { 		
         		int pages = Integer.parseInt(values[4]);
         		String author = values[5];
@@ -228,13 +226,39 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
        		return new Movie(articleNumber,productName, value, lengthInMinutes, rating);
        		}
         }
-        		
+        */		
         	
+        public static Book parseBook(String csvLine) {
+        	
+    		String[] values = csvLine.split(",");
+    		
+    		int articleNumber = Integer.parseInt(values[0]);
+    		String productName = values[1];
+    		int value = Integer.parseInt(values[2]);
+    		int pages = Integer.parseInt(values[3]);
+    		String author = values[4];
+    		
+    		return new Book(articleNumber,productName, value, pages, author);
+
+        }
         
+        public static Movie parseMovie(String csvLine) {
+        	
+    		String[] values = csvLine.split(",");
+    		
+    		int articleNumber = Integer.parseInt(values[0]);
+    		String productName = values[1];
+    		int value = Integer.parseInt(values[2]);
+    		int lengthInMinutes = Integer.parseInt(values[3]);
+    		double rating = Double.parseDouble(values[4]);
+    		
+   		return new Movie(articleNumber,productName, value, lengthInMinutes, rating);
+   		}
         
+       /* 
 		public Manage() { // konstruktor
            // LibraryMain library = new LibraryMain (); //libpath - filen man vill spara
-     /*       
+           
             products = new ArrayList<Product>();
             
             products.add(new Book(1234, "Harry Potter and the Philosopher's stone", 179, 223, "J.K Rowling"));
@@ -386,6 +410,9 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	//enter code
         	//records.add(products);
         	//records.addAll(products);
+        	
+        	book.add(parseBook(got));
+        	
         	System.out.println("register command handled");
 
         }
