@@ -37,7 +37,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
    
   // public static List<String[]> content = new ArrayList<>();
    
-   //public static List<List<String>> records = new ArrayList<>();
+   public static List<List<String>> records = new ArrayList<>();
    // public static List<List<Object>> records = new ArrayList<>();
     
     
@@ -159,7 +159,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 			
 		} //Works but has no array but prints code
  */
-     /*   public static void csvArray() throws FileNotFoundException, IOException {
+        public static void csvArray() throws FileNotFoundException, IOException {
         	
         //	List<List<String>> records = new ArrayList<>();
         	try (BufferedReader br = new BufferedReader(new FileReader("LibraryProducts.csv"))) {
@@ -172,7 +172,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	    }
         	}
         }
-        */
+        
        /* 
         public static void addArrayCsv() {
           String csvFile = "LibraryProducts.csv";
@@ -205,7 +205,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 }
      */
         
-        public static Product parseProducts(String csvRecord) {
+        /*public static Product parseProducts(String csvRecord) {
         	
         		String[] values = csvRecord.split(",");
         		String title = values[0];
@@ -243,7 +243,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	products.add(new Movie(9002, "Spirited Away", 80, 125, 8.6));
      */   	
         	
-        }
+       // }
      /*   
         public static void print() {
         	for (Product product : products) {
@@ -322,7 +322,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	
         	//Csv();
         	
-        	//csvArray();
+        	csvArray();
         	
         	System.out.println("list command handled");
         	

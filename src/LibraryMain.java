@@ -62,9 +62,6 @@ public class LibraryMain {
 	
 	public static String filePath = "LibraryProducts.csv";
 	
-	
-	
-	
 	public static void writeCsv(String filepath) {
 		
 		ArrayList <Product> products = new ArrayList <Product>();
