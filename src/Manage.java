@@ -360,9 +360,9 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	
         	//Csv();
         	
-        	//csvArray();
+        	csvArray();
         	
-        	printMovieAndBook();
+        	//printMovieAndBook();
         	
         	System.out.println("list command handled");
         	
