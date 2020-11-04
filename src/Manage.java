@@ -247,7 +247,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 
         }
         
-        public static Movie parseMovie(String csvLine) throws NumberFormatException{
+        public static Movie parseMovie(String csvLine){
         	
     		String[] values = csvLine.split(",");
     		
