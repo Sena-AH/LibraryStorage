@@ -305,7 +305,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 	//FUNKADE EJ
 */
         
-        public static void parseMovieAndBook() {
+        public static void printMovieAndBook() {
     		
     		if(Book.isBook() == false) {
     		String filePathMovie = "Movie.csv";
@@ -317,8 +317,9 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     		}
     		Scanner scanner = new Scanner(fin);
     		while (scanner.hasNextLine()) {
-    			String line = scanner.nextLine();
-    			System.out.println(line);
+    			String lineMovie = scanner.nextLine();
+    			System.out.println(lineMovie);
+    			
     		} 
     		} else if (Book.isBook() == true){
     		String filePathBook = "Book.csv";
@@ -330,11 +331,13 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     		}
     		Scanner scanner = new Scanner(fin);
     		while (scanner.hasNextLine()) {
-    			String line = scanner.nextLine();
-    			System.out.println(line);
+    			String lineBook = scanner.nextLine();
+    			System.out.println(lineBook);
+    			
     	}
     		}
-    	scanner.close();
+    		
+    	//scanner.close();
     	}
     		
         
@@ -357,7 +360,9 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	
         	//Csv();
         	
-        	csvArray();
+        	//csvArray();
+        	
+        	printMovieAndBook();
         	
         	System.out.println("list command handled");
         	
