@@ -22,9 +22,9 @@ public class Movie extends Product{
 		return rating;
 	}
 	
-	public static boolean isBook() {
-		return false;
-	}
+//	public static boolean isBook() {
+	//	return false;
+//	}
 /*
 	@Override
 	public String toString() {
