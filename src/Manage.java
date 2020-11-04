@@ -247,7 +247,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 
         }
         
-        public static Movie parseMovie(String csvLine) {
+        public static Movie parseMovie(String csvLine) throws NumberFormatException{
         	
     		String[] values = csvLine.split(",");
     		
@@ -395,6 +395,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     			return;
     		}
     		Scanner scanner = new Scanner(fin);
+    		scanner.nextLine();
     		while (scanner.hasNextLine()) {
     			String lineMovie = scanner.nextLine();
     			System.out.println(lineMovie);
@@ -416,6 +417,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
    			return;
    		}
    		Scanner scanner = new Scanner(fin);
+   		scanner.nextLine();
    		while (scanner.hasNextLine()) {
    			String lineBook = scanner.nextLine();
    			System.out.println(lineBook);
