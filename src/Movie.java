@@ -2,8 +2,6 @@
 
 public class Movie extends Product{
 	
-	public boolean movie = true;
-	
 
 	private int lengthInMinutes;
 	private double rating;
@@ -22,6 +20,10 @@ public class Movie extends Product{
 
 	public double getRating() {
 		return rating;
+	}
+	
+	public boolean isBook() {
+		return false;
 	}
 /*
 	@Override

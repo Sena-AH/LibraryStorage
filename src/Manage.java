@@ -168,7 +168,7 @@ public class Manage { // Manager tolkar vad du vill gÃ¶ra och startar funktion i
         	        String[] values = line.split(line);
         	        records.add(Arrays.asList(values));
     				System.out.println(line);
-    				//FUNKAR Fast ej kunnat lägga till i arraylist
+    				//FUNKAR Fast ej kunnat lï¿½gga till i arraylist
         	    }
         	}
         }
@@ -197,7 +197,7 @@ public class Manage { // Manager tolkar vad du vill gÃ¶ra och startar funktion i
             try {
                 br.close();
             } catch (IOException e) {
-                e.printStackTrace(); // Denna vill ha en String i arrayen men vi har blandade datatyper som vi vill få in
+                e.printStackTrace(); // Denna vill ha en String i arrayen men vi har blandade datatyper som vi vill fï¿½ in
             }
         }
     }
@@ -304,6 +304,40 @@ public class Manage { // Manager tolkar vad du vill gÃ¶ra och startar funktion i
 	
 	//FUNKADE EJ
 */
+        
+        public static void parseMovieAndBook() {
+    		
+    		if(Book.isBook() == false) {
+    		String filePathMovie = "Movie.csv";
+    		FileInputStream fin;
+    		try {
+    			fin = new FileInputStream(filePathMovie);
+    		} catch (FileNotFoundException e) {
+    			return;
+    		}
+    		Scanner scanner = new Scanner(fin);
+    		while (scanner.hasNextLine()) {
+    			String line = scanner.nextLine();
+    			System.out.println(line);
+    		} 
+    		} else if (Book.isBook() == true){
+    		String filePathBook = "Book.csv";
+    		FileInputStream fin;
+    		try {
+    			fin = new FileInputStream(filePathBook);
+    		} catch (FileNotFoundException e) {
+    			return;
+    		}
+    		Scanner scanner = new Scanner(fin);
+    		while (scanner.hasNextLine()) {
+    			String line = scanner.nextLine();
+    			System.out.println(line);
+    	}
+    	scanner.close();
+    	}
+    		
+        
+       }
         
         public static void handleListCommand() throws FileNotFoundException, IOException {
         	//enter code

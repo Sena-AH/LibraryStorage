@@ -15,8 +15,10 @@ import java.io.FileWriter;
 public class LibraryMain {
 	
 	
-
-	public static void main(String[] args) {
+/*
+	public static void testMain() {
+		
+		if(isBook() == false) {
 		String filePath = "Movie.csv";
 		FileInputStream fin;
 		try {
@@ -31,7 +33,7 @@ public class LibraryMain {
 	}
 	scanner.close();
 	}
-	
+	*/
 	
 
 		
@@ -80,7 +82,7 @@ public class LibraryMain {
 	//LinkedList library = new LinkedList(); 
 	
 	
-	// Manipulera filen via koden så vi kan ändra. Koppla listan till filen så att programmet vet vilken artikelnr den ska ta bort.
+	// Manipulera filen via koden sï¿½ vi kan ï¿½ndra. Koppla listan till filen sï¿½ att programmet vet vilken artikelnr den ska ta bort.
 	
 	public static String filePath = "LibraryProducts.csv";
 	

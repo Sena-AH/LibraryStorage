@@ -1,7 +1,6 @@
 
 public class Book extends Product {
 	
-	public boolean book = true;
 	
 	private int pages;
 	private String author;
@@ -10,7 +9,7 @@ public class Book extends Product {
 	super(article, name, price);
 	this.pages = pageNumber;
 	this.author = writer;
-	 // om vi skriver super kommer vi kunna köra en set-funktion i products-filen : super.set
+	 // om vi skriver super kommer vi kunna kï¿½ra en set-funktion i products-filen : super.set
 	
 	}
 
@@ -23,6 +22,9 @@ public class Book extends Product {
 		return author;
 	}
 
+	public static boolean isBook() {
+		return true;
+	}
 
 	}
 	
