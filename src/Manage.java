@@ -168,7 +168,7 @@ public class Manage { // Manager tolkar vad du vill g√∂ra och startar funktion i
         	        String[] values = line.split(line);
         	        records.add(Arrays.asList(values));
     				System.out.println(line);
-    				//FUNKAR
+    				//FUNKAR Fast ej kunnat l‰gga till i arraylist
         	    }
         	}
         }
@@ -197,7 +197,7 @@ public class Manage { // Manager tolkar vad du vill g√∂ra och startar funktion i
             try {
                 br.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                e.printStackTrace(); // Denna vill ha en String i arrayen men vi har blandade datatyper som vi vill fÂ in
             }
         }
     }
