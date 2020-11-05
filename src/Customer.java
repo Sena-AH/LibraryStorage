@@ -24,8 +24,12 @@ public class Customer  {
 		return phoneNumber;
 	}
 
+	@Override
+	public String toString() {
+	    return "Name: " + this.getCustomerName() + 
+	    		" Phone number: " + this.getPhoneNumber();
+		          
 	
 	
-	
-	
+	}	
 }

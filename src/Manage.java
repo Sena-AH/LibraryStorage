@@ -208,6 +208,10 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 		Customer cus = new Customer(customerName, phoneNumber);
 
 		customers.add(cus);
+		
+		for(Customer c : customers) {
+			System.out.println(c);
+		}
 
 		System.out.printf("This product has now been borrowed by %s , %s", customerName, phoneNumber);
 
