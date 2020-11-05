@@ -235,7 +235,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
        
         public static Book parseBook(String csvLine) {
         	
-    		String[] values = csvLine.split(",");
+    		String[] values = csvLine.split(";");
     		
     		int articleNumber = Integer.parseInt(values[0]);
     		String productName = values[1];
@@ -247,9 +247,10 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 
         }
         
-        public static Movie parseMovie(String csvLine){
+        public static Movie parseMovie(String csvLine) {
+
         	
-    		String[] values = csvLine.split(",");
+    		String[] values = csvLine.split(";");
     		
     		int articleNumber = Integer.parseInt(values[0]);
     		
