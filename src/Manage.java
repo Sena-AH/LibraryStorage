@@ -424,7 +424,7 @@ public class Manage implements Serializable{ // Manager tolkar vad du vill göra
     	*/
             
             
-            String objFilePath = "Movie.csv";
+            String objFilePath = "";
             FileOutputStream fout = new FileOutputStream(objFilePath);
             ObjectOutputStream oout = new ObjectOutputStream(fout);
             oout.writeObject(movie);  
