@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -406,6 +407,13 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     	   
     		}
     		
+    		FileOutputStream fo;
+    		try {
+    			fo = new FileOutputStream(filePathMovie);
+    		} catch (FileNotFoundException e){
+    			return;
+    	
+			}
     		Movie movie = parseMovie(input);
             movies.add(movie);
        	 for (Movie m: movies) {
