@@ -385,7 +385,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     	}
     		
         */
-       public static void printMovie() {
+       public static void printMovie(String input) {
     	   
        
     		System.out.println("you have chosen movie");
@@ -401,10 +401,16 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     		while (scanner.hasNextLine()) {
     			String lineMovie = scanner.nextLine();
     			System.out.println(lineMovie);
-    			Movie movie = parseMovie(lineMovie);
-                movies.add(movie);
+    			//Movie movie = parseMovie(lineMovie);
+                //movies.add(movie);
     	   
     		}
+    		
+    		Movie movie = parseMovie(input);
+            movies.add(movie);
+       	 for (Movie m: movies) {
+      	   System.out.println(m);
+       }
        }
        
        public static void printBook(String input) {
@@ -498,11 +504,13 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	char c = input.charAt(0);
         	
         	if(c == 'm') {
-        		printMovie();
+        		System.out.println("Enter: article nr; title; value; length in minutes; rating ");
+        		String input2= scanner.nextLine();
+        		printMovie(input2);
         	} else if (c == 'b') {
         		System.out.println("Enter: article nr; title; value; pages; author ");
-        		String input2= scanner.nextLine();
-        		printBook(input2);
+        		String input3= scanner.nextLine();
+        		printBook(input3);
         	}
         	
         	
