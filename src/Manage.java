@@ -191,15 +191,26 @@ public class Manage implements Serializable { // Manager tolkar vad du vill g√∂r
 	}
 
 	public static void handleListCommand() throws FileNotFoundException, IOException {
-
-		System.out.println("list command handled");
+		
+		System.out.println("This is a list of all our products: ");
+		
+		for (Movie m : movies) {
+			System.out.println(m);
+		}
+		
+		for (Book b : books) {
+			System.out.println(b);
+		}
+		// Anv‰nda customerobjektet nedan och anv‰nda det h‰r uppe! Hur gˆr man utan att kopiera och klistra in?
+		//System.out.println(customers.cus + "has borrowed this product");
 
 	}
 
-	public static void handleCheckoutCommand(String[] articleNum) {
+	public static Customer handleCheckoutCommand(String[] articleNum) {
 		// enter code
 
 		// customer enters name and phonenumber
+		//connect product to customer and make it unavailable until checkinCommand()
 		System.out.println("Enter name: ");
 		String customerName = scanner.nextLine();
 		System.out.println("Enter phonenumber: ");
@@ -216,11 +227,14 @@ public class Manage implements Serializable { // Manager tolkar vad du vill g√∂r
 		System.out.printf("This product has now been borrowed by %s , %s", customerName, phoneNumber);
 
 		System.out.println("\ncheckout command handled");
-
+			
+			return cus;
 	}
 
 	public static void handleCheckinCommand(String[] articleNum) {
 		// enter code
+		//ta emot artikelnr och kunna gora den tillganglig i listan igen 
+		// koppla ifran produkten fran customer and make it available
 		System.out.println("checkin command handled");
 
 	}
@@ -246,7 +260,15 @@ public class Manage implements Serializable { // Manager tolkar vad du vill g√∂r
 	}
 
 	public static void handleDeregisterCommand(String[] articleNum) {
-		// enter code
+		// remove product from the list 
+				
+		int i = books.indexOf(articleNum); 
+		books.remove(i);
+		
+		
+		int i2 = movies.indexOf(articleNum);
+		books.remove(i2);
+	
 		System.out.println("deregister command handled");
 
 	}
@@ -264,11 +286,30 @@ public class Manage implements Serializable { // Manager tolkar vad du vill g√∂r
 		
 		System.out.println("Hello from parseArgument!!!!");
 		String[] fullInput = playerInput.split(" ");
-		String[] arguments = new String[fullInput.length - 1];
+		String[] arguments = new String[fullInput.length -1 ];
 		
 		for (int i = 1; i < fullInput.length; i++) {
-			arguments[i - 1] = fullInput[i];
+			arguments[i -1] = fullInput[i];
+			
 			System.out.println("Parseargument for-looooooop!!!");
+			
+			/*try {
+				//MAKE SURE INPUT IS INT TO BE VALID
+				//if(arguments != scanner.nextInt)
+			} catch ( Error e)
+			{
+				System.err.println("SYNTAX ERROR: Not a valid article number."); 
+			}*/
+			
+			/*switch (arguments) {
+
+			case int:
+				return arguments;
+
+			default:
+				return System.err.println("SYNTAX ERROR: not valid article nr. ");*/
+
+			
 		}
 		
 		return arguments;
