@@ -500,6 +500,10 @@ public class Manage implements Serializable{ // Manager tolkar vad du vill göra
         	System.out.println("Enter phonenumber: ");
         	String phoneNumber = scanner.nextLine();
         	
+        	Customer cus = new Customer(customerName, phoneNumber);
+        	
+        	customers.add(cus);
+        	
         	System.out.printf("This product has now been borrowed by %s , %s", customerName, phoneNumber);
 
         	
