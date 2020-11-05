@@ -6,9 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.FileInputStream;
@@ -19,7 +16,7 @@ import java.util.Collection;
 import java.util.List;
 
  
-public class Manage implements Serializable{ // Manager tolkar vad du vill göra och startar funktion i libraryklassen. 
+public class Manage { // Manager tolkar vad du vill göra och startar funktion i libraryklassen. 
                         //Library kommer skapa instanser av böcker och filmer.
     boolean isRunning;
     
@@ -57,7 +54,8 @@ public class Manage implements Serializable{ // Manager tolkar vad du vill göra
            // Manage manager = new Manage(); // Instans av hela klassen ("bygga ett hus av ritningen")
             
             //manager.Start();
-        
+            
+        	
             
             
             //Books book = new Books(123123, "Harry Potter", 200, 700, "jk rowling");
@@ -139,7 +137,8 @@ public class Manage implements Serializable{ // Manager tolkar vad du vill göra
 				
         		}
  
-      	 
+            // Konstruktor
+            // instansiera 
             
 		}
 /*
@@ -387,7 +386,7 @@ public class Manage implements Serializable{ // Manager tolkar vad du vill göra
     	}
     		
         */
-       public static void printMovie(String input) throws IOException {
+       public static void printMovie(String input) {
     	   
        
     		System.out.println("you have chosen movie");
@@ -408,27 +407,15 @@ public class Manage implements Serializable{ // Manager tolkar vad du vill göra
     	   
     		}
     		
-    		//FileOutputStream fo;
+    		FileOutputStream fo;
+    		try {
+    			fo = new FileOutputStream(filePathMovie);
+    		} catch (FileNotFoundException e){
+    			return;
+    	
+			}
     		Movie movie = parseMovie(input);
             movies.add(movie);
-    		/*try {
-    			fo = new FileOutputStream(filePathMovie);
-    			ObjectOutputStream oos = new ObjectOutputStream(fo);
-    			
-    			oos.writeObject(movie);
-    			oos.flush();
-    			oos.close();
-    		} catch (IOException e){
-    			e.printStackTrace();
-			}
-    	*/
-            
-            
-            String objFilePath = "Movie.csv";
-            FileOutputStream fout = new FileOutputStream(objFilePath);
-            ObjectOutputStream oout = new ObjectOutputStream(fout);
-            oout.writeObject(movie);  
-            oout.close();
        	 for (Movie m: movies) {
       	   System.out.println(m);
        }
@@ -514,7 +501,7 @@ public class Manage implements Serializable{ // Manager tolkar vad du vill göra
 
         }
         
-        public static void handleRegisterCommand() throws IOException {
+        public static void handleRegisterCommand() {
         	//enter code
         	//records.add(products);
         	//records.addAll(products);
