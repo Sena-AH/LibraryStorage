@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.FileInputStream;
@@ -16,7 +19,7 @@ import java.util.Collection;
 import java.util.List;
 
  
-public class Manage { // Manager tolkar vad du vill göra och startar funktion i libraryklassen. 
+public class Manage implements Serializable{ // Manager tolkar vad du vill göra och startar funktion i libraryklassen. 
                         //Library kommer skapa instanser av böcker och filmer.
     boolean isRunning;
     
@@ -54,8 +57,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
            // Manage manager = new Manage(); // Instans av hela klassen ("bygga ett hus av ritningen")
             
             //manager.Start();
-            
-        	
+        
             
             
             //Books book = new Books(123123, "Harry Potter", 200, 700, "jk rowling");
@@ -137,8 +139,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 				
         		}
  
-            // Konstruktor
-            // instansiera 
+      	 
             
 		}
 /*
@@ -386,7 +387,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     	}
     		
         */
-       public static void printMovie(String input) {
+       public static void printMovie(String input) throws IOException {
     	   
        
     		System.out.println("you have chosen movie");
@@ -407,15 +408,27 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     	   
     		}
     		
-    		FileOutputStream fo;
-    		try {
-    			fo = new FileOutputStream(filePathMovie);
-    		} catch (FileNotFoundException e){
-    			return;
-    	
-			}
+    		//FileOutputStream fo;
     		Movie movie = parseMovie(input);
             movies.add(movie);
+    		/*try {
+    			fo = new FileOutputStream(filePathMovie);
+    			ObjectOutputStream oos = new ObjectOutputStream(fo);
+    			
+    			oos.writeObject(movie);
+    			oos.flush();
+    			oos.close();
+    		} catch (IOException e){
+    			e.printStackTrace();
+			}
+    	*/
+            
+            
+            String objFilePath = "";
+            FileOutputStream fout = new FileOutputStream(objFilePath);
+            ObjectOutputStream oout = new ObjectOutputStream(fout);
+            oout.writeObject(movie);  
+            oout.close();
        	 for (Movie m: movies) {
       	   System.out.println(m);
        }
@@ -501,7 +514,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 
         }
         
-        public static void handleRegisterCommand() {
+        public static void handleRegisterCommand() throws IOException {
         	//enter code
         	//records.add(products);
         	//records.addAll(products);
