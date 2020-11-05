@@ -34,7 +34,7 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 			String playerInput = scanner.nextLine();
 
 			Command command = parseCommand(playerInput);
-			String[] arguments = parseArgument(playerInput);
+			String [] arguments = parseArgument(playerInput);
 
 			if (command == Command.LIST) {
 				handleListCommand();
@@ -262,6 +262,7 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 		// CHANGE SO IT WORKS WITH ARRAY LIST AND NOT JUST ARRAY!!
 		// MAKE IT PARSE ARTICLENUMBERS
 
+		System.out.println("Hello from parseArgument!!!!");
 		String[] fullInput = playerInput.split(" ");
 		String[] arguments = new String[fullInput.length - 1];
 
@@ -269,7 +270,11 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 			arguments[i - 1] = fullInput[i];
 
 		}
+		
 		return arguments;
+		
+		
+
 	}
 
 	public static Command parseCommand(String playerInput) {
