@@ -261,14 +261,14 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 
 		// CHANGE SO IT WORKS WITH ARRAY LIST AND NOT JUST ARRAY!!
 		// MAKE IT PARSE ARTICLENUMBERS
-
+		
 		System.out.println("Hello from parseArgument!!!!");
 		String[] fullInput = playerInput.split(" ");
 		String[] arguments = new String[fullInput.length - 1];
-
+		
 		for (int i = 1; i < fullInput.length; i++) {
 			arguments[i - 1] = fullInput[i];
-
+			System.out.println("Parseargument for-looooooop!!!");
 		}
 		
 		return arguments;
