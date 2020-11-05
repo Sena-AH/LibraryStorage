@@ -252,12 +252,13 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     		String[] values = csvLine.split(",");
     		
     		int articleNumber = Integer.parseInt(values[0]);
+    		
     		String productName = values[1];
     		int value = Integer.parseInt(values[2]);
     		int lengthInMinutes = Integer.parseInt(values[3]);
     		double rating = Double.parseDouble(values[4]);
     		
-   		return new Movie(articleNumber,productName, value, lengthInMinutes, rating);
+    		return new Movie(articleNumber,productName, value, lengthInMinutes, rating);
    		}
         
        /* 
