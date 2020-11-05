@@ -30,11 +30,13 @@ public class Product {
 		return value;
 	}
 
-	//public boolean isBook() {
-	//	return true;
-		
-	//}
+	@Override
+	public String toString() {
+	    return "Article number: " + this.getArticleNumber() + 
+	           ", Title: " + this.getProductName() + 
+	    		", Price: " + this.getValue();
 	
+}
 }
 
 

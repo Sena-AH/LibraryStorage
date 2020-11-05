@@ -22,14 +22,9 @@ public class Movie extends Product{
 		return rating;
 	}
 	
-//	public static boolean isBook() {
-	//	return false;
-//	}
-/*
 	@Override
 	public String toString() {
-		return "Movie name: " + productName + " Length in minutes: " + lengthInMinutes;
-	}
-	
-	*/
+	    return "Length in minutes: " + this.getLengthInMinutes() + 
+	           ", Rating: " + this.getRating();
+}
 }

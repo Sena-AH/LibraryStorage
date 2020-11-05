@@ -407,7 +407,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
     		}
        }
        
-       public static void printBook() {
+       public static void printBook(String input) {
     	   
     	   System.out.println("you have chosen book");
 
@@ -423,8 +423,9 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
    		while (scanner.hasNextLine()) {
    			String lineBook = scanner.nextLine();
    			System.out.println(lineBook);
-   			Book book = parseBook(lineBook);
+   			Book book = parseBook(input);
                books.add(book);
+               
                
        }
        }
@@ -494,7 +495,9 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
         	if(c == 'm') {
         		printMovie();
         	} else if (c == 'b') {
-        		printBook();
+        		System.out.println("Enter: article nr; title; value; pages; author ");
+        		String input2= scanner.nextLine();
+        		printBook(input2);
         	}
         	
         	

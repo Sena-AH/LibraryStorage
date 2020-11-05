@@ -25,7 +25,12 @@ public class Book extends Product {
 	public static boolean isBook() {
 		return true;
 	}
-
+	@Override
+	public String toString() {
+	    return "Pages: " + this.getPages() + 
+	           ", Author: " + this.getAuthor();
+	
 	}
+}
 	
 
