@@ -24,7 +24,11 @@ public class Movie extends Product{
 	
 	@Override
 	public String toString() {
-	    return "Length in minutes: " + this.getLengthInMinutes() + 
+	    return"Article number: " + this.getArticleNumber() + 
+		           ", Title: " + this.getProductName() + 
+		    		", Price: " + this.getValue()+
+		
+	    		" Length in minutes: " + this.getLengthInMinutes() + 
 	           ", Rating: " + this.getRating();
 }
 }

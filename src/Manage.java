@@ -423,10 +423,15 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
    		while (scanner.hasNextLine()) {
    			String lineBook = scanner.nextLine();
    			System.out.println(lineBook);
-   			Book book = parseBook(input);
-               books.add(book);
-               
-               
+   			//Book book = parseBook(input);
+             //books.add(book);
+              
+            	   
+               }
+   		Book book = parseBook(input);
+        books.add(book);
+   	 for (Book b: books) {
+  	   System.out.println(b);
        }
        }
 

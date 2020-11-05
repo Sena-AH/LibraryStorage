@@ -27,7 +27,10 @@ public class Book extends Product {
 	}
 	@Override
 	public String toString() {
-	    return "Pages: " + this.getPages() + 
+	    return "Article number: " + this.getArticleNumber() + 
+		           ", Title: " + this.getProductName() + 
+		    		", Price: " + this.getValue() +
+	    		" Pages: " + this.getPages() + 
 	           ", Author: " + this.getAuthor();
 	
 	}
