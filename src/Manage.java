@@ -22,7 +22,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 
 	public static ArrayList<Customer> customers = new ArrayList<Customer>();
 	
-
+	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		Book got = new Book(777, "Game of thrones", 300, 750, "Sena och Thiti");
@@ -103,6 +103,22 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 		
 	}
 	
+	private static void writeCsv() {
+        String objFilePath = "Movie.csv";
+        try (FileWriter fileWriter = new FileWriter(objFilePath)) {
+
+            String title = "Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
+            fileWriter.append(title);
+
+            for (Movie m : movies) {
+                String csvLine = m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + "," + m.getLengthInMinutes() + ";" + m.getRating();
+                fileWriter.append(csvLine).append("\n");
+            }
+
+        } catch (IOException e) {
+          System.out.println("Error while writing csv");
+       }
+    }
 	
 	public static Book parseBook(String csvLine) {
 
@@ -208,9 +224,9 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 			System.out.println(m);
 		}
 		
-		for (Book b : books) {
-			System.out.println(b);
-		}
+	//	for (Book b : books) {
+	//		System.out.println(b);
+	//	}
 		// Anv�nda customerobjektet nedan och anv�nda det h�r uppe! Hur g�r man utan att kopiera och klistra in?
 		//System.out.println(customers.cus + "has borrowed this product");
 
@@ -259,6 +275,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 			System.out.println("Enter: article nr; title; value; length in minutes; rating ");
 			String input2 = scanner.nextLine();
 			printMovie(input2);
+			writeCsv();
 		} else if (c == 'b') {
 			System.out.println("Enter: article nr; title; value; pages; author ");
 			String input3 = scanner.nextLine();
