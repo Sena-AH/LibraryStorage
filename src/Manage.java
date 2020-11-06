@@ -3,7 +3,7 @@ import java.io.*;
 import java.nio.*;
 
  
-public class Manage implements Serializable { // Manager tolkar vad du vill göra och startar funktion i libraryklassen.
+public class Manage  { // Manager tolkar vad du vill göra och startar funktion i libraryklassen.
 	// Library kommer skapa instanser av böcker och filmer.
 	boolean isRunning;
 
@@ -95,9 +95,9 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 				break;
 
 			}
-
+			
 		}
-
+		
 	}
 
 	public static Book parseBook(String csvLine) {
@@ -281,6 +281,7 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 
 	public static void handleInfoCommand(int articleArgs) {
 		// enter code
+	
 	
 
 	}
