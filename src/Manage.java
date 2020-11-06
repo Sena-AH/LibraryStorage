@@ -103,6 +103,7 @@ public class Manage  { // Manager tolkar vad du vill g√∂ra och startar funktion 
 		}
 		
 	}
+	// HALL≈≈≈≈≈≈≈≈≈≈ HEJHEJ HEJD≈!!!!
 	
 	private static void writeCsv() {
 		
