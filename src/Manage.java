@@ -25,13 +25,14 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
-		Book got = new Book(777, "Game of thrones", 300, 750, "Sena och Thiti");
+		//Book got = new Book(777, "Game of thrones", 300, 750, "Sena och Thiti");
 		
-		
+		//läsa filen!!!!
 
 		System.out.println(" Welcome to the Library system. ");
 		System.out.println(" Below you can see the current inventory: ");
-
+		printMovie();
+		printBook();
 		boolean on = true;
 
 		while (on) {
@@ -39,7 +40,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 			String playerInput = scanner.nextLine();
 
 			Command command = parseCommand(playerInput);
-			int articleArgs = parseArgument(playerInput);
+			//int articleArgs = parseArgument(playerInput);
 			
 			
 			
@@ -50,15 +51,15 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 				continue;
 
 			} else if (command == Command.CHECKOUT) {
-
-				handleCheckoutCommand(articleArgs);
+				int articleArgs1 = parseArgument(playerInput);
+				handleCheckoutCommand(articleArgs1);
 				System.out.print("\n\tEnter next command: \n\t > ");
 
 				continue;
 
 			} else if (command == Command.CHECKIN) {
-
-				handleCheckinCommand(articleArgs);
+				int articleArgs1 = parseArgument(playerInput);
+				handleCheckinCommand(articleArgs1);
 				System.out.print("\n\tEnter next command: \n\t > ");
 
 				continue;
@@ -71,15 +72,15 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 				continue;
 
 			} else if (command == Command.DEREGISTER) {
-
-				handleDeregisterCommand(articleArgs);
+				int articleArgs1 = parseArgument(playerInput);
+				handleDeregisterCommand(articleArgs1);
 				System.out.print("\n\tEnter next command: \n\t > ");
 
 				continue;
 
 			} else if (command == Command.INFO) {
-
-				handleInfoCommand(articleArgs);
+				int articleArgs1 = parseArgument(playerInput);
+				handleInfoCommand(articleArgs1);
 				System.out.print("\n\tEnter next command: \n\t > ");
 
 				continue;
@@ -104,6 +105,9 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 	}
 	
 	private static void writeCsv() {
+		
+		//exports objects in arraylist to CSV file
+		
         String objFilePath = "Movie.csv";
         try (FileWriter fileWriter = new FileWriter(objFilePath)) {
 
@@ -111,7 +115,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
             fileWriter.append(title);
 
             for (Movie m : movies) {
-                String csvLine = m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + "," + m.getLengthInMinutes() + ";" + m.getRating();
+                String csvLine = m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";" + m.getLengthInMinutes() + ";" + m.getRating();
                 fileWriter.append(csvLine).append("\n");
             }
 
@@ -121,6 +125,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
     }
 	
 	public static Book parseBook(String csvLine) {
+		//this method creates book object
 
 		String[] values = csvLine.split(";");
 
@@ -135,7 +140,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 	}
 
 	public static Movie parseMovie(String csvLine) {
-
+		//this method creates movie object
 		String[] values = csvLine.split(";");
 
 		int articleNumber = Integer.parseInt(values[0]);
@@ -149,7 +154,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 	}
 
 	public static void printMovie(String input) throws IOException {
-
+		läser
 		System.out.println("you have chosen movie");
 		String filePathMovie = "Movie.csv";
 		FileInputStream fin;
@@ -193,6 +198,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 
 	public static void printBook(String input) {
 
+			//läsa av arraylist som läser av fil och printar innehåll till konsoll
 		System.out.println("you have chosen book");
 
 		String filePathBook = "Book.csv";
@@ -209,6 +215,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 			System.out.println(lineBook);
 
 		}
+		// flytta till egen metod för att lägga till objekt i listan!
 		Book book = parseBook(input);
 		books.add(book);
 		for (Book b : books) {
