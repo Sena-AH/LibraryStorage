@@ -268,7 +268,7 @@ public class Manage {
 		String input = scanner.nextLine();
 		char c = input.charAt(0);
 
-		if (c == 'm' && Product.identifier == "m") {
+		if (c == 'm') {
 			
 			System.out.println("you have chosen movie");
 			System.out.println("Enter: article nr; title; value; length in minutes; rating ");
@@ -276,7 +276,7 @@ public class Manage {
 			addMovieToList(input2);
 			writeCsvMovie();
 			
-		} else if (c == 'b' && Product.identifier == "b") {
+		} else if (c == 'b') {
 			
 			System.out.println("you have chosen book");
 			System.out.println("Enter: article nr; title; value; pages; author ");
