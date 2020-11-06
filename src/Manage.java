@@ -107,6 +107,7 @@ public class Manage  { // Manager tolkar vad du vill gÃ¶ra och startar funktion 
 	private static void writeCsv() {
 		
 		//exports objects in arraylist to CSV file
+		// Göra en till metod för books
 		
         String objFilePath = "Movie.csv";
         try (FileWriter fileWriter = new FileWriter(objFilePath)) {
@@ -154,7 +155,7 @@ public class Manage  { // Manager tolkar vad du vill gÃ¶ra och startar funktion 
 	}
 
 	public static void printMovie(String input) throws IOException {
-		lÃ¤ser
+		
 		System.out.println("you have chosen movie");
 		String filePathMovie = "Movie.csv";
 		FileInputStream fin;
@@ -168,33 +169,16 @@ public class Manage  { // Manager tolkar vad du vill gÃ¶ra och startar funktion 
 		while (scanner.hasNextLine()) {
 			String lineMovie = scanner.nextLine();
 			System.out.println(lineMovie);
-			// Movie movie = parseMovie(lineMovie);
-			// movies.add(movie);
+			
 
 		}
 
-		// FileOutputStream fo;
+		// Gör ny metod som Books
 		Movie movie = parseMovie(input);
 		movies.add(movie);
-		/*
-		 * try { fo = new FileOutputStream(filePathMovie); ObjectOutputStream oos = new
-		 * ObjectOutputStream(fo);
-		 * 
-		 * oos.writeObject(movie); oos.flush(); oos.close(); } catch (IOException e){
-		 * e.printStackTrace(); }
-		 */
-
-		/*
-		 * String objFilePath = "Movie.csv"; FileOutputStream fout = new
-		 * FileOutputStream(objFilePath); ObjectOutputStream oout = new
-		 * ObjectOutputStream(fout); oout.writeObject(movie.toString()); oout.close();
-		 */
 		
-		//apache commons eller printWriter,, remove serializable
-		for (Movie m : movies) {
-			System.out.println(m);
 		}
-	}
+	
 
 	public static void printBook(String input) {
 
@@ -216,12 +200,12 @@ public class Manage  { // Manager tolkar vad du vill gÃ¶ra och startar funktion 
 
 		}
 		// flytta till egen metod fÃ¶r att lÃ¤gga till objekt i listan!
+		// döp metoden till addBookToList
 		Book book = parseBook(input);
 		books.add(book);
-		for (Book b : books) {
-			System.out.println(b);
+		
 		}
-	}
+	
 
 	public static void handleListCommand() {
 		
