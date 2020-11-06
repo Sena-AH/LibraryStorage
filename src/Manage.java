@@ -107,7 +107,7 @@ public class Manage  { // Manager tolkar vad du vill gÃ¶ra och startar funktion 
 	private static void writeCsv() {
 		
 		//exports objects in arraylist to CSV file
-		// Göra en till metod för books
+		// Gï¿½ra en till metod fï¿½r books
 		
         String objFilePath = "Movie.csv";
         try (FileWriter fileWriter = new FileWriter(objFilePath)) {
@@ -127,7 +127,7 @@ public class Manage  { // Manager tolkar vad du vill gÃ¶ra och startar funktion 
 	
 	public static Book parseBook(String csvLine) {
 		//this method creates book object
-
+													//HEJ HEJ THITI
 		String[] values = csvLine.split(";");
 
 		int articleNumber = Integer.parseInt(values[0]);
@@ -173,7 +173,7 @@ public class Manage  { // Manager tolkar vad du vill gÃ¶ra och startar funktion 
 
 		}
 
-		// Gör ny metod som Books
+		// Gï¿½r ny metod som Books
 		Movie movie = parseMovie(input);
 		movies.add(movie);
 		
@@ -200,7 +200,7 @@ public class Manage  { // Manager tolkar vad du vill gÃ¶ra och startar funktion 
 
 		}
 		// flytta till egen metod fÃ¶r att lÃ¤gga till objekt i listan!
-		// döp metoden till addBookToList
+		// dï¿½p metoden till addBookToList
 		Book book = parseBook(input);
 		books.add(book);
 		
