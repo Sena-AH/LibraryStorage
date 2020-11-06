@@ -1,6 +1,6 @@
-import java.io.Serializable;
 
-public class Movie extends Product implements Serializable {
+
+public class Movie extends Product  {
 
 	protected static String identifier = "m";
 	private int lengthInMinutes;
