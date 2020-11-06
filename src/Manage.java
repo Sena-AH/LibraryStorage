@@ -1,11 +1,8 @@
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import java.io.*;
 import java.nio.*;
 
- 
-public class Manage  { // Manager tolkar vad du vill göra och startar funktion i libraryklassen.
+public class Manage { // Manager tolkar vad du vill göra och startar funktion i libraryklassen.
 	// Library kommer skapa instanser av böcker och filmer.
 	boolean isRunning;
 
@@ -21,13 +18,12 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 	public static List<Book> books = new ArrayList<>();
 
 	public static ArrayList<Customer> customers = new ArrayList<Customer>();
-	
-	
+
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
-		//Book got = new Book(777, "Game of thrones", 300, 750, "Sena och Thiti");
-		
-		//läsa filen!!!!
+		// Book got = new Book(777, "Game of thrones", 300, 750, "Sena och Thiti");
+
+		// läsa filen!!!!
 
 		System.out.println(" Welcome to the Library system. ");
 		System.out.println(" Below you can see the current inventory: ");
@@ -40,10 +36,8 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 			String playerInput = scanner.nextLine();
 
 			Command command = parseCommand(playerInput);
-			//int articleArgs = parseArgument(playerInput);
-			
-			
-			
+			// int articleArgs = parseArgument(playerInput);
+
 			if (command == Command.LIST) {
 				handleListCommand();
 				System.out.print("\n\tEnter next command: \n\t > ");
@@ -99,57 +93,58 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 				break;
 
 			}
-			
+
 		}
-		
+
 	}
-	
-	
+
 	private static void writeCsvMovie() {
-		
-		//exports objects in arraylist to CSV file
+
+		// exports objects in arraylist to CSV file
 		// G�ra en till metod f�r books
-		
-        String objFilePath = "Movie.csv";
-        try (FileWriter fileWriter = new FileWriter(objFilePath)) {
 
-            String title = "Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
-            fileWriter.append(title);
+		String objFilePath = "Movie.csv";
+		try (FileWriter fileWriter = new FileWriter(objFilePath)) {
 
-            for (Movie m : movies) {
-                String csvLine = m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";" + m.getLengthInMinutes() + ";" + m.getRating();
-                fileWriter.append(csvLine).append("\n");
-            }
+			String title = "Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
+			fileWriter.append(title);
 
-        } catch (IOException e) {
-          System.out.println("Error while writing csv");
-       }
-    }
-	
+			for (Movie m : movies) {
+				String csvLine = m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
+						+ m.getLengthInMinutes() + ";" + m.getRating();
+				fileWriter.append(csvLine).append("\n");
+			}
+
+		} catch (IOException e) {
+			System.out.println("Error while writing csv");
+		}
+	}
+
 	private static void writeCsvBook() {
-		
-		//exports objects in arraylist to CSV file
-		
-        String objFilePath = "Book.csv";
-        try (FileWriter fileWriter = new FileWriter(objFilePath)) {
 
-            String title = "Article nr; Title; Value in kr; Pages; Author\n";
-            fileWriter.append(title);
+		// exports objects in arraylist to CSV file
 
-            for (Book b : books) {
-                String csvLine = b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";" + b.getPages() + ";" + b.getAuthor();
-                fileWriter.append(csvLine).append("\n");
-            }
+		String objFilePath = "Book.csv";
+		try (FileWriter fileWriter = new FileWriter(objFilePath)) {
 
-        } catch (IOException e) {
-          System.out.println("Error while writing csv");
-       }
-    }
-	
+			String title = "Article nr; Title; Value in kr; Pages; Author\n";
+			fileWriter.append(title);
+
+			for (Book b : books) {
+				String csvLine = b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
+						+ b.getPages() + ";" + b.getAuthor();
+				fileWriter.append(csvLine).append("\n");
+			}
+
+		} catch (IOException e) {
+			System.out.println("Error while writing csv");
+		}
+	}
+
 	public static Book parseBook(String csvLine) {
-		//this method creates book object
-													//HEJ HEJ THITI
-		String[] values = csvLine.split(";");
+		// this method creates book object
+		// HEJ HEJ THITI
+		String[] values = csvLine.split("; ");
 
 		int articleNumber = Integer.parseInt(values[0]);
 		String productName = values[1];
@@ -162,8 +157,8 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 	}
 
 	public static Movie parseMovie(String csvLine) {
-		//this method creates movie object
-		String[] values = csvLine.split(";");
+		// this method creates movie object
+		String[] values = csvLine.split("; ");
 
 		int articleNumber = Integer.parseInt(values[0]);
 
@@ -176,8 +171,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 	}
 
 	public static void printMovie() {
-		
-		System.out.println("you have chosen movie");
+
 		String filePathMovie = "Movie.csv";
 		FileInputStream fin;
 		try {
@@ -190,15 +184,14 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 		while (scanner.hasNextLine()) {
 			String lineMovie = scanner.nextLine();
 			System.out.println(lineMovie);
-			
-		}
-		}
 
+		}
+	}
 
 	public static void printBook() {
 
-			//läsa av arraylist som läser av fil och printar innehåll till konsoll
-		System.out.println("you have chosen book");
+		// läsa av arraylist som läser av fil och printar innehåll till konsoll
+
 		String filePathBook = "Book.csv";
 		FileInputStream fin;
 		try {
@@ -213,35 +206,26 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 			System.out.println(lineBook);
 		}
 
-		}
-		
-	
-		public static List<Book> addBookToList(String input) {
-			Book book = parseBook(input);
-			books.add(book);
-			return books;
-		}
-		
-		public static List<Movie> addMovieToList(String input) {
-			Movie movie = parseMovie(input);
-			movies.add(movie);
-			return movies;
-		}
-		
-		
+	}
+
+	public static List<Book> addBookToList(String input) {
+		Book book = parseBook(input);
+		books.add(book);
+		return books;
+	}
+
+	public static List<Movie> addMovieToList(String input) {
+		Movie movie = parseMovie(input);
+		movies.add(movie);
+		return movies;
+	}
+
 	public static void handleListCommand() {
-		
+
 		System.out.println("This is a list of all our products: ");
 		
-		for (Movie m : movies) {
-			System.out.println(m);
-		}
-		
-	//	for (Book b : books) {
-	//		System.out.println(b);
-	//	}
-		// Anv�nda customerobjektet nedan och anv�nda det h�r uppe! Hur g�r man utan att kopiera och klistra in?
-		//System.out.println(customers.cus + "has borrowed this product");
+		printMovie();
+		printBook();
 
 	}
 
@@ -249,7 +233,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 		// enter code
 
 		// customer enters name and phonenumber
-		//connect product to customer and make it unavailable until checkinCommand()
+		// connect product to customer and make it unavailable until checkinCommand()
 		System.out.println("Enter name: ");
 		String customerName = scanner.nextLine();
 		System.out.println("Enter phonenumber: ");
@@ -258,21 +242,21 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 		Customer cus = new Customer(customerName, phoneNumber);
 
 		customers.add(cus);
-		
-		for(Customer c : customers) {
+
+		for (Customer c : customers) {
 			System.out.println(c);
 		}
 
 		System.out.printf("This product has now been borrowed by %s , %s", customerName, phoneNumber);
 
 		System.out.println("\ncheckout command handled");
-			
-			return cus;
+
+		return cus;
 	}
 
 	public static void handleCheckinCommand(int articleArgs) {
 		// enter code
-		//ta emot artikelnr och kunna gora den tillganglig i listan igen 
+		// ta emot artikelnr och kunna gora den tillganglig i listan igen
 		// koppla ifran produkten fran customer and make it available
 		System.out.println("checkin command handled");
 
@@ -285,39 +269,38 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 		char c = input.charAt(0);
 
 		if (c == 'm') {
+			System.out.println("you have chosen movie");
 			System.out.println("Enter: article nr; title; value; length in minutes; rating ");
 			String input2 = scanner.nextLine();
 			addMovieToList(input2);
 			writeCsvMovie();
 		} else if (c == 'b') {
+			System.out.println("you have chosen book");
 			System.out.println("Enter: article nr; title; value; pages; author ");
 			String input3 = scanner.nextLine();
 			addBookToList(input3);
 			writeCsvBook();
-			}
+		}
 
 		System.out.println("register command handled");
 
 	}
 
 	public static void handleDeregisterCommand(int articleArgs) {
-		// remove product from the list 
-				
-		int i = books.indexOf(articleArgs); 
+		// remove product from the list
+
+		int i = books.indexOf(articleArgs);
 		books.remove(i);
-		
-		
+
 		int i2 = movies.indexOf(articleArgs);
 		books.remove(i2);
-	
+
 		System.out.println("deregister command handled");
 
 	}
 
 	public static void handleInfoCommand(int articleArgs) {
 		// enter code
-	
-	
 
 	}
 
@@ -325,25 +308,25 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 
 		// CHANGE SO IT WORKS WITH ARRAY LIST AND NOT JUST ARRAY!!
 		// MAKE IT PARSE ARTICLENUMBERS
-		
+
 		String[] fullInput = playerInput.split(" ");
 		String arguments = new String();
-		
+
 		for (int i = 1; i < fullInput.length; i++) {
 			arguments = fullInput[i];
-			//int articleArguments = Integer.parseInt(arguments);
-			
-			
+			// int articleArguments = Integer.parseInt(arguments);
+
 		}
 		try {
-		int articleArguments = Integer.parseInt(arguments);
-		//skapa metod som letar i arraylistan efter specifik artikelnummer !!!!!!!!!!!!!
-		return articleArguments;
+			int articleArguments = Integer.parseInt(arguments);
+			// skapa metod som letar i arraylistan efter specifik artikelnummer
+			// !!!!!!!!!!!!!
+			return articleArguments;
 		} catch (NumberFormatException e) {
 			System.err.println("SYNTAX ERROR: Articlenumber can only contain numbers");
 			System.out.print("\n\tEnter next command: \n\t > ");
 		}
-		return 0 ;
+		return 0;
 
 	}
 
