@@ -101,7 +101,7 @@ public class Manage {
 
 		// exports objects in arraylist to CSV file
 
-		String objFilePath = "film.csv";
+		String objFilePath = "Movie.csv";
 		try (FileWriter fileWriter = new FileWriter(objFilePath)) {
 
 			String title = "Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
@@ -170,7 +170,7 @@ public class Manage {
 
 	public static void printMovie() {
 
-		String filePathMovie = "film.csv";
+		String filePathMovie = "Movie.csv";
 		FileInputStream fin;
 		try {
 			fin = new FileInputStream(filePathMovie);
