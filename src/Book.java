@@ -1,7 +1,7 @@
 
 public class Book extends Product {
 
-	protected String identifier = "b";
+	protected static String identifier = "b";
 	private int pages;
 	private String author;
 
@@ -11,6 +11,10 @@ public class Book extends Product {
 		this.author = writer;
 		
 
+	}
+
+	public String getIdentifier() {
+		return identifier;
 	}
 
 	public int getPages() {

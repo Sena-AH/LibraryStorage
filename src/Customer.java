@@ -5,7 +5,7 @@ public class Customer {
 
 	// Mabey this class has to have a ArrayList customer = to add and remove
 	// customers
-	protected String identifier = "c";
+	protected static String identifier = "c";
 	private String customerName;
 	private String phoneNumber;
 
@@ -13,6 +13,10 @@ public class Customer {
 
 		this.customerName = customerName;
 		this.phoneNumber = phoneNumber;
+	}
+	
+	public String getIdentifier() {
+		return identifier;
 	}
 
 	public String getCustomerName() {

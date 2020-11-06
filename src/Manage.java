@@ -2,8 +2,8 @@ import java.util.*;
 import java.io.*;
 import java.nio.*;
 
-public class Manage { // Manager tolkar vad du vill göra och startar funktion i libraryklassen.
-	// Library kommer skapa instanser av böcker och filmer.
+public class Manage { 
+	
 	boolean isRunning;
 
 	protected enum Command {
@@ -16,14 +16,13 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 
 	public static List<Movie> movies = new ArrayList<>();
 	public static List<Book> books = new ArrayList<>();
+	
+	public static List<Product> products = new ArrayList<>();
 
 	public static ArrayList<Customer> customers = new ArrayList<Customer>();
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
-		// Book got = new Book(777, "Game of thrones", 300, 750, "Sena och Thiti");
-
-		// läsa filen!!!!
 
 		System.out.println(" Welcome to the Library system. ");
 		System.out.println(" Below you can see the current inventory: ");
@@ -36,7 +35,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 			String playerInput = scanner.nextLine();
 
 			Command command = parseCommand(playerInput);
-			// int articleArgs = parseArgument(playerInput);
+			
 
 			if (command == Command.LIST) {
 				handleListCommand();
@@ -101,7 +100,6 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 	private static void writeCsvMovie() {
 
 		// exports objects in arraylist to CSV file
-		// G�ra en till metod f�r books
 
 		String objFilePath = "Movie.csv";
 		try (FileWriter fileWriter = new FileWriter(objFilePath)) {
@@ -143,7 +141,7 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 
 	public static Book parseBook(String csvLine) {
 		// this method creates book object
-		// HEJ HEJ THITI
+		
 		String[] values = csvLine.split("; ");
 
 		int articleNumber = Integer.parseInt(values[0]);
@@ -270,13 +268,16 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 		String input = scanner.nextLine();
 		char c = input.charAt(0);
 
-		if (c == 'm') {
+		if (c == 'm' && Product.identifier == "m") {
+			
 			System.out.println("you have chosen movie");
 			System.out.println("Enter: article nr; title; value; length in minutes; rating ");
 			String input2 = scanner.nextLine();
 			addMovieToList(input2);
 			writeCsvMovie();
-		} else if (c == 'b') {
+			
+		} else if (c == 'b' && Product.identifier == "b") {
+			
 			System.out.println("you have chosen book");
 			System.out.println("Enter: article nr; title; value; pages; author ");
 			String input3 = scanner.nextLine();
