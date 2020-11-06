@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.io.*;
 import java.nio.*;
 
@@ -19,6 +21,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 	public static List<Book> books = new ArrayList<>();
 
 	public static ArrayList<Customer> customers = new ArrayList<Customer>();
+	
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
@@ -99,7 +102,8 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 		}
 		
 	}
-
+	
+	
 	public static Book parseBook(String csvLine) {
 
 		String[] values = csvLine.split(";");
@@ -259,7 +263,8 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 			System.out.println("Enter: article nr; title; value; pages; author ");
 			String input3 = scanner.nextLine();
 			printBook(input3);
-		}
+			
+			}
 
 		System.out.println("register command handled");
 
