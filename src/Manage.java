@@ -175,7 +175,7 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 		return new Movie(articleNumber, productName, value, lengthInMinutes, rating);
 	}
 
-	public static void printMovie(String input) throws IOException {
+	public static void printMovie() {
 		
 		System.out.println("you have chosen movie");
 		String filePathMovie = "Movie.csv";
@@ -191,21 +191,14 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 			String lineMovie = scanner.nextLine();
 			System.out.println(lineMovie);
 			
-
+		}
 		}
 
-		// G�r ny metod som Books
-		Movie movie = parseMovie(input);
-		movies.add(movie);
-		
-		}
-	
 
-	public static void printBook(String input) {
+	public static void printBook() {
 
 			//läsa av arraylist som läser av fil och printar innehåll till konsoll
 		System.out.println("you have chosen book");
-
 		String filePathBook = "Book.csv";
 		FileInputStream fin;
 		try {
@@ -218,16 +211,24 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 		while (scanner.hasNextLine()) {
 			String lineBook = scanner.nextLine();
 			System.out.println(lineBook);
+		}
 
 		}
-		// flytta till egen metod för att lägga till objekt i listan!
-		// d�p metoden till addBookToList
-		Book book = parseBook(input);
-		books.add(book);
 		
-		}
 	
-
+		public static List<Book> addBookToList(String input) {
+			Book book = parseBook(input);
+			books.add(book);
+			return books;
+		}
+		
+		public static List<Movie> addMovieToList(String input) {
+			Movie movie = parseMovie(input);
+			movies.add(movie);
+			return movies;
+		}
+		
+		
 	public static void handleListCommand() {
 		
 		System.out.println("This is a list of all our products: ");
@@ -286,13 +287,13 @@ public class Manage  { // Manager tolkar vad du vill göra och startar funktion 
 		if (c == 'm') {
 			System.out.println("Enter: article nr; title; value; length in minutes; rating ");
 			String input2 = scanner.nextLine();
-			printMovie(input2);
-			writeCsv();
+			addMovieToList(input2);
+			writeCsvMovie();
 		} else if (c == 'b') {
 			System.out.println("Enter: article nr; title; value; pages; author ");
 			String input3 = scanner.nextLine();
-			printBook(input3);
-			
+			addBookToList(input3);
+			writeCsvBook();
 			}
 
 		System.out.println("register command handled");
