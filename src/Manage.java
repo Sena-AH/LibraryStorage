@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-import java.nio.*;
+
 
 public class Manage { 
 	
@@ -26,8 +26,8 @@ public class Manage {
 
 		System.out.println(" Welcome to the Library system. ");
 		System.out.println(" Below you can see the current inventory: ");
-		printMovie();
-		//printBook();
+		printProducts();
+		
 		boolean on = true;
 
 		while (on) {
@@ -97,7 +97,7 @@ public class Manage {
 
 	}
 
-	private static void writeCsvMovie() {
+	private static void writeCsvProducts() {
 
 		// exports objects in arraylist to CSV file
 
@@ -123,28 +123,7 @@ public class Manage {
 			System.out.println("Error while writing csv");
 		}
 	}
-/*
-	private static void writeCsvBook() {
 
-		// exports objects in arraylist to CSV file
-
-		String objFilePath = "Book.csv";
-		try (FileWriter fileWriter = new FileWriter(objFilePath)) {
-
-			String title = "Article nr; Title; Value in kr; Pages; Author\n";
-			fileWriter.append(title);
-
-			for (Book b : books) {
-				String csvLine = b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
-						+ b.getPages() + ";" + b.getAuthor();
-				fileWriter.append(csvLine).append("\n");
-			}
-
-		} catch (IOException e) {
-			System.out.println("Error while writing csv");
-		}
-	}
-*/
 	public static Book parseBook(String csvLine) {
 		// this method creates book object
 		
@@ -174,7 +153,7 @@ public class Manage {
 		return new Movie(articleNumber, productName, value, lengthInMinutes, rating);
 	}
 
-	public static void printMovie() {
+	public static void printProducts() {
 
 		String filePathMovie = "Products.csv";
 		FileInputStream fin;
@@ -191,27 +170,7 @@ public class Manage {
 
 		}
 	}
-/*
-	public static void printBook() {
 
-		// läsa av arraylist som läser av fil och printar innehåll till konsoll
-
-		String filePathBook = "Book.csv";
-		FileInputStream fin;
-		try {
-			fin = new FileInputStream(filePathBook);
-		} catch (FileNotFoundException e) {
-			return;
-		}
-		Scanner scanner = new Scanner(fin);
-		scanner.nextLine();
-		while (scanner.hasNextLine()) {
-			String lineBook = scanner.nextLine();
-			System.out.println(lineBook);
-		}
-
-	}
-*/
 	public static List<Book> addBookToList(String input) {
 		Book book = parseBook(input);
 		books.add(book);
@@ -224,6 +183,8 @@ public class Manage {
 		return movies;
 	}
 	/*
+	 * code missing some parts, rewatch video to compliment code!!
+	 * 
 	public static void removeMovie(String filepath, int removeArticlenumber, int position, String limit) {
 		
 		int pos = position -1;
@@ -269,8 +230,8 @@ public class Manage {
 
 		System.out.println("This is a list of all our products: ");
 		
-		printMovie();
-		//printBook();
+		printProducts();
+		
 
 	}
 
@@ -321,7 +282,7 @@ public class Manage {
 			System.out.println("Enter: article nr; title; value; length in minutes; rating ");
 			String input2 = scanner.nextLine();
 			addMovieToList(input2);
-			writeCsvMovie();
+			writeCsvProducts();
 			
 		} else if (c == 'b') {
 			
@@ -330,7 +291,7 @@ public class Manage {
 			String input3 = scanner.nextLine();
 			addBookToList(input3);
 			//writeCsvBook();
-			writeCsvMovie();
+			writeCsvProducts();
 
 		}
 
@@ -356,7 +317,11 @@ public class Manage {
 
 	public static void handleInfoCommand(int articleArgs) {
 		// enter code
-
+		System.out.printf("Information about %i: ", articleArgs);
+		
+		//need to parse record from file using article number to print out info about product
+		//solve when solving handleDeregisterCommand()
+		
 	}
 
 	public static int parseArgument(String playerInput) {
