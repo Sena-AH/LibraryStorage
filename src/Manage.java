@@ -24,7 +24,7 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 
 		Book got = new Book(777, "Game of thrones", 300, 750, "Sena och Thiti");
 		
-		articleNumbeR
+		
 
 		System.out.println(" Welcome to the Library system. ");
 		System.out.println(" Below you can see the current inventory: ");
@@ -36,7 +36,9 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 			String playerInput = scanner.nextLine();
 
 			Command command = parseCommand(playerInput);
-			String [] arguments = parseArgument(playerInput);
+			int articleArgs = parseArgument(playerInput);
+			
+			
 			
 			if (command == Command.LIST) {
 				handleListCommand();
@@ -46,14 +48,14 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 
 			} else if (command == Command.CHECKOUT) {
 
-				handleCheckoutCommand(arguments);
+				handleCheckoutCommand(articleArgs);
 				System.out.print("\n\tEnter next command: \n\t > ");
 
 				continue;
 
 			} else if (command == Command.CHECKIN) {
 
-				handleCheckinCommand(arguments);
+				handleCheckinCommand(articleArgs);
 				System.out.print("\n\tEnter next command: \n\t > ");
 
 				continue;
@@ -67,21 +69,21 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 
 			} else if (command == Command.DEREGISTER) {
 
-				handleDeregisterCommand(arguments);
+				handleDeregisterCommand(articleArgs);
 				System.out.print("\n\tEnter next command: \n\t > ");
 
 				continue;
 
 			} else if (command == Command.INFO) {
 
-				handleInfoCommand(arguments);
+				handleInfoCommand(articleArgs);
 				System.out.print("\n\tEnter next command: \n\t > ");
 
 				continue;
 
 			} else if (command == Command.UNKNOWN) {
 
-				System.out.println("\nERROR: Unknown command.\n");
+				System.err.println("\nERROR: Unknown command.\n");
 				System.out.print("\n\tEnter next command: \n\t > ");
 
 				continue;
@@ -162,6 +164,8 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 		 * FileOutputStream(objFilePath); ObjectOutputStream oout = new
 		 * ObjectOutputStream(fout); oout.writeObject(movie.toString()); oout.close();
 		 */
+		
+		//apache commons eller printWriter,, remove serializable
 		for (Movie m : movies) {
 			System.out.println(m);
 		}
@@ -192,7 +196,7 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 		}
 	}
 
-	public static void handleListCommand() throws FileNotFoundException, IOException {
+	public static void handleListCommand() {
 		
 		System.out.println("This is a list of all our products: ");
 		
@@ -203,12 +207,12 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 		for (Book b : books) {
 			System.out.println(b);
 		}
-		// Anv�nda customerobjektet nedan och anv�nda det h�r uppe! Hur g�r man utan att kopiera och klistra in?
+		// Anv�nda customerobjektet nedan och anv�nda det h�r uppe! Hur g�r man utan att kopiera och klistra in?
 		//System.out.println(customers.cus + "has borrowed this product");
 
 	}
 
-	public static Customer handleCheckoutCommand(String[] articleNum) {
+	public static Customer handleCheckoutCommand(int articleArgs) {
 		// enter code
 
 		// customer enters name and phonenumber
@@ -233,7 +237,7 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 			return cus;
 	}
 
-	public static void handleCheckinCommand(String[] articleNum) {
+	public static void handleCheckinCommand(int articleArgs) {
 		// enter code
 		//ta emot artikelnr och kunna gora den tillganglig i listan igen 
 		// koppla ifran produkten fran customer and make it available
@@ -261,62 +265,49 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 
 	}
 
-	public static void handleDeregisterCommand(String[] articleNum) {
+	public static void handleDeregisterCommand(int articleArgs) {
 		// remove product from the list 
 				
-		int i = books.indexOf(articleNum); 
+		int i = books.indexOf(articleArgs); 
 		books.remove(i);
 		
 		
-		int i2 = movies.indexOf(articleNum);
+		int i2 = movies.indexOf(articleArgs);
 		books.remove(i2);
 	
 		System.out.println("deregister command handled");
 
 	}
 
-	public static void handleInfoCommand(String[] articleNum) {
+	public static void handleInfoCommand(int articleArgs) {
 		// enter code
-		System.out.println("info command handled");
+	
 
 	}
 
-	public static String[] parseArgument(String playerInput) {
+	public static int parseArgument(String playerInput) {
 
 		// CHANGE SO IT WORKS WITH ARRAY LIST AND NOT JUST ARRAY!!
 		// MAKE IT PARSE ARTICLENUMBERS
 		
-		System.out.println("Hello from parseArgument!!!!");
 		String[] fullInput = playerInput.split(" ");
-		String[] arguments = new String[fullInput.length -1 ];
+		String arguments = new String();
 		
 		for (int i = 1; i < fullInput.length; i++) {
-			arguments[i -1] = fullInput[i];
+			arguments = fullInput[i];
+			//int articleArguments = Integer.parseInt(arguments);
 			
-			System.out.println("Parseargument for-looooooop!!!");
-			
-			/*try {
-				//MAKE SURE INPUT IS INT TO BE VALID
-				//if(arguments != scanner.nextInt)
-			} catch ( Error e)
-			{
-				System.err.println("SYNTAX ERROR: Not a valid article number."); 
-			}*/
-			
-			/*switch (arguments) {
-
-			case int:
-				return arguments;
-
-			default:
-				return System.err.println("SYNTAX ERROR: not valid article nr. ");*/
-
 			
 		}
-		
-		return arguments;
-		
-		
+		try {
+		int articleArguments = Integer.parseInt(arguments);
+		//skapa metod som letar i arraylistan efter specifik artikelnummer !!!!!!!!!!!!!
+		return articleArguments;
+		} catch (NumberFormatException e) {
+			System.err.println("SYNTAX ERROR: Articlenumber can only contain numbers");
+			System.out.print("\n\tEnter next command: \n\t > ");
+		}
+		return 0 ;
 
 	}
 

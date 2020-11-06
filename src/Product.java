@@ -1,6 +1,8 @@
 
 public class Product {
 
+	//add typeidentifier protected string
+	
 	public int articleNumber;
 	private String productName;
 	private int value;
@@ -16,6 +18,8 @@ public class Product {
 	public int getArticleNumber() {
 		return articleNumber;
 	}
+	
+
 
 	public String getProductName() {
 		return productName;
