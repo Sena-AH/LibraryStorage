@@ -103,9 +103,9 @@ public class Manage  { // Manager tolkar vad du vill g√∂ra och startar funktion 
 		}
 		
 	}
-	// HALL≈≈≈≈≈≈≈≈≈≈ HEJHEJ HEJD≈!!!!
 	
-	private static void writeCsv() {
+	
+	private static void writeCsvMovie() {
 		
 		//exports objects in arraylist to CSV file
 		// GÔøΩra en till metod fÔøΩr books
@@ -118,6 +118,26 @@ public class Manage  { // Manager tolkar vad du vill g√∂ra och startar funktion 
 
             for (Movie m : movies) {
                 String csvLine = m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";" + m.getLengthInMinutes() + ";" + m.getRating();
+                fileWriter.append(csvLine).append("\n");
+            }
+
+        } catch (IOException e) {
+          System.out.println("Error while writing csv");
+       }
+    }
+	
+	private static void writeCsvBook() {
+		
+		//exports objects in arraylist to CSV file
+		
+        String objFilePath = "Book.csv";
+        try (FileWriter fileWriter = new FileWriter(objFilePath)) {
+
+            String title = "Article nr; Title; Value in kr; Pages; Author\n";
+            fileWriter.append(title);
+
+            for (Book b : books) {
+                String csvLine = b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";" + b.getPages() + ";" + b.getAuthor();
                 fileWriter.append(csvLine).append("\n");
             }
 
