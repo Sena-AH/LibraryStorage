@@ -27,7 +27,7 @@ public class Manage {
 		System.out.println(" Welcome to the Library system. ");
 		System.out.println(" Below you can see the current inventory: ");
 		printMovie();
-		printBook();
+		//printBook();
 		boolean on = true;
 
 		while (on) {
@@ -101,7 +101,7 @@ public class Manage {
 
 		// exports objects in arraylist to CSV file
 
-		String objFilePath = "Movie.csv";
+		String objFilePath = "Products.csv";
 		try (FileWriter fileWriter = new FileWriter(objFilePath)) {
 
 			String title = "Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
@@ -112,12 +112,18 @@ public class Manage {
 						+ m.getLengthInMinutes() + ";" + m.getRating();
 				fileWriter.append(csvLine).append("\n");
 			}
+			
+			for (Book b : books) {
+				String csvLine = b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
+						+ b.getPages() + ";" + b.getAuthor();
+				fileWriter.append(csvLine).append("\n");
+			}
 
 		} catch (IOException e) {
 			System.out.println("Error while writing csv");
 		}
 	}
-
+/*
 	private static void writeCsvBook() {
 
 		// exports objects in arraylist to CSV file
@@ -138,7 +144,7 @@ public class Manage {
 			System.out.println("Error while writing csv");
 		}
 	}
-
+*/
 	public static Book parseBook(String csvLine) {
 		// this method creates book object
 		
@@ -170,7 +176,7 @@ public class Manage {
 
 	public static void printMovie() {
 
-		String filePathMovie = "Movie.csv";
+		String filePathMovie = "Products.csv";
 		FileInputStream fin;
 		try {
 			fin = new FileInputStream(filePathMovie);
@@ -185,7 +191,7 @@ public class Manage {
 
 		}
 	}
-
+/*
 	public static void printBook() {
 
 		// läsa av arraylist som läser av fil och printar innehåll till konsoll
@@ -205,7 +211,7 @@ public class Manage {
 		}
 
 	}
-
+*/
 	public static List<Book> addBookToList(String input) {
 		Book book = parseBook(input);
 		books.add(book);
@@ -217,13 +223,54 @@ public class Manage {
 		movies.add(movie);
 		return movies;
 	}
-
+	/*
+	public static void removeMovie(String filepath, int removeArticlenumber, int position, String limit) {
+		
+		int pos = position -1;
+		String article = Integer.toString(removeArticlenumber); 
+		String currentLine;
+		String[] data;
+		
+		try {
+			
+			FileWriter fw = new FileWriter(filepath,true);
+			BufferedWriter bw = new BufferedWriter(fw);
+			PrintWriter pw = new PrintWriter(bw);
+			
+			FileReader fr = new FileReader(filepath);
+			BufferedReader br = new BufferedReader(fr);
+			
+			while((currentLine = br.readLine()) != null) {
+				
+				data = currentLine.split(";");
+				if(data[pos].equalsIgnoreCase(article)) {
+					int art =Integer.parseInt(article);
+					int i = IndexOf(art);
+					remove(int i );
+					//pw.println(currentLine);
+				}
+			}
+			
+			pw.flush();
+			pw.close();
+			fr.close();
+			br.close();
+			bw.close();
+			fw.close();
+			
+			
+			
+		} catch (Exception e) {
+			
+		}
+	}
+*/
 	public static void handleListCommand() {
 
 		System.out.println("This is a list of all our products: ");
 		
 		printMovie();
-		printBook();
+		//printBook();
 
 	}
 
@@ -282,7 +329,9 @@ public class Manage {
 			System.out.println("Enter: article nr; title; value; pages; author ");
 			String input3 = scanner.nextLine();
 			addBookToList(input3);
-			writeCsvBook();
+			//writeCsvBook();
+			writeCsvMovie();
+
 		}
 
 		System.out.println("register command handled");
@@ -291,13 +340,16 @@ public class Manage {
 
 	public static void handleDeregisterCommand(int articleArgs) {
 		// remove product from the list
-
+		/*
 		int i = books.indexOf(articleArgs);
 		books.remove(i);
 
 		int i2 = movies.indexOf(articleArgs);
 		books.remove(i2);
-
+*/
+		
+	//	removeMovie("Movie.csv", articleArgs, 1, ";");
+		
 		System.out.println("deregister command handled");
 
 	}
