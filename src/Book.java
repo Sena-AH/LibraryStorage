@@ -1,6 +1,7 @@
 
 public class Book extends Product {
 
+	protected String identifier = "b";
 	private int pages;
 	private String author;
 

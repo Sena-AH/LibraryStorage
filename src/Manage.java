@@ -242,7 +242,9 @@ public class Manage { // Manager tolkar vad du vill göra och startar funktion i
 		Customer cus = new Customer(customerName, phoneNumber);
 
 		customers.add(cus);
-
+		
+		//articleArgs connect to cus
+		
 		for (Customer c : customers) {
 			System.out.println(c);
 		}

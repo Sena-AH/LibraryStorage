@@ -2,6 +2,7 @@
 public class Product {
 
 	//add typeidentifier protected string
+	protected String identifier;
 	
 	public int articleNumber;
 	private String productName;

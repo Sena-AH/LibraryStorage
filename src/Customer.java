@@ -5,7 +5,7 @@ public class Customer {
 
 	// Mabey this class has to have a ArrayList customer = to add and remove
 	// customers
-
+	protected String identifier = "c";
 	private String customerName;
 	private String phoneNumber;
 

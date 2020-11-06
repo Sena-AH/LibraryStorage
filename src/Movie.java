@@ -2,6 +2,7 @@ import java.io.Serializable;
 
 public class Movie extends Product implements Serializable {
 
+	protected String identifier = "m";
 	private int lengthInMinutes;
 	private double rating;
 
