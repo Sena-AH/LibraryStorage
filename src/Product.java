@@ -1,7 +1,7 @@
 
 public class Product {
 
-	private int articleNumber;
+	public int articleNumber;
 	private String productName;
 	private int value;
 

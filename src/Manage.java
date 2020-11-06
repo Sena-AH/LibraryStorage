@@ -23,6 +23,8 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		Book got = new Book(777, "Game of thrones", 300, 750, "Sena och Thiti");
+		
+		articleNumbeR
 
 		System.out.println(" Welcome to the Library system. ");
 		System.out.println(" Below you can see the current inventory: ");
@@ -35,7 +37,7 @@ public class Manage implements Serializable { // Manager tolkar vad du vill gör
 
 			Command command = parseCommand(playerInput);
 			String [] arguments = parseArgument(playerInput);
-
+			
 			if (command == Command.LIST) {
 				handleListCommand();
 				System.out.print("\n\tEnter next command: \n\t > ");
