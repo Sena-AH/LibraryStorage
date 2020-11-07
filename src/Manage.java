@@ -182,19 +182,20 @@ public class Manage {
 		movies.add(movie);
 		return movies;
 	}
-	/*
-	 * code missing some parts, rewatch video to compliment code!!
-	 * 
-	public static void removeMovie(String filepath, int removeArticlenumber, int position, String limit) {
+	
+	public static void removeProduct(String filepath, int removeArticlenumber, int position, String limit) {
 		
 		int pos = position -1;
 		String article = Integer.toString(removeArticlenumber); 
+		String tempFile = "temp.csv";
+		File oldFile = new File(filepath);
+		File newFile = new File (tempFile);
 		String currentLine;
 		String[] data;
 		
 		try {
 			
-			FileWriter fw = new FileWriter(filepath,true);
+			FileWriter fw = new FileWriter(tempFile,true);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
 			
@@ -204,11 +205,9 @@ public class Manage {
 			while((currentLine = br.readLine()) != null) {
 				
 				data = currentLine.split(";");
-				if(data[pos].equalsIgnoreCase(article)) {
-					int art =Integer.parseInt(article);
-					int i = IndexOf(art);
-					remove(int i );
-					//pw.println(currentLine);
+				if(!(data[pos].equalsIgnoreCase(article))) {
+					
+					pw.println(currentLine);
 				}
 			}
 			
@@ -219,13 +218,15 @@ public class Manage {
 			bw.close();
 			fw.close();
 			
-			
+			oldFile.delete();
+			File products = new File (filepath);
+			newFile.renameTo(products);
 			
 		} catch (Exception e) {
 			
 		}
 	}
-*/
+
 	public static void handleListCommand() {
 
 		System.out.println("This is a list of all our products: ");
@@ -301,15 +302,8 @@ public class Manage {
 
 	public static void handleDeregisterCommand(int articleArgs) {
 		// remove product from the list
-		/*
-		int i = books.indexOf(articleArgs);
-		books.remove(i);
-
-		int i2 = movies.indexOf(articleArgs);
-		books.remove(i2);
-*/
 		
-	//	removeMovie("Movie.csv", articleArgs, 1, ";");
+		removeProduct("Products.csv", articleArgs, 1, ";");
 		
 		System.out.println("deregister command handled");
 
