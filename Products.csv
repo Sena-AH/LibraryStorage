@@ -1,2 +1,4 @@
 (Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating
-635;EROOR;45;445;3.0
+31;eq;31;31;3.1
+(Book) Article nr; Title; Value in kr; Pages; Author
+888;booooook;88;8;Anna Bok

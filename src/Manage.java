@@ -28,8 +28,8 @@ public class Manage {
 		System.out.println(" Below you can see the current inventory: ");
 		
 		readFile();
-		printProducts();
 		
+	
 		
 		boolean on = true;
 
@@ -100,7 +100,8 @@ public class Manage {
 
 	}
 	
-	public static void readFile() {
+	
+		public static void readFile() {
 		
 
 		String filePathMovie = "Products.csv";
@@ -115,8 +116,29 @@ public class Manage {
 	
 
 		while (scanner.hasNextLine()) {
-			String line = scanner.nextLine();
 			
+			String line = scanner.nextLine();
+			//System.out.println(line);
+			
+			addBookToList(line);
+			//addBookToList(line);
+			//printProducts();
+
+		
+		/*	
+		
+		if(Product.identifier == "m") {
+			addMovieToList(line);
+		} else if(Product.identifier == "b") {
+
+			addBookToList(line);
+		}
+		printProducts(); */
+		}
+		
+	}
+	
+	public static void addProduct(String line) {
 		if(Product.identifier == "m") {
 			addMovieToList(line);
 		} else if(Product.identifier == "b") {
@@ -124,9 +146,6 @@ public class Manage {
 			addBookToList(line);
 		}
 		}
-		
-	}
-
 	private static void writeCsvProducts() {
 
 		// exports objects in arraylist to CSV file
@@ -250,6 +269,8 @@ public class Manage {
 		return customers;
 	}
 */
+	
+	
 	public static List<Book> addBookToList(String input) {
 		Book book = parseBook(input);
 		books.add(book);
