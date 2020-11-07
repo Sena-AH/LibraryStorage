@@ -119,7 +119,12 @@ public class Manage {
 			
 			String line = scanner.nextLine();
 			//System.out.println(line);
-			
+			/*
+			 * 
+			 * THIS IS WHERE THE PROBLEM IS! CANNOT HANDLE BOTH ADD METHODS AND CANT GET THE IF STATEMENT TO WORK!!!
+			 * 
+			 * 
+			 */
 			addBookToList(line);
 			//addBookToList(line);
 			//printProducts();
@@ -451,7 +456,7 @@ public class Manage {
 			System.out.println("you have chosen movie");
 			System.out.println("Enter: article nr; title; value; length in minutes; rating ");
 			String input2 = scanner.nextLine();
-		try {	
+	/*	try {	
 			String[] data = input2.split(";");
 			
 			for(int i = 0; i <movies.size(); i++) {
@@ -465,7 +470,7 @@ public class Manage {
 		}catch (Exception e) {
 		    System.out.println(e.getMessage());
 		    }
-				
+			*/	
 			addMovieToList(input2);
 			writeCsvProducts();
 			
