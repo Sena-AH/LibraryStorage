@@ -27,8 +27,9 @@ public class Manage {
 		System.out.println(" Welcome to the Library system. ");
 		System.out.println(" Below you can see the current inventory: ");
 		
-		readFile();
+		
 		printProducts();
+		readFile();
 		
 		boolean on = true;
 
