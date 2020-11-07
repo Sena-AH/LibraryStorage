@@ -119,7 +119,6 @@ public class Manage {
 		if(Product.identifier == "m") {
 			addMovieToList(line);
 		} else if(Product.identifier == "b") {
-			
 
 			addBookToList(line);
 		}
@@ -196,8 +195,8 @@ public class Manage {
 
 		return new Movie(articleNumber, productName, value, lengthInMinutes, rating);
 	}
-	/*
-	public static Customer parseCustomer(String name, String number) {
+	
+	/*public static Customer parseCustomer(String name, String number) {
 		// this method creates book object
 		String fullCustomer = name+ " "+number;
 		String[] values = fullCustomer.split(" ");
@@ -209,8 +208,8 @@ public class Manage {
 
 		return new Customer(customerName, phoneNumber);
 
-	}
-*/
+	}*/
+
 	public static void printProducts() {
 		
 		
