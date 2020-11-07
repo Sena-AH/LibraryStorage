@@ -29,7 +29,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Name: " + this.getCustomerName() + " Phone number: " + this.getPhoneNumber();
+		return "Borrowed by: Name: " + this.getCustomerName() + " Phone number: " + this.getPhoneNumber();
 
 	}
 }

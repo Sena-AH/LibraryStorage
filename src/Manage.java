@@ -113,15 +113,11 @@ public class Manage {
 		scanner.nextLine();
 
 		while (scanner.hasNextLine()) {
-			String lineMovie = scanner.nextLine();
+			String line = scanner.nextLine();
 			
-			addMovieToList(lineMovie);
-			
-				//Book book = parseBook(lineMovie);
-	            //System.out.println(book.toString());
-	            //Movie movie = parseMovie(lineMovie);
-	            //System.out.println(movie.toString());
-		
+			addMovieToList(line);
+			addBookToList(line);
+				
 
 		}
 		
@@ -186,7 +182,7 @@ public class Manage {
 
 	public static Movie parseMovie(String csvLine) {
 		// this method creates movie object
-		String[] values = csvLine.split(";");
+		String[] values = csvLine.split("; ");
 
 		int articleNumber = Integer.parseInt(values[0]);
 
@@ -217,6 +213,11 @@ public class Manage {
 		
 		for(Movie m : movies) {
 			System.out.println(m.printList());
+		}
+		
+		for(Book b : books) {
+			System.out.println(b.printList());
+
 		}
 /*
 		String filePathMovie = "Products.csv";
@@ -404,7 +405,8 @@ public class Manage {
 	}
 
 	public static void handleRegisterCommand() throws IOException {
-//nested objects!!!!!!
+
+		//nested objects!!!!!!
 		System.out.println("hej enter b or m:");
 		String input = scanner.nextLine();
 		char c = input.charAt(0);
@@ -436,6 +438,7 @@ public class Manage {
 		
 		removeProduct("Products.csv", articleArgs, 1, ";");
 		Movie movieToBeRemoved;
+		Book bookToBeRemoved;
 		for(int i = 0; i <movies.size(); i++) {
 			
 			if(movies.get(i).getArticleNumber() == articleArgs) {
@@ -445,6 +448,16 @@ public class Manage {
 			}
 			
 		}
+		
+		for(Book b : books) {
+			int i = 0;
+			if(books.get(i).getArticleNumber() == articleArgs) {
+				bookToBeRemoved = books.get(i);
+				books.remove(bookToBeRemoved);
+				return;
+			}
+		}
+		
 		System.out.println("deregister command handled");
 
 	}

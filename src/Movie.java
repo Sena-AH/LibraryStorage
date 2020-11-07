@@ -26,7 +26,7 @@ public class Movie extends Product  {
 	}
 	
 	public String printList() {
-		return "(Book) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName();	
+		return "(Movie) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName();	
 		}
 
 	@Override
