@@ -235,6 +235,47 @@ public class Manage {
 		}
 	}
 
+public static void info(String filepath, int removeArticlenumber, int position, String limit) {
+		
+		int pos = position -1;
+		String article = Integer.toString(removeArticlenumber); 
+	
+		
+		String currentLine;
+		String[] data;
+		
+		try {
+			
+			
+			
+			FileReader fr = new FileReader(filepath);
+			BufferedReader br = new BufferedReader(fr);
+			
+			while((currentLine = br.readLine()) != null) {
+				
+				data = currentLine.split(";");
+				if(data[pos].equalsIgnoreCase(article)) {
+					
+
+			        for (String element: data) {
+			            System.out.println(element);
+			        }					
+				}
+			}
+			
+			
+			fr.close();
+			br.close();
+		
+			
+			
+			
+		} catch (Exception e) {
+			
+		}
+	}
+
+	
 	public static void handleListCommand() {
 
 		System.out.println("This is a list of all our products: ");
@@ -319,7 +360,7 @@ public class Manage {
 
 	public static void handleInfoCommand(int articleArgs) {
 		// enter code
-		System.out.printf("Information about %i: ", articleArgs);
+		info("Products.csv", articleArgs, 1, ";");
 		
 		//need to parse record from file using article number to print out info about product
 		//solve when solving handleDeregisterCommand()
