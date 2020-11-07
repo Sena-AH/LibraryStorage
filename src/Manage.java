@@ -108,8 +108,7 @@ public class Manage {
 			//fileWriter.append(title);
 
 			for (Movie m : movies) {
-				
-				String title = " (Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
+				String title = " Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 				fileWriter.append(title);
 				
 				String csvLine = m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
@@ -277,7 +276,7 @@ public static void info(String filepath, int removeArticlenumber, int position, 
 
 	
 	public static void handleListCommand() {
-
+		//make it only show article number and titel, and also if a customer has borrowed it
 		System.out.println("This is a list of all our products: ");
 		
 		printProducts();
