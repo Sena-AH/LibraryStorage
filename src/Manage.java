@@ -26,6 +26,8 @@ public class Manage {
 
 		System.out.println(" Welcome to the Library system. ");
 		System.out.println(" Below you can see the current inventory: ");
+		
+		readFile();
 		printProducts();
 		
 		boolean on = true;
@@ -96,6 +98,35 @@ public class Manage {
 		}
 
 	}
+	
+	public static void readFile() {
+		
+
+		String filePathMovie = "Products.csv";
+		FileInputStream fin;
+		try {
+			fin = new FileInputStream(filePathMovie);
+		} catch (FileNotFoundException e) {
+			return;
+		}
+		Scanner scanner = new Scanner(fin);
+		scanner.nextLine();
+
+		while (scanner.hasNextLine()) {
+			String lineMovie = scanner.nextLine();
+			
+			addMovieToList(lineMovie);
+			
+				//Book book = parseBook(lineMovie);
+	            //System.out.println(book.toString());
+	            //Movie movie = parseMovie(lineMovie);
+	            //System.out.println(movie.toString());
+		
+
+		}
+		
+		
+	}
 
 	private static void writeCsvProducts() {
 
@@ -108,7 +139,7 @@ public class Manage {
 			//fileWriter.append(title);
 
 			for (Movie m : movies) {
-				String title = " Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
+				String title = " (Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 				fileWriter.append(title);
 				
 				String csvLine = m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
@@ -155,7 +186,7 @@ public class Manage {
 
 	public static Movie parseMovie(String csvLine) {
 		// this method creates movie object
-		String[] values = csvLine.split("; ");
+		String[] values = csvLine.split(";");
 
 		int articleNumber = Integer.parseInt(values[0]);
 
@@ -166,7 +197,7 @@ public class Manage {
 
 		return new Movie(articleNumber, productName, value, lengthInMinutes, rating);
 	}
-	
+	/*
 	public static Customer parseCustomer(String name, String number) {
 		// this method creates book object
 		String fullCustomer = name+ " "+number;
@@ -180,9 +211,14 @@ public class Manage {
 		return new Customer(customerName, phoneNumber);
 
 	}
-
+*/
 	public static void printProducts() {
-
+		
+		
+		for(Movie m : movies) {
+			System.out.println(m.printList());
+		}
+/*
 		String filePathMovie = "Products.csv";
 		FileInputStream fin;
 		try {
@@ -194,9 +230,13 @@ public class Manage {
 		scanner.nextLine();
 		while (scanner.hasNextLine()) {
 			String lineMovie = scanner.nextLine();
-			System.out.println(lineMovie);
+				//Book book = parseBook(lineMovie);
+	            //System.out.println(book.toString());
+	            //Movie movie = parseMovie(lineMovie);
+	            //System.out.println(movie.toString());
+		System.out.println(lineMovie);
 
-		}
+		} */
 		
 		}
 /*	
@@ -316,6 +356,8 @@ public class Manage {
 
 	public static void handleCheckoutCommand(int articleArgs) {
 		// enter code
+		
+		//CREATE CUSTOMER ATTRIBUTE IN MOVIE AND BOOK CLASS AND ADD SETTER METHOD TO SET CUSTOMER TO PRODUCT!!!!!!!
 		
 		//when printing out product in list command, print out customer
 

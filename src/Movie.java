@@ -24,12 +24,16 @@ public class Movie extends Product  {
 	public double getRating() {
 		return rating;
 	}
+	
+	public String printList() {
+		return "(Book) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName();	
+		}
 
 	@Override
 	public String toString() {
-		return " (Movie) Article number: " + this.getArticleNumber() + ", Title: " + this.getProductName() + ", Price: "
+		return " (Movie) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName() + " Price: "
 				+ this.getValue() +
 
-				" Length in minutes: " + this.getLengthInMinutes() + ", Rating: " + this.getRating();
+				" Length in minutes: " + this.getLengthInMinutes() + " Rating: " + this.getRating();
 	}
 }

@@ -28,11 +28,15 @@ public class Book extends Product {
 	public static boolean isBook() {
 		return true;
 	}
+	
+	public String printList() {
+		return "(Book) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName();	
+		}
 
 	@Override
 	public String toString() {
-		return "(Book) Article number: " + this.getArticleNumber() + ", Title: " + this.getProductName() + ", Price: "
-				+ this.getValue() + " Pages: " + this.getPages() + ", Author: " + this.getAuthor();
+		return "(Book) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName() + " Price: "
+				+ this.getValue() + " Pages: " + this.getPages() + " Author: " + this.getAuthor();
 
 	}
 }
