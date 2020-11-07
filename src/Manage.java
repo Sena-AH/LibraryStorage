@@ -125,13 +125,13 @@ public class Manage {
 						+ b.getPages() + ";" + b.getAuthor();
 				fileWriter.append(csvLine).append("\n");
 			}
-			
+		/*	
 			for (Customer c : customers) {
 				
 				String title = " Borrowed by: ";
 				fileWriter.append(title);
 				
-			}
+			} */
 
 		} catch (IOException e) {
 			System.out.println("Error while writing csv");
@@ -199,13 +199,13 @@ public class Manage {
 		}
 		
 		}
-	
+/*	
 	public static List<Customer> addCustomerToList(String name, String number){
 		Customer customer = parseCustomer(name,number);
 		customers.add(customer);
 		return customers;
 	}
-
+*/
 	public static List<Book> addBookToList(String input) {
 		Book book = parseBook(input);
 		books.add(book);
@@ -262,7 +262,7 @@ public class Manage {
 		}
 	}
 
-public static void info(String filepath, int removeArticlenumber, int position, String limit) {
+	public static void info(String filepath, int removeArticlenumber, int position, String limit) {
 		
 		int pos = position -1;
 		String article = Integer.toString(removeArticlenumber); 
@@ -286,7 +286,9 @@ public static void info(String filepath, int removeArticlenumber, int position, 
 
 			        for (String element: data) {
 			            System.out.println(element);
-			        }					
+			       }					
+					
+
 				}
 			}
 			
@@ -314,6 +316,8 @@ public static void info(String filepath, int removeArticlenumber, int position, 
 
 	public static void handleCheckoutCommand(int articleArgs) {
 		// enter code
+		
+		//when printing out product in list command, print out customer
 
 		// customer enters name and phonenumber
 		// connect product to customer and make it unavailable until checkinCommand()
@@ -321,14 +325,18 @@ public static void info(String filepath, int removeArticlenumber, int position, 
 		String customerName = scanner.nextLine();
 		System.out.println("Enter phonenumber: ");
 		String phoneNumber = scanner.nextLine();
-		String article = Integer.toString(articleArgs); 
 		
-		addCustomerToList(customerName, phoneNumber);
-		writeCsvProducts();
+		
+	//	addCustomerToList(customerName, phoneNumber);
+	//	writeCsvProducts();
 
-		//Customer cus = new Customer(customerName, phoneNumber);
+		info("Products.csv", articleArgs, 1, ";");
 
-		//customers.add(cus);
+		Customer cus = new Customer(customerName, phoneNumber);
+
+		customers.add(cus);
+		
+		
 		
 		//articleArgs connect to cus
 		/*
@@ -336,6 +344,7 @@ public static void info(String filepath, int removeArticlenumber, int position, 
 			System.out.println(c);
 		}
 */
+
 		System.out.printf("This product has now been borrowed by %s , %s", customerName, phoneNumber);
 
 		System.out.println("\ncheckout command handled");
@@ -371,7 +380,6 @@ public static void info(String filepath, int removeArticlenumber, int position, 
 			System.out.println("Enter: article nr; title; value; pages; author ");
 			String input3 = scanner.nextLine();
 			addBookToList(input3);
-			//writeCsvBook();
 			writeCsvProducts();
 
 		}
