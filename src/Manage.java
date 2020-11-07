@@ -356,6 +356,7 @@ public class Manage {
 
 	public static void handleCheckoutCommand(int articleArgs) {
 		// enter code
+		//nested objects!!!!!!
 		
 		//CREATE CUSTOMER ATTRIBUTE IN MOVIE AND BOOK CLASS AND ADD SETTER METHOD TO SET CUSTOMER TO PRODUCT!!!!!!!
 		
@@ -403,7 +404,7 @@ public class Manage {
 	}
 
 	public static void handleRegisterCommand() throws IOException {
-
+//nested objects!!!!!!
 		System.out.println("hej enter b or m:");
 		String input = scanner.nextLine();
 		char c = input.charAt(0);
@@ -434,7 +435,16 @@ public class Manage {
 		// remove product from the list
 		
 		removeProduct("Products.csv", articleArgs, 1, ";");
-		
+		Movie movieToBeRemoved;
+		for(int i = 0; i <movies.size(); i++) {
+			
+			if(movies.get(i).getArticleNumber() == articleArgs) {
+				movieToBeRemoved = movies.get(i);
+				movies.remove(movieToBeRemoved);
+				return;
+			}
+			
+		}
 		System.out.println("deregister command handled");
 
 	}
