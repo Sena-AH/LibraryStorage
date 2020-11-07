@@ -187,12 +187,13 @@ public class Manage {
 		}
 	}
 
-	public static Book parseBook(String csvLine) {
+	public static Book parseBook(String csvLine) throws NumberFormatException {
 		// this method creates book object
 		
 		String[] values = csvLine.split(";");
-
+		
 		int articleNumber = Integer.parseInt(values[0]);
+		
 		String productName = values[1];
 		int value = Integer.parseInt(values[2]);
 		int pages = Integer.parseInt(values[3]);
@@ -385,7 +386,7 @@ public class Manage {
 		
 		printProducts();
 		
-
+		//TRY ADDING IN MAIN METHOD TO FIX PRINTING PROBLEM!
 	}
 
 	public static void handleCheckoutCommand(int articleArgs) {
@@ -450,6 +451,21 @@ public class Manage {
 			System.out.println("you have chosen movie");
 			System.out.println("Enter: article nr; title; value; length in minutes; rating ");
 			String input2 = scanner.nextLine();
+		try {	
+			String[] data = input2.split(";");
+			
+			for(int i = 0; i <movies.size(); i++) {
+			System.out.println("in the for each loop!");
+				if(data[i].equalsIgnoreCase(input2)){
+					
+					Exception e = new Exception("ERROR: Product already exists in storage");	
+					throw e;
+					}
+			}
+		}catch (Exception e) {
+		    System.out.println(e.getMessage());
+		    }
+				
 			addMovieToList(input2);
 			writeCsvProducts();
 			
