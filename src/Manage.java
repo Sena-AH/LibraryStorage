@@ -176,6 +176,8 @@ public class Manage {
 			System.out.println(lineMovie);
 
 		}
+		
+		public static ArrayList<Customer> customers = new ArrayList<Customer>();
 	}
 
 	public static List<Book> addBookToList(String input) {
