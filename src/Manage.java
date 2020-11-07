@@ -19,7 +19,7 @@ public class Manage {
 	
 	//public static List<Product> products = new ArrayList<>();
 
-	public static ArrayList<Customer> customers = new ArrayList<Customer>();
+	public static List<Customer> customers = new ArrayList<Customer>();
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
@@ -125,6 +125,13 @@ public class Manage {
 						+ b.getPages() + ";" + b.getAuthor();
 				fileWriter.append(csvLine).append("\n");
 			}
+			
+			for (Customer c : customers) {
+				
+				String title = " Borrowed by: ";
+				fileWriter.append(title);
+				
+			}
 
 		} catch (IOException e) {
 			System.out.println("Error while writing csv");
@@ -159,6 +166,20 @@ public class Manage {
 
 		return new Movie(articleNumber, productName, value, lengthInMinutes, rating);
 	}
+	
+	public static Customer parseCustomer(String name, String number) {
+		// this method creates book object
+		String fullCustomer = name+ " "+number;
+		String[] values = fullCustomer.split(" ");
+
+		
+		String customerName = values[0];
+		
+		String phoneNumber = values[1];
+
+		return new Customer(customerName, phoneNumber);
+
+	}
 
 	public static void printProducts() {
 
@@ -177,7 +198,12 @@ public class Manage {
 
 		}
 		
-		public static ArrayList<Customer> customers = new ArrayList<Customer>();
+		}
+	
+	public static List<Customer> addCustomerToList(String name, String number){
+		Customer customer = parseCustomer(name,number);
+		customers.add(customer);
+		return customers;
 	}
 
 	public static List<Book> addBookToList(String input) {
@@ -286,7 +312,7 @@ public static void info(String filepath, int removeArticlenumber, int position, 
 
 	}
 
-	public static Customer handleCheckoutCommand(int articleArgs) {
+	public static void handleCheckoutCommand(int articleArgs) {
 		// enter code
 
 		// customer enters name and phonenumber
@@ -295,22 +321,26 @@ public static void info(String filepath, int removeArticlenumber, int position, 
 		String customerName = scanner.nextLine();
 		System.out.println("Enter phonenumber: ");
 		String phoneNumber = scanner.nextLine();
+		String article = Integer.toString(articleArgs); 
+		
+		addCustomerToList(customerName, phoneNumber);
+		writeCsvProducts();
 
-		Customer cus = new Customer(customerName, phoneNumber);
+		//Customer cus = new Customer(customerName, phoneNumber);
 
-		customers.add(cus);
+		//customers.add(cus);
 		
 		//articleArgs connect to cus
-		
+		/*
 		for (Customer c : customers) {
 			System.out.println(c);
 		}
-
+*/
 		System.out.printf("This product has now been borrowed by %s , %s", customerName, phoneNumber);
 
 		System.out.println("\ncheckout command handled");
 
-		return cus;
+		//return cus;
 	}
 
 	public static void handleCheckinCommand(int articleArgs) {
