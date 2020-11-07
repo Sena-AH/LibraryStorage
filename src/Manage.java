@@ -104,16 +104,24 @@ public class Manage {
 		String objFilePath = "Products.csv";
 		try (FileWriter fileWriter = new FileWriter(objFilePath)) {
 
-			String title = " Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
-			fileWriter.append(title);
+			//String title = " Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
+			//fileWriter.append(title);
 
 			for (Movie m : movies) {
+				
+				String title = " (Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
+				fileWriter.append(title);
+				
 				String csvLine = m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
 						+ m.getLengthInMinutes() + ";" + m.getRating();
 				fileWriter.append(csvLine).append("\n");
 			}
 			
 			for (Book b : books) {
+				
+				String title = " (Book) Article nr; Title; Value in kr; Pages; Author\n";
+				fileWriter.append(title);
+				
 				String csvLine = b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
 						+ b.getPages() + ";" + b.getAuthor();
 				fileWriter.append(csvLine).append("\n");
