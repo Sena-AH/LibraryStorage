@@ -31,7 +31,7 @@ public class Movie extends Product  {
 
 	@Override
 	public String toString() {
-		return " (Movie) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName() + " Price: "
+		return "(Movie) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName() + " Price: "
 				+ this.getValue() +
 
 				" Length in minutes: " + this.getLengthInMinutes() + " Rating: " + this.getRating();

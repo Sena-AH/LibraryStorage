@@ -4,6 +4,7 @@ public class Book extends Product {
 	protected static String identifier = "b";
 	private int pages;
 	private String author;
+	public String customer;
 
 	public Book(int article, String name, int price, int pageNumber, String writer) {
 		super(article, name, price);
@@ -24,7 +25,15 @@ public class Book extends Product {
 	public String getAuthor() {
 		return author;
 	}
-
+/*	
+	public static Customer setCustomerBook(String name, String number) {
+		Customer customer = new Customer(name, number);
+		
+		
+		return customer;
+		
+	}
+*/
 	public static boolean isBook() {
 		return true;
 	}

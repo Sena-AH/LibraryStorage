@@ -1,1 +1,6 @@
- (Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating
+(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating
+1312;ACAB;1312;1312;13.12
+(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating
+74747;sju;74;74;7.4
+(Book) Article nr; Title; Value in kr; Pages; Author
+524;fem;45;454;fyra

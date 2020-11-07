@@ -111,16 +111,19 @@ public class Manage {
 		}
 		Scanner scanner = new Scanner(fin);
 		scanner.nextLine();
+	
 
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			
+		if(Product.identifier == "m") {
 			addMovieToList(line);
-			addBookToList(line);
-				
+		} else if(Product.identifier == "b") {
+			
 
+			addBookToList(line);
 		}
-		
+		}
 		
 	}
 
@@ -135,7 +138,7 @@ public class Manage {
 			//fileWriter.append(title);
 
 			for (Movie m : movies) {
-				String title = " (Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
+				String title = "(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 				fileWriter.append(title);
 				
 				String csvLine = m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
@@ -145,7 +148,7 @@ public class Manage {
 			
 			for (Book b : books) {
 				
-				String title = " (Book) Article nr; Title; Value in kr; Pages; Author\n";
+				String title = "(Book) Article nr; Title; Value in kr; Pages; Author\n";
 				fileWriter.append(title);
 				
 				String csvLine = b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
@@ -168,7 +171,7 @@ public class Manage {
 	public static Book parseBook(String csvLine) {
 		// this method creates book object
 		
-		String[] values = csvLine.split("; ");
+		String[] values = csvLine.split(";");
 
 		int articleNumber = Integer.parseInt(values[0]);
 		String productName = values[1];
@@ -182,7 +185,7 @@ public class Manage {
 
 	public static Movie parseMovie(String csvLine) {
 		// this method creates movie object
-		String[] values = csvLine.split("; ");
+		String[] values = csvLine.split(";");
 
 		int articleNumber = Integer.parseInt(values[0]);
 
@@ -250,12 +253,19 @@ public class Manage {
 	public static List<Book> addBookToList(String input) {
 		Book book = parseBook(input);
 		books.add(book);
+		for(Book b : books) {
+			System.out.println(b);
+		}
+		
 		return books;
 	}
 
 	public static List<Movie> addMovieToList(String input) {
 		Movie movie = parseMovie(input);
 		movies.add(movie);
+		for(Movie m : movies){
+			System.out.println(m);
+		}
 		return movies;
 	}
 	
@@ -344,7 +354,9 @@ public class Manage {
 			
 		}
 	}
-
+	public static String printCustomer() {
+		return "Borrowed by: Name: " + Customer.getCustomerName() + " Phone number: " + Customer.getPhoneNumber();
+	}
 	
 	public static void handleListCommand() {
 		//make it only show article number and titel, and also if a customer has borrowed it
@@ -369,16 +381,17 @@ public class Manage {
 		String customerName = scanner.nextLine();
 		System.out.println("Enter phonenumber: ");
 		String phoneNumber = scanner.nextLine();
-		
+		Customer.setCustomer(customerName, phoneNumber);
+		printCustomer();
 		
 	//	addCustomerToList(customerName, phoneNumber);
 	//	writeCsvProducts();
 
-		info("Products.csv", articleArgs, 1, ";");
+		//info("Products.csv", articleArgs, 1, ";");
 
-		Customer cus = new Customer(customerName, phoneNumber);
+		//Customer cus = new Customer(customerName, phoneNumber);
 
-		customers.add(cus);
+		//customers.add(cus);
 		
 		
 		
@@ -389,7 +402,7 @@ public class Manage {
 		}
 */
 
-		System.out.printf("This product has now been borrowed by %s , %s", customerName, phoneNumber);
+		//System.out.printf("This product has now been borrowed by %s , %s", customerName, phoneNumber);
 
 		System.out.println("\ncheckout command handled");
 
@@ -459,7 +472,7 @@ public class Manage {
 		}
 		
 		System.out.println("deregister command handled");
-
+//use for checkout?
 	}
 
 	public static void handleInfoCommand(int articleArgs) {

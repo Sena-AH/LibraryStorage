@@ -6,8 +6,8 @@ public class Customer {
 	// Mabey this class has to have a ArrayList customer = to add and remove
 	// customers
 	protected static String identifier = "c";
-	private String customerName;
-	private String phoneNumber;
+	private static String customerName;
+	private static String phoneNumber;
 
 	public Customer(String customerName, String phoneNumber) {
 
@@ -19,14 +19,21 @@ public class Customer {
 		return identifier;
 	}
 
-	public String getCustomerName() {
+	public static String getCustomerName() {
 		return customerName;
 	}
 
-	public String getPhoneNumber() {
+	public static String getPhoneNumber() {
 		return phoneNumber;
 	}
-
+	
+	public static Customer setCustomer(String name, String number) {
+		Customer customer = new Customer(name, number);
+		return customer;
+		
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Borrowed by: Name: " + this.getCustomerName() + " Phone number: " + this.getPhoneNumber();
