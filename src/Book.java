@@ -34,13 +34,21 @@ public class Book extends Product {
 		
 	}
 */
+	
+	
 	public static boolean isBook() {
 		return true;
 	}
 	
 	public String printList() {
-		return "(Book) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName();	
+	return "(Book) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName();	
 		}
+	
+	@Override
+	public int hashCode() {
+		String s = "(Book) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName();
+		return s.hashCode();
+	}
 
 	@Override
 	public String toString() {
