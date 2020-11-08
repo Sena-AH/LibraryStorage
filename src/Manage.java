@@ -415,6 +415,9 @@ public class Manage {
 				 product = new Book(product.getProductType(), product.getArticleNumber(), product.getProductName(), product.getValue(), ((Book) product).getPages(), ((Book) product).getAuthor());
 			 }
 		 } 
+	        writeCsvProducts();
+
+		 
 		 try {
 		 if(!(products.contains(articleArgs))) {
 			 Exception e = new Exception("ERROR: Articlenumber does not exist");
