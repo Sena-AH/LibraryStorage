@@ -15,7 +15,7 @@ public class Movie extends Product  {
 	}
 	
 	public Movie(String productType, int article, String name, int price, int minutes, double imdb, Customer borrower) {
-		// TODO Auto-generated constructor stub
+		
 
 		super(productType, article, name, price, borrower);
 		this.lengthInMinutes = minutes;
