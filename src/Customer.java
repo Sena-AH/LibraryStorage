@@ -6,8 +6,8 @@ public class Customer {
 	// Mabey this class has to have a ArrayList customer = to add and remove
 	// customers
 	protected static String identifier = "c";
-	private static String customerName;
-	private static String phoneNumber;
+	private String customerName;
+	private  String phoneNumber;
 
 	public Customer(String customerName, String phoneNumber) {
 
@@ -19,11 +19,11 @@ public class Customer {
 		return identifier;
 	}
 
-	public static String getCustomerName() {
+	public String getCustomerName() {
 		return customerName;
 	}
 
-	public static String getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	

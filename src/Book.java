@@ -2,14 +2,14 @@
 public class Book extends Product {
 
 	protected static String identifier = "b";
-	private int pages;
-	private String author;
+	private static int pages;
+	private static String author;
 	public String customer;
 
 	public Book(String productType, int article, String name, int price, int pageNumber, String writer) {
 		super(productType, article, name, price);
-		this.pages = pageNumber;
-		this.author = writer;
+		Book.pages = pageNumber;
+		Book.author = writer;
 		
 
 	}
@@ -18,11 +18,11 @@ public class Book extends Product {
 		return identifier;
 	}
 
-	public int getPages() {
+	public static int getPages() {
 		return pages;
 	}
 
-	public String getAuthor() {
+	public static String getAuthor() {
 		return author;
 	}
 /*	
@@ -53,7 +53,7 @@ public class Book extends Product {
 	@Override
 	public String toString() {
 		return "(Book) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName() + " Price: "
-				+ this.getValue() + " Pages: " + this.getPages() + " Author: " + this.getAuthor();
+				+ this.getValue() + " Pages: " + Book.getPages() + " Author: " + Book.getAuthor();
 
 	}
 }

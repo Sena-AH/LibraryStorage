@@ -14,12 +14,12 @@ public class Manage<E> implements Set<E>{
 
 	public static Scanner scanner = new Scanner(System.in);
 
-	public static List<Movie> movies = new ArrayList<>();
-	public static List<Book> books = new ArrayList<>();
+	//public static List<Movie> movies = new ArrayList<>();
+	//public static List<Book> books = new ArrayList<>();
 	
-	//public static List<Product> products = new ArrayList<>();
+	public static List<Product> products = new ArrayList<>();
 
-	public static List<Customer> customers = new ArrayList<Customer>();
+	//public static List<Customer> customers = new ArrayList<Customer>();
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
@@ -125,7 +125,7 @@ public class Manage<E> implements Set<E>{
 			 * 
 			 * 
 			 */
-			addBookToList(line);
+			addProductToList(line);
 			//addBookToList(line);
 			//printProducts();
 
@@ -143,7 +143,7 @@ public class Manage<E> implements Set<E>{
 		
 	}
 	
-	public static void addProduct(String line) throws FileNotFoundException {
+	public void addProduct(String line) throws FileNotFoundException {
 		if(Product.productType == "movie") {
 			addMovieToList(line);
 		} else if(Product.productType == "book") {
@@ -161,22 +161,24 @@ public class Manage<E> implements Set<E>{
 			//String title = " Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 			//fileWriter.append(title);
 
-			for (Movie m : movies) {
+			for (Product m : products) {
 				String title = "(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 				fileWriter.append(title);
 				
 				String csvLine = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
-						+ m.getLengthInMinutes() + ";" + m.getRating();
+						+ Movie.getLengthInMinutes() + ";" + Movie.getRating();
+				
 				fileWriter.append(csvLine).append("\n");
 			}
 			
-			for (Book b : books) {
+			for (Product b : products) {
 				
 				String title = "(Book) Article nr; Title; Value in kr; Pages; Author\n";
 				fileWriter.append(title);
 				
 				String csvLine = b.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
-						+ b.getPages() + ";" + b.getAuthor();
+						+ Book.getPages() + ";" + Book.getAuthor();
+				
 				fileWriter.append(csvLine).append("\n");
 			}
 		/*	
@@ -242,14 +244,13 @@ public class Manage<E> implements Set<E>{
 	public static void printProducts() {
 		
 		
-		for(Movie m : movies) {
-			System.out.println(m.printList());
-		}
+		for(Product p : products) {
+			System.out.println(p.getProductType() + " Article number: " + p.getArticleNumber() + " Title: " + p.getProductName());
 		
-		for(Book b : books) {
-			System.out.println(b.printList());
 
 		}
+		
+		
 /*
 		String filePathMovie = "Products.csv";
 		FileInputStream fin;
@@ -280,11 +281,13 @@ public class Manage<E> implements Set<E>{
 */
 	
 	
-	public static List<Book> addBookToList(String input) {
-		Book book = parseBook(input);
+	public static List<Product> addBookToList(String input) {
 		
-		String filePathMovie = "Products.csv";
-		FileInputStream fin;
+		if(Product.getProductType() == ) {
+		Product book = parseBook(input);
+		
+		//String filePathMovie = "Products.csv";
+	/*	FileInputStream fin;
 		try {
 			fin = new FileInputStream(filePathMovie);
 		} catch (FileNotFoundException e) {
@@ -300,18 +303,18 @@ public class Manage<E> implements Set<E>{
 		
 
 
-		if(!((input).equalsIgnoreCase(line))) {
-		books.add(book);
-		}
+		if(!((input).equalsIgnoreCase(line))) {*/
+		products.add(book);
+	//	}
+
+	//}
+		return products;
 
 	}
-		return books;
 
-	}
-
-	public static List<Movie> addMovieToList(String input) throws FileNotFoundException {
+	public static List<Product> addMovieToList(String input) throws FileNotFoundException {
 		Movie movie = parseMovie(input);
-	
+	/*
 	String filePathMovie = "Products.csv";
 	FileInputStream fin;
 	
@@ -327,12 +330,12 @@ public class Manage<E> implements Set<E>{
 	
 
 
-	if(!((input).equalsIgnoreCase(line))) {
-	movies.add(movie);
-	}
+	if(!((input).equalsIgnoreCase(line))) { */
+	products.add(movie);
+//	}
 
-}
-	return movies;
+// }
+	return products;
 
 }
 	
@@ -421,10 +424,10 @@ public class Manage<E> implements Set<E>{
 			
 		}
 	}
-	public static String printCustomer() {
+	/*public static String printCustomer() {
 		return "Borrowed by: Name: " + Customer.getCustomerName() + " Phone number: " + Customer.getPhoneNumber();
 	}
-	
+	*/
 	public static void handleListCommand() {
 		//make it only show article number and titel, and also if a customer has borrowed it
 		System.out.println("This is a list of all our products: ");
@@ -448,8 +451,8 @@ public class Manage<E> implements Set<E>{
 		String customerName = scanner.nextLine();
 		System.out.println("Enter phonenumber: ");
 		String phoneNumber = scanner.nextLine();
-		Customer.setCustomer(customerName, phoneNumber);
-		printCustomer();
+	//	Customer.setCustomer(customerName, phoneNumber);
+	//	printCustomer();
 		
 	//	addCustomerToList(customerName, phoneNumber);
 	//	writeCsvProducts();
@@ -534,23 +537,23 @@ public class Manage<E> implements Set<E>{
 		// remove product from the list
 		
 		removeProduct("Products.csv", articleArgs, 1, ";");
-		Movie movieToBeRemoved;
-		Book bookToBeRemoved;
-		for(int i = 0; i <movies.size(); i++) {
+		Product movieToBeRemoved;
+		Product bookToBeRemoved;
+		for(int i = 0; i <products.size(); i++) {
 			
-			if(movies.get(i).getArticleNumber() == articleArgs) {
-				movieToBeRemoved = movies.get(i);
-				movies.remove(movieToBeRemoved);
+			if(products.get(i).getArticleNumber() == articleArgs) {
+				movieToBeRemoved = products.get(i);
+				products.remove(movieToBeRemoved);
 				return;
 			}
 			
 		}
 		
-		for(Book b : books) {
+		for(Product b : products) {
 			int i = 0;
-			if(books.get(i).getArticleNumber() == articleArgs) {
-				bookToBeRemoved = books.get(i);
-				books.remove(bookToBeRemoved);
+			if(products.get(i).getArticleNumber() == articleArgs) {
+				bookToBeRemoved = products.get(i);
+				products.remove(bookToBeRemoved);
 				return;
 			}
 		}
