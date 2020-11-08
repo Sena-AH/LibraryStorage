@@ -152,24 +152,27 @@ public class Manage {
 				//String title = "(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 				//fileWriter.append(title);
 					//Movie movie = (Movie)m;
-				
+					
 				String csvLine = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
 						+ movie.getLengthInMinutes() + ";" + movie.getRating();
 				
 				fileWriter.append(csvLine).append("\n");
 				
 			}    else (m.getBorrower() != null) {
+				
 			Product product = (Product)m;
 
                 String csvLine = product.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
-                        + movie.getLengthInMinutes() + ";" + movie.getRating() + ";" + m.getBorrower().getCustomerName() + ";" + m.getBorrower().getPhoneNumber();
-            }
+                   + movie.getLengthInMinutes() + ";" + movie.getRating() + ";" + m.getBorrower().getCustomerName() + ";" + m.getBorrower().getPhoneNumber();
+               
+                fileWriter.append(csvLine).append("\n");
+			}
 			}
 		
 			for (Product b : products) {
 				
 				Book book =(Book)b;
-				
+				//Product product = (Product)b;
 				if(b.productType.equals("Book")) {
 				
 				
@@ -178,11 +181,14 @@ public class Manage {
 				
 				fileWriter.append(csvLine).append("\n");
 				
-			}   else (b.getBorrower() != null) {
+			}   else (product.getBorrower() != null) {
+				
 			Product product = (Product)b;
 
                 String csvLine = product.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() 
                 + ";" + book.getPages() + ";" + book.getAuthor() + ";" + b.getBorrower().getCustomerName() + ";" + b.getBorrower().getPhoneNumber();
+                
+             fileWriter.append(csvLine).append("\n");
             }
 			}
 			
