@@ -181,7 +181,7 @@ public class Manage {
 				
 				fileWriter.append(csvLine).append("\n");
 				
-			}   else (product.getBorrower() != null) {
+			}   else (b.getBorrower() != null) {
 				
 			Product product = (Product)b;
 
