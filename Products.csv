@@ -1,0 +1,8 @@
+(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating
+Movie;12;tre;13;123;1.2
+(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating
+Movie;3131;treterte;3213;123;1.2
+(Book) Article nr; Title; Value in kr; Pages; Author
+Movie;12;tre;13;12;trete
+(Book) Article nr; Title; Value in kr; Pages; Author
+Movie;3131;treterte;3213;12;trete
