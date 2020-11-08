@@ -126,7 +126,7 @@ public class Manage {
 		
 	}
 	
-	public static void addProduct(String line) throws FileNotFoundException {
+	public static void addProduct(String line) throws FileNotFoundException, ClassCastException {
 		if(line.startsWith("Movie")) {
 			addMovieToList(line);
 		} else if(line.startsWith("Book")) {
@@ -146,12 +146,12 @@ public class Manage {
 			fileWriter.append(title);
 			for (Product m : products) {
 			
-				Movie movie = (Movie)m;
+				//Movie movie = (Movie)m;
 				
 				if(m.productType.equals("Movie")) {
 				//String title = "(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 				//fileWriter.append(title);
-					//Movie movie = (Movie)m;
+					Movie movie = (Movie)m;
 					
 				String csvLine = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
 						+ movie.getLengthInMinutes() + ";" + movie.getRating();
@@ -161,7 +161,7 @@ public class Manage {
 			}    else if (m.getBorrower() != null) {
 				
 			Product product = (Product)m;
-
+			Movie movie = (Movie)m;
                 String csvLine = product.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
                    + movie.getLengthInMinutes() + ";" + movie.getRating() + ";" + m.getBorrower().getCustomerName() + ";" + m.getBorrower().getPhoneNumber();
                
@@ -171,11 +171,14 @@ public class Manage {
 		
 			for (Product b : products) {
 				
-				Book book =(Book)b;
+				//Book book =(Book)b;
 				//Product product = (Product)b;
 				if(b.productType.equals("Book")) {
 				
-				
+					
+					Product.castToBook(b);
+					//Book book =(Book)b;
+
 				String csvLine = b.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
 						+ book.getPages() + ";" + book.getAuthor();
 				
@@ -185,10 +188,14 @@ public class Manage {
 				
 			Product product = (Product)b;
 
+			Book book = (Book)b;
+			
+
                 String csvLine = product.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() 
                 + ";" + book.getPages() + ";" + book.getAuthor() + ";" + b.getBorrower().getCustomerName() + ";" + b.getBorrower().getPhoneNumber();
                 
              fileWriter.append(csvLine).append("\n");
+			
             }
 			}
 			

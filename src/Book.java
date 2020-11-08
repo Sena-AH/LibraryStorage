@@ -21,7 +21,7 @@ public class Book extends Product {
 		this.author = writer;
 		
 		
-		// TODO Auto-generated constructor stub
+		
 	
 	}
 

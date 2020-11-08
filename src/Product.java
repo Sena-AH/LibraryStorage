@@ -54,7 +54,13 @@ public class Product {
 	public int getValue() {
 		return value;
 	}
+public Book castToBook(Object o) {
+	
+	Book book =(Book)o;
+	return book;
+}
 
+	
 	@Override
 	public String toString() {
 		return "Article number: " + this.getArticleNumber() + ", Title: " + this.getProductName() + ", Price: "
