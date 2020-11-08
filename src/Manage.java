@@ -165,7 +165,7 @@ public class Manage<E> implements Set<E>{
 				String title = "(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 				fileWriter.append(title);
 				
-				String csvLine = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
+				String csvLine = Product.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
 						+ Movie.getLengthInMinutes() + ";" + Movie.getRating();
 				
 				fileWriter.append(csvLine).append("\n");
@@ -176,7 +176,7 @@ public class Manage<E> implements Set<E>{
 				String title = "(Book) Article nr; Title; Value in kr; Pages; Author\n";
 				fileWriter.append(title);
 				
-				String csvLine = b.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
+				String csvLine = Product.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
 						+ Book.getPages() + ";" + Book.getAuthor();
 				
 				fileWriter.append(csvLine).append("\n");
@@ -245,7 +245,7 @@ public class Manage<E> implements Set<E>{
 		
 		
 		for(Product p : products) {
-			System.out.println(p.getProductType() + " Article number: " + p.getArticleNumber() + " Title: " + p.getProductName());
+			System.out.println(Product.getProductType() + " Article number: " + p.getArticleNumber() + " Title: " + p.getProductName());
 		
 
 		}
@@ -283,9 +283,10 @@ public class Manage<E> implements Set<E>{
 	
 	public static List<Product> addBookToList(String input) {
 		
-		if(Product.getProductType() == ) {
 		Product book = parseBook(input);
-		
+		if(!(products.contains(book))) {
+			
+		}
 		//String filePathMovie = "Products.csv";
 	/*	FileInputStream fin;
 		try {
