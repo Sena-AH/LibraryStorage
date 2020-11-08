@@ -168,10 +168,12 @@ public class Manage<E> implements Set<E>{
 			fileWriter.append(title);
 			for (Product m : products) {
 				
+			
+				
 				if(m.productType.equals("Movie")) {
 				//String title = "(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 				//fileWriter.append(title);
-				Movie movie = (Movie)m;
+			Movie movie = (Movie)m;
 				
 				String csvLine = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
 						+ movie.getLengthInMinutes() + ";" + movie.getRating();
