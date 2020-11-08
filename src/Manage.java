@@ -158,7 +158,7 @@ public class Manage {
 				
 				fileWriter.append(csvLine).append("\n");
 				
-			}    else (m.getBorrower() != null) {
+			}    else if (m.getBorrower() != null) {
 				
 			Product product = (Product)m;
 
@@ -181,7 +181,7 @@ public class Manage {
 				
 				fileWriter.append(csvLine).append("\n");
 				
-			}   else (b.getBorrower() != null) {
+			}   else if (b.getBorrower() != null) {
 				
 			Product product = (Product)b;
 
@@ -393,6 +393,10 @@ public class Manage {
 	            if (product.getArticleNumber() == articleArgs) {
 	                product.setBorrower(customer);
 	            }
+	         /*   
+	            if(product.getBorrower().equals(customer)) {
+	            	
+	            } */
 	        }
 
 	        writeCsvProducts();
