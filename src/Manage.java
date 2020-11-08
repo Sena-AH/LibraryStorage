@@ -176,8 +176,8 @@ public class Manage {
 				if(b.productType.equals("Book")) {
 				
 					
-					Product.castToBook(b);
-					//Book book =(Book)b;
+					//Product.castToBook(b);
+					Book book =(Book)b;
 
 				String csvLine = b.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
 						+ book.getPages() + ";" + book.getAuthor();

@@ -54,11 +54,12 @@ public class Product {
 	public int getValue() {
 		return value;
 	}
+	/*
 public Book castToBook(Object o) {
 	
 	Book book =(Book)o;
-	return book;
-}
+	return book;*/
+
 
 	
 	@Override
