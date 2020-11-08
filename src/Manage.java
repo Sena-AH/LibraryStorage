@@ -399,7 +399,7 @@ public class Manage<E> implements Set<E>{
 			while((currentLine = br.readLine()) != null) {
 				
 				data = currentLine.split(";");
-				if(data[pos].equalsIgnoreCase(article)) {
+				if(data[1].equalsIgnoreCase(article)) {
 					
 
 			        for (String element: data) {
