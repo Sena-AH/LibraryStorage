@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 
-public class Manage<E> implements Set<E>{ 
+public class Manage { 
 	
 	boolean isRunning;
 
@@ -14,12 +14,9 @@ public class Manage<E> implements Set<E>{
 
 	public static Scanner scanner = new Scanner(System.in);
 
-	//public static List<Movie> movies = new ArrayList<>();
-	//public static List<Book> books = new ArrayList<>();
 	
 	public static List<Product> products = new ArrayList<>();
 
-	//public static List<Customer> customers = new ArrayList<Customer>();
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
@@ -118,32 +115,13 @@ public class Manage<E> implements Set<E>{
 		while (scanner.hasNextLine()) {
 			
 			String line = scanner.nextLine();
-			//System.out.println(line);
-			/*
-			 * 
-			 * THIS IS WHERE THE PROBLEM IS! CANNOT HANDLE BOTH ADD METHODS AND CANT GET THE IF STATEMENT TO WORK!!!
-			 * 
-			 * 
-			 */
+		
 			try {
 				addProduct(line);
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//addBookToList(line);
-			//printProducts();
-
-		
-		/*	
-		
-		if(Product.identifier == "m") {
-			addMovieToList(line);
-		} else if(Product.identifier == "b") {
-
-			addBookToList(line);
-		}
-		printProducts(); */
+			
 		}
 		
 	}
@@ -208,14 +186,6 @@ public class Manage<E> implements Set<E>{
             }
 			}
 			
-		/*	
-			for (Customer c : customers) {
-				
-				String title = " Borrowed by: ";
-				fileWriter.append(title);
-				
-			} */
-
 		} catch (IOException e) {
 			System.out.println("Error while writing csv");
 		}
@@ -267,19 +237,6 @@ public class Manage<E> implements Set<E>{
 		return new Movie(productType, articleNumber, productName, value, lengthInMinutes, rating);
 	}
 	
-	/*public static Customer parseCustomer(String name, String number) {
-		// this method creates book object
-		String fullCustomer = name+ " "+number;
-		String[] values = fullCustomer.split(" ");
-
-		
-		String customerName = values[0];
-		
-		String phoneNumber = values[1];
-
-		return new Customer(customerName, phoneNumber);
-
-	}*/
 
 	public static void printProducts() {
 		
@@ -289,66 +246,16 @@ public class Manage<E> implements Set<E>{
 		
 
 		}
-		
-		
-/*
-		String filePathMovie = "Products.csv";
-		FileInputStream fin;
-		try {
-			fin = new FileInputStream(filePathMovie);
-		} catch (FileNotFoundException e) {
-			return;
-		}
-		Scanner scanner = new Scanner(fin);
-		scanner.nextLine();
-		while (scanner.hasNextLine()) {
-			String lineMovie = scanner.nextLine();
-				//Book book = parseBook(lineMovie);
-	            //System.out.println(book.toString());
-	            //Movie movie = parseMovie(lineMovie);
-	            //System.out.println(movie.toString());
-		System.out.println(lineMovie);
-
-		} */
-		
-		}
-/*	
-	public static List<Customer> addCustomerToList(String name, String number){
-		Customer customer = parseCustomer(name,number);
-		customers.add(customer);
-		return customers;
 	}
-*/
-	
+
 	
 	public static List<Product> addBookToList(String input) {
 		
 		Product book = parseBook(input);
 		if(!(products.contains(book))) {
-			
-		}
-		//String filePathMovie = "Products.csv";
-	/*	FileInputStream fin;
-		try {
-			fin = new FileInputStream(filePathMovie);
-		} catch (FileNotFoundException e) {
-			return books;
-		}
-		Scanner scanner = new Scanner(fin);
-		scanner.nextLine();
 	
-
-		while (scanner.hasNextLine()) {
-			
-			String line = scanner.nextLine();
-		
-
-
-		if(!((input).equalsIgnoreCase(line))) {*/
 		products.add(book);
-	//	}
-
-	//}
+		}
 		return products;
 
 	}
@@ -359,7 +266,6 @@ public class Manage<E> implements Set<E>{
 			
 	products.add(movie);
 	}
-
 
 	return products;
 
@@ -450,10 +356,7 @@ public class Manage<E> implements Set<E>{
 			
 		}
 	}
-	/*public static String printCustomer() {
-		return "Borrowed by: Name: " + Customer.getCustomerName() + " Phone number: " + Customer.getPhoneNumber();
-	}
-	*/
+	
 	public static void handleListCommand() {
 		//make it only show article number and titel, and also if a customer has borrowed it
 		System.out.println("This is a list of all our products: ");
@@ -487,32 +390,10 @@ public class Manage<E> implements Set<E>{
 	        }
 
 	        writeCsvProducts();
-	//	Customer.setCustomer(customerName, phoneNumber);
-	//	printCustomer();
-		
-	//	addCustomerToList(customerName, phoneNumber);
-	//	writeCsvProducts();
-
-		//info("Products.csv", articleArgs, 1, ";");
-
-		//Customer cus = new Customer(customerName, phoneNumber);
-
-		//customers.add(cus);
-		
-		
-		
-		//articleArgs connect to cus
-		/*
-		for (Customer c : customers) {
-			System.out.println(c);
-		}
-*/
-
-		//System.out.printf("This product has now been borrowed by %s , %s", customerName, phoneNumber);
-
+	
 		System.out.println("\ncheckout command handled");
 
-		//return cus;
+		
 	}
 
 	public static void handleCheckinCommand(int articleArgs) {
@@ -535,22 +416,6 @@ public class Manage<E> implements Set<E>{
 			System.out.println("you have chosen movie");
 			System.out.println("Enter: product type; article nr; title; value; length in minutes; rating ");
 			String input2 = scanner.nextLine();
-	/*	try {	
-			String[] data = input2.split(";");
-			
-			for(int i = 0; i <movies.size(); i++) {
-			System.out.println("in the for each loop!");
-				if(data[i].equalsIgnoreCase(input2)){
-					
-					Exception e = new Exception("ERROR: Product already exists in storage");	
-					throw e;
-					}
-			}
-		}catch (Exception e) {
-		    System.out.println(e.getMessage());
-		    }
-			*/	
-			
 			
 			addMovieToList(input2);
 			writeCsvProducts();
@@ -666,95 +531,4 @@ public class Manage<E> implements Set<E>{
 
 	}
 
-/*
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public boolean contains(Object o) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public Object[] toArray() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public <T> T[] toArray(T[] a) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public boolean add(E e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public boolean remove(Object o) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public boolean containsAll(Collection<?> c) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public boolean addAll(Collection<? extends E> c) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public boolean retainAll(Collection<?> c) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public boolean removeAll(Collection<?> c) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-		
-	}
-*/
 }
