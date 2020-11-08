@@ -3,25 +3,25 @@
 public class Movie extends Product  {
 
 	protected static String identifier = "m";
-	private static int lengthInMinutes;
-	private static double rating;
+	private  int lengthInMinutes;
+	private  double rating;
 
 	public Movie(String productType, int article, String name, int price, int minutes, double imdb) {
 
 		super(productType, article, name, price);
-		Movie.lengthInMinutes = minutes;
-		Movie.rating = imdb;
+		this.lengthInMinutes = minutes;
+		this.rating = imdb;
 	}
 	
 	public String getIdentifier() {
 		return identifier;
 	}
 
-	public static int getLengthInMinutes() {
+	public int getLengthInMinutes() {
 		return lengthInMinutes;
 	}
 
-	public static double getRating() {
+	public double getRating() {
 		return rating;
 	}
 	
@@ -41,6 +41,6 @@ public class Movie extends Product  {
 		return "(Movie) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName() + " Price: "
 				+ this.getValue() +
 
-				" Length in minutes: " + Movie.getLengthInMinutes() + " Rating: " + Movie.getRating();
+				" Length in minutes: " + this.getLengthInMinutes() + " Rating: " + this.getRating();
 	}
 }

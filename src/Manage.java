@@ -164,26 +164,33 @@ public class Manage<E> implements Set<E>{
 
 			//String title = " Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 			//fileWriter.append(title);
-
+			String title = "Movie/Book; Article nr; Title; Value in kr; Length in minutes/pages ; IMDB rating/author\n";
+			fileWriter.append(title);
 			for (Product m : products) {
-				String title = "(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
-				fileWriter.append(title);
 				
-				String csvLine = Product.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
-						+ Movie.getLengthInMinutes() + ";" + Movie.getRating();
+				if(m.productType.equals("Movie")) {
+				//String title = "(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
+				//fileWriter.append(title);
+				Movie movie = (Movie)m;
+				String csvLine = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
+						+ movie.getLengthInMinutes() + ";" + movie.getRating();
 				
 				fileWriter.append(csvLine).append("\n");
 			}
-			
+			}
+			//String title = "(Book) Article nr; Title; Value in kr; Pages; Author\n";
+			//fileWriter.append(title);
 			for (Product b : products) {
-				
-				String title = "(Book) Article nr; Title; Value in kr; Pages; Author\n";
-				fileWriter.append(title);
-				
-				String csvLine = Product.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
-						+ Book.getPages() + ";" + Book.getAuthor();
+			
+				if(b.productType.equals("Book")) {
+				//String title = "(Book) Article nr; Title; Value in kr; Pages; Author\n";
+				//fileWriter.append(title);
+				Book book =(Book)b;
+				String csvLine = b.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
+						+ book.getPages() + ";" + book.getAuthor();
 				
 				fileWriter.append(csvLine).append("\n");
+			}
 			}
 		/*	
 			for (Customer c : customers) {
@@ -249,7 +256,7 @@ public class Manage<E> implements Set<E>{
 		
 		
 		for(Product p : products) {
-			System.out.println(Product.getProductType() + " Article number: " + p.getArticleNumber() + " Title: " + p.getProductName());
+			System.out.println(p.getProductType() + " Article number: " + p.getArticleNumber() + " Title: " + p.getProductName());
 		
 
 		}
