@@ -167,38 +167,47 @@ public class Manage<E> implements Set<E>{
 			String title = "Movie/Book; Article nr; Title; Value in kr; Length in minutes/pages ; IMDB rating/author\n";
 			fileWriter.append(title);
 			for (Product m : products) {
-				
 			
+				Movie movie = (Movie)m;
 				
 				if(m.productType.equals("Movie")) {
 				//String title = "(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 				//fileWriter.append(title);
-			Movie movie = (Movie)m;
+					//Movie movie = (Movie)m;
 				
 				String csvLine = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
 						+ movie.getLengthInMinutes() + ";" + movie.getRating();
 				
 				fileWriter.append(csvLine).append("\n");
+				
 			}    else (m.getBorrower() != null) {
-                
-                String csvLine = Product.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
-                        + Movie.getLengthInMinutes() + ";" + Movie.getRating() + ";" + m.getBorrower().getCustomerName() + ";" + m.getBorrower().getPhoneNumber();
+			Product product = (Product)m;
+
+                String csvLine = product.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
+                        + movie.getLengthInMinutes() + ";" + movie.getRating() + ";" + m.getBorrower().getCustomerName() + ";" + m.getBorrower().getPhoneNumber();
             }
 			}
-			//String title = "(Book) Article nr; Title; Value in kr; Pages; Author\n";
-			//fileWriter.append(title);
+		
 			for (Product b : products) {
-			
-				if(b.productType.equals("Book")) {
-				//String title = "(Book) Article nr; Title; Value in kr; Pages; Author\n";
-				//fileWriter.append(title);
+				
 				Book book =(Book)b;
+				
+				if(b.productType.equals("Book")) {
+				
+				
 				String csvLine = b.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
 						+ book.getPages() + ";" + book.getAuthor();
 				
 				fileWriter.append(csvLine).append("\n");
+				
+			}   else (b.getBorrower() != null) {
+			Product product = (Product)b;
+
+                String csvLine = product.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() 
+                + ";" + book.getPages() + ";" + book.getAuthor() + ";" + b.getBorrower().getCustomerName() + ";" + b.getBorrower().getPhoneNumber();
+            }
 			}
-			}
+			
 		/*	
 			for (Customer c : customers) {
 				
@@ -211,6 +220,7 @@ public class Manage<E> implements Set<E>{
 			System.out.println("Error while writing csv");
 		}
 	}
+
 
 	public static Book parseBook(String csvLine) throws NumberFormatException {
 		// this method creates book object
@@ -656,7 +666,7 @@ public class Manage<E> implements Set<E>{
 
 	}
 
-
+/*
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
@@ -746,5 +756,5 @@ public class Manage<E> implements Set<E>{
 		// TODO Auto-generated method stub
 		
 	}
-
+*/
 }
