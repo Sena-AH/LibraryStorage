@@ -147,14 +147,24 @@ public class Manage {
 			for (Product m : products) {
 			
 				//Movie movie = (Movie)m;
+				String M = String.valueOf(m);
+
+				String[] array = M.split(";");
+				
+			
+				
+				int minutes = Integer.parseInt(array[5]);
+				double imdb = Double.parseDouble(array[6]);
 				
 				if(m.productType.equals("Movie")) {
 				//String title = "(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 				//fileWriter.append(title);
-					Movie movie = (Movie)m;
+					//Movie movie = (Movie)m;
+					
+					
 					
 				String csvLine = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
-						+ movie.getLengthInMinutes() + ";" + movie.getRating();
+						+ minutes + ";" + imdb;
 				
 				fileWriter.append(csvLine).append("\n");
 				
@@ -173,14 +183,23 @@ public class Manage {
 				
 				//Book book =(Book)b;
 				//Product product = (Product)b;
+				String B = String.valueOf(b);
+				String[] array = B.split(";");
+				
+				
+				int page = Integer.parseInt(array[5]);
+				String author = array[6];
+				
 				if(b.productType.equals("Book")) {
 				
 					
 					//Product.castToBook(b);
-					Book book =(Book)b;
+					//Book book =(Book)b;
+					
+				
 
 				String csvLine = b.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
-						+ book.getPages() + ";" + book.getAuthor();
+						+ page + ";" + author;
 				
 				fileWriter.append(csvLine).append("\n");
 				
