@@ -178,9 +178,7 @@ public class Manage<E> implements Set<E>{
 				
 				fileWriter.append(csvLine).append("\n");
 			}    else (m.getBorrower() != null) {
-                String csvLine = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
-                        + Movie.getLengthInMinutes() + ";" + Movie.getRating();
-            } else {
+                
                 String csvLine = Product.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
                         + Movie.getLengthInMinutes() + ";" + Movie.getRating() + ";" + m.getBorrower().getCustomerName() + ";" + m.getBorrower().getPhoneNumber();
             }
