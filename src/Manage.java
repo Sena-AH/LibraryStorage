@@ -406,10 +406,30 @@ public class Manage {
 		// enter code
 		// ta emot artikelnr och kunna gora den tillganglig i listan igen
 		// koppla ifran produkten fran customer and make it available
-		System.out.println("checkin command handled");
+		 for ( Product product : products) {
+		 if (product.getArticleNumber() == articleArgs) {	
+			 if(product.productType.equals("Movie")) {
+				 product = new Movie(product.getProductType(), product.getArticleNumber(), product.getProductName(), product.getValue(), ((Movie) product).getLengthInMinutes(), ((Movie) product).getRating());
+			 }
+			 else if (product.productType.equals("Book")) { 
+				 product = new Book(product.getProductType(), product.getArticleNumber(), product.getProductName(), product.getValue(), ((Book) product).getPages(), ((Book) product).getAuthor());
+			 }
+		 } 
+		 try {
+		 if(!(products.contains(articleArgs))) {
+			 Exception e = new Exception("ERROR: Articlenumber does not exist");
+			 throw e;
+		 } 
+		 }catch (Exception e) {  
+			 System.out.println(e.getMessage());
+		 }
+		 
+		 
+		
 
 	}
-
+		 System.out.println("checkin command handled");
+	}
 	public static void handleRegisterCommand() throws IOException {
 
 		//nested objects!!!!!!
