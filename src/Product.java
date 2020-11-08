@@ -3,14 +3,14 @@ public class Product {
 
 	//add typeidentifier protected string
 	
-	protected static String productType;
+	protected String productType;
 	
 	public int articleNumber;
 	private String productName;
 	private int value;
 
 	public Product(String productType, int article, String name, int price) {
-		Product.productType = productType;
+		this.productType = productType;
 		this.articleNumber = article;
 		this.productName = name;
 		this.value = price;
@@ -18,7 +18,7 @@ public class Product {
 		
 	}	
 	
-	public static String getProductType() {
+	public String getProductType() {
 		return productType;
 
 	}
