@@ -3,17 +3,23 @@ public class Product {
 
 	//add typeidentifier protected string
 	
-	protected static String identifier;
+	protected static String productType;
 	
 	public int articleNumber;
 	private String productName;
 	private int value;
 
-	public Product(int article, String name, int price) {
-
+	public Product(String productType, int article, String name, int price) {
+		this.productType = productType;
 		this.articleNumber = article;
 		this.productName = name;
 		this.value = price;
+		
+		
+	}	
+	
+	public String getProductType() {
+		return productType;
 
 	}
 

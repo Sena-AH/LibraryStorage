@@ -6,9 +6,9 @@ public class Movie extends Product  {
 	private int lengthInMinutes;
 	private double rating;
 
-	public Movie(int article, String name, int price, int minutes, double imdb) {
+	public Movie(String productType, int article, String name, int price, int minutes, double imdb) {
 
-		super(article, name, price);
+		super(productType, article, name, price);
 		this.lengthInMinutes = minutes;
 		this.rating = imdb;
 	}

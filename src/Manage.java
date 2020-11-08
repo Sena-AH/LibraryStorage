@@ -144,9 +144,9 @@ public class Manage<E> implements Set<E>{
 	}
 	
 	public static void addProduct(String line) throws FileNotFoundException {
-		if(Product.identifier == "m") {
+		if(Product.productType == "movie") {
 			addMovieToList(line);
-		} else if(Product.identifier == "b") {
+		} else if(Product.productType == "book") {
 
 			addBookToList(line);
 		}
@@ -165,7 +165,7 @@ public class Manage<E> implements Set<E>{
 				String title = "(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 				fileWriter.append(title);
 				
-				String csvLine = m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
+				String csvLine = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
 						+ m.getLengthInMinutes() + ";" + m.getRating();
 				fileWriter.append(csvLine).append("\n");
 			}
@@ -175,7 +175,7 @@ public class Manage<E> implements Set<E>{
 				String title = "(Book) Article nr; Title; Value in kr; Pages; Author\n";
 				fileWriter.append(title);
 				
-				String csvLine = b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
+				String csvLine = b.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";" + b.getValue() + ";"
 						+ b.getPages() + ";" + b.getAuthor();
 				fileWriter.append(csvLine).append("\n");
 			}
@@ -197,29 +197,32 @@ public class Manage<E> implements Set<E>{
 		
 		String[] values = csvLine.split(";");
 		
-		int articleNumber = Integer.parseInt(values[0]);
+		String productType = values[0];
+		int articleNumber = Integer.parseInt(values[1]);
 		
-		String productName = values[1];
-		int value = Integer.parseInt(values[2]);
-		int pages = Integer.parseInt(values[3]);
-		String author = values[4];
+		String productName = values[2];
+		int value = Integer.parseInt(values[3]);
+		int pages = Integer.parseInt(values[4]);
+		String author = values[5];
 
-		return new Book(articleNumber, productName, value, pages, author);
+		return new Book(productType, articleNumber, productName, value, pages, author);
 
 	}
 
 	public static Movie parseMovie(String csvLine) {
 		// this method creates movie object
 		String[] values = csvLine.split(";");
+		
+		
+		String productType = values[0];
+		int articleNumber = Integer.parseInt(values[1]);
 
-		int articleNumber = Integer.parseInt(values[0]);
+		String productName = values[2];
+		int value = Integer.parseInt(values[3]);
+		int lengthInMinutes = Integer.parseInt(values[4]);
+		double rating = Double.parseDouble(values[5]);
 
-		String productName = values[1];
-		int value = Integer.parseInt(values[2]);
-		int lengthInMinutes = Integer.parseInt(values[3]);
-		double rating = Double.parseDouble(values[4]);
-
-		return new Movie(articleNumber, productName, value, lengthInMinutes, rating);
+		return new Movie(productType, articleNumber, productName, value, lengthInMinutes, rating);
 	}
 	
 	/*public static Customer parseCustomer(String name, String number) {
@@ -491,7 +494,7 @@ public class Manage<E> implements Set<E>{
 		if (c == 'm') {
 			
 			System.out.println("you have chosen movie");
-			System.out.println("Enter: article nr; title; value; length in minutes; rating ");
+			System.out.println("Enter: product type; article nr; title; value; length in minutes; rating ");
 			String input2 = scanner.nextLine();
 	/*	try {	
 			String[] data = input2.split(";");
@@ -516,7 +519,7 @@ public class Manage<E> implements Set<E>{
 		} else if (c == 'b') {
 			
 			System.out.println("you have chosen book");
-			System.out.println("Enter: article nr; title; value; pages; author ");
+			System.out.println("Enter: product type; article nr; title; value; pages; author ");
 			String input3 = scanner.nextLine();
 			addBookToList(input3);
 			writeCsvProducts();
