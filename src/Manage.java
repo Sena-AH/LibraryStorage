@@ -28,7 +28,7 @@ public class Manage<E> implements Set<E>{
 		System.out.println(" Below you can see the current inventory: ");
 		
 		readFile();
-		
+		printProducts();
 	
 		
 		boolean on = true;
@@ -101,7 +101,7 @@ public class Manage<E> implements Set<E>{
 	}
 	
 	
-		public static void readFile() {
+		public static void readFile()  {
 		
 
 		String filePathMovie = "Products.csv";
@@ -125,7 +125,12 @@ public class Manage<E> implements Set<E>{
 			 * 
 			 * 
 			 */
-			addProductToList(line);
+			try {
+				addProduct(line);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			//addBookToList(line);
 			//printProducts();
 
@@ -143,11 +148,10 @@ public class Manage<E> implements Set<E>{
 		
 	}
 	
-	public void addProduct(String line) throws FileNotFoundException {
-		if(Product.productType == "movie") {
+	public static void addProduct(String line) throws FileNotFoundException {
+		if(line.startsWith("Movie")) {
 			addMovieToList(line);
-		} else if(Product.productType == "book") {
-
+		} else if(line.startsWith("Book")) {
 			addBookToList(line);
 		}
 		}
@@ -314,28 +318,13 @@ public class Manage<E> implements Set<E>{
 	}
 
 	public static List<Product> addMovieToList(String input) throws FileNotFoundException {
-		Movie movie = parseMovie(input);
-	/*
-	String filePathMovie = "Products.csv";
-	FileInputStream fin;
-	
-		fin = new FileInputStream(filePathMovie);
-	
-	Scanner scanner = new Scanner(fin);
-	scanner.nextLine();
-
-
-	while (scanner.hasNextLine()) {
-		
-		String line = scanner.nextLine();
-	
-
-
-	if(!((input).equalsIgnoreCase(line))) { */
+		Product movie = parseMovie(input);
+		if(!(products.contains(movie))) {
+			
 	products.add(movie);
-//	}
+	}
 
-// }
+
 	return products;
 
 }
