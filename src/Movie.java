@@ -5,7 +5,7 @@ public class Movie extends Product  {
 	protected static String identifier = "m";
 	private  int lengthInMinutes;
 	private  double rating;
-	private Customer borrower;
+
 
 	public Movie(String productType, int article, String name, int price, int minutes, double imdb) {
 
@@ -17,10 +17,10 @@ public class Movie extends Product  {
 	public Movie(String productType, int article, String name, int price, int minutes, double imdb, Customer borrower) {
 		// TODO Auto-generated constructor stub
 
-		super(productType, article, name, price);
+		super(productType, article, name, price, borrower);
 		this.lengthInMinutes = minutes;
 		this.rating = imdb;
-		this.setBorrower(borrower);
+		
 	}
 
 	public String getIdentifier() {
@@ -54,11 +54,4 @@ public class Movie extends Product  {
 				" Length in minutes: " + this.getLengthInMinutes() + " Rating: " + this.getRating();
 	}
 
-	public Customer getBorrower() {
-		return borrower;
-	}
-
-	public void setBorrower(Customer borrower) {
-		this.borrower = borrower;
-	}
 }
