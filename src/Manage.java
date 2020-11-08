@@ -172,11 +172,18 @@ public class Manage<E> implements Set<E>{
 				//String title = "(Movie) Article nr; Title; Value in kr; Length in minutes; IMDB rating\n";
 				//fileWriter.append(title);
 				Movie movie = (Movie)m;
+				
 				String csvLine = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
 						+ movie.getLengthInMinutes() + ";" + movie.getRating();
 				
 				fileWriter.append(csvLine).append("\n");
-			}
+			}    else (m.getBorrower() != null) {
+                String csvLine = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
+                        + Movie.getLengthInMinutes() + ";" + Movie.getRating();
+            } else {
+                String csvLine = Product.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";" + m.getValue() + ";"
+                        + Movie.getLengthInMinutes() + ";" + Movie.getRating() + ";" + m.getBorrower().getCustomerName() + ";" + m.getBorrower().getPhoneNumber();
+            }
 			}
 			//String title = "(Book) Article nr; Title; Value in kr; Pages; Author\n";
 			//fileWriter.append(title);
@@ -217,8 +224,15 @@ public class Manage<E> implements Set<E>{
 		int value = Integer.parseInt(values[3]);
 		int pages = Integer.parseInt(values[4]);
 		String author = values[5];
+		
+		if(values.length == 8) {
+		Customer borrower = new Customer(values[6], values[7]);
 
+        return new Book(productType, articleNumber, productName, value, pages, author, borrower);
+		}
 		return new Book(productType, articleNumber, productName, value, pages, author);
+		
+		
 
 	}
 
@@ -234,7 +248,12 @@ public class Manage<E> implements Set<E>{
 		int value = Integer.parseInt(values[3]);
 		int lengthInMinutes = Integer.parseInt(values[4]);
 		double rating = Double.parseDouble(values[5]);
+		
+		if(values.length == 8) {
+			Customer borrower = new Customer(values[6], values[7]);
 
+	        return new Movie(productType, articleNumber, productName, value, lengthInMinutes, rating, borrower);
+			}
 		return new Movie(productType, articleNumber, productName, value, lengthInMinutes, rating);
 	}
 	
@@ -448,6 +467,16 @@ public class Manage<E> implements Set<E>{
 		String customerName = scanner.nextLine();
 		System.out.println("Enter phonenumber: ");
 		String phoneNumber = scanner.nextLine();
+		
+		 Customer customer = new Customer(customerName, phoneNumber);
+
+	        for (final Product product : products) {
+	            if (product.getArticleNumber() == articleArgs) {
+	                product.setBorrower(customer);
+	            }
+	        }
+
+	        writeCsvProducts();
 	//	Customer.setCustomer(customerName, phoneNumber);
 	//	printCustomer();
 		

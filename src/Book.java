@@ -4,7 +4,7 @@ public class Book extends Product {
 	protected static String identifier = "b";
 	private int pages;
 	private String author;
-	public String customer;
+	public Customer borrower;
 
 	public Book(String productType, int article, String name, int price, int pageNumber, String writer) {
 		super(productType, article, name, price);
@@ -12,6 +12,24 @@ public class Book extends Product {
 		this.author = writer;
 		
 
+	}
+
+	public Book(String productType, int article, String name, int price, int pageNumber, String writer,
+			Customer borrower) {
+		super(productType, article, name, price);
+		this.pages = pageNumber;
+		this.author = writer;
+		this.borrower = borrower;
+		
+		// TODO Auto-generated constructor stub
+	}
+
+	public Customer getBorrower() {
+		return borrower;
+	}
+
+	public void setBorrower(Customer borrower) {
+		this.borrower = borrower;
 	}
 
 	public String getIdentifier() {

@@ -8,6 +8,7 @@ public class Product {
 	public int articleNumber;
 	private String productName;
 	private int value;
+	private Customer borrower;
 
 	public Product(String productType, int article, String name, int price) {
 		this.productType = productType;
@@ -18,6 +19,22 @@ public class Product {
 		
 	}	
 	
+	public Product(String productType, int article, String name, int price, Customer borrower) {
+		this.productType = productType;
+		this.articleNumber = article;
+		this.productName = name;
+		this.value = price;
+		this.borrower = borrower;
+	}
+
+	public Customer getBorrower() {
+		return borrower;
+	}
+
+	public void setBorrower(Customer borrower) {
+		this.borrower = borrower;
+	}
+
 	public String getProductType() {
 		return productType;
 

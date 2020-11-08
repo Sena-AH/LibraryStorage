@@ -8,6 +8,7 @@ public class Customer {
 	protected static String identifier = "c";
 	private String customerName;
 	private  String phoneNumber;
+	
 
 	public Customer(String customerName, String phoneNumber) {
 
