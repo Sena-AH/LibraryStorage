@@ -367,7 +367,17 @@ public class Manage {
 		}
 		}
 	
-
+	public static boolean checkArticleNumber(String input) {
+		
+		
+		
+		for(Product p : products) {
+			if (p.toString().equalsIgnoreCase(input)) {
+				return true;
+			}
+		}
+		return false;	
+	}
 
 	public static void handleListCommand() {
 		// make it only show article number and titel, and also if a customer has
@@ -476,7 +486,7 @@ public class Manage {
 			System.out.println("you have chosen movie");
 			System.out.println("Enter: product type; article nr; title; value; length in minutes; rating ");
 			String input2 = scanner.nextLine();
-
+			checkArticleNumber(input2);
 			addMovieToList(input2);
 			writeCsvProducts();
 
@@ -485,6 +495,7 @@ public class Manage {
 			System.out.println("you have chosen book");
 			System.out.println("Enter: product type; article nr; title; value; pages; author ");
 			String input3 = scanner.nextLine();
+			checkArticleNumber(input3);
 			addBookToList(input3);
 			writeCsvProducts();
 
@@ -552,19 +563,33 @@ public class Manage {
 		for (int i = 1; i < fullInput.length; i++) {
 			arguments = fullInput[i];
 			// int articleArguments = Integer.parseInt(arguments);
-
 		}
 		try {
 			int articleArguments = Integer.parseInt(arguments);
-			// skapa metod som letar i arraylistan efter specifik artikelnummer
-			// !!!!!!!!!!!!!
+
+		
+			for (Product product : products) {
+
+			if (product.getArticleNumber() == articleArguments && product.getBorrower() == null) {
+			
+				Exception error = new Exception("ERROR; Articlenumber already exists.");
+			throw error;
+			}
 			return articleArguments;
+
+			}
 		} catch (NumberFormatException e) {
 			System.err.println("SYNTAX ERROR: Articlenumber can only contain numbers");
 			System.out.print("\n\tEnter next command: \n\t > ");
 		}
-		return 0;
+		
+		
+				
+		catch (Exception error){
+			System.out.println(error.getMessage());
 
+		}
+		return 0;
 	}
 
 	public static Command parseCommand(String playerInput) {
