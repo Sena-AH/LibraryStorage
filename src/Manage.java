@@ -411,13 +411,19 @@ public class Manage {
 		// ta emot artikelnr och kunna gora den tillganglig i listan igen
 		// koppla ifran produkten fran customer and make it available
 		for (Product product : products) {
+			
 			if (product.getArticleNumber() == articleArgs) {
+				
 				if (product.productType.equals("Movie")) {
-					product = new Movie(product.getProductType(), product.getArticleNumber(), product.getProductName(),
-							product.getValue(), ((Movie) product).getLengthInMinutes(), ((Movie) product).getRating());
+					
+					product.remove(null);
+					
+					
+					
 				} else if (product.productType.equals("Book")) {
-					product = new Book(product.getProductType(), product.getArticleNumber(), product.getProductName(),
-							product.getValue(), ((Book) product).getPages(), ((Book) product).getAuthor());
+				
+					product.remove(null);
+
 				}
 			}
 			writeCsvProducts();

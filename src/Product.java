@@ -68,6 +68,12 @@ public Book castToBook(Object o) {
 				+ this.getValue();
 
 	}
+
+	public void remove(Customer borrower2) {
+		// TODO Auto-generated method stub
+		setBorrower(null);
+		
+	}
 }
 
 
