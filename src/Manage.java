@@ -367,17 +367,26 @@ public class Manage {
 		}
 		}
 	
-	public static boolean checkArticleNumber(String input) {
-		
-		
+	public static void checkArticleNumber(String input) {
 		
 		for(Product p : products) {
+			try {
 			if (p.toString().equalsIgnoreCase(input)) {
-				return true;
-			}
+				
+			
+				Exception error = new Exception("ERROR; Product already exists.");
+				throw error;
+				}
+				
+
+			}		
+			
+			catch (Exception error){
+				System.out.println(error.getMessage());
+}
 		}
-		return false;	
 	}
+
 
 	public static void handleListCommand() {
 		// make it only show article number and titel, and also if a customer has
@@ -476,7 +485,7 @@ public class Manage {
 
 	public static void handleRegisterCommand() throws IOException {
 
-		// nested objects!!!!!!
+
 		System.out.println("hej enter b or m:");
 		String input = scanner.nextLine();
 		char c = input.charAt(0);
