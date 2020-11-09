@@ -22,9 +22,8 @@ public class Manage {
 
 		readFile();
 		printProducts();
-		
-		System.out.print("\n\tEnter command: \n\t > ");
 
+		System.out.print("\n\tEnter command: \n\t > ");
 
 		boolean on = true;
 
@@ -157,7 +156,8 @@ public class Manage {
 
 					fileWriter.append(csvLine1).append("\n");
 
-				}	if (m.productType.equals("Movie") && m.getBorrower() != null) {
+				}
+				if (m.productType.equals("Movie") && m.getBorrower() != null) {
 
 					Product product = (Product) m;
 					Movie movie = (Movie) m;
@@ -167,7 +167,7 @@ public class Manage {
 
 					fileWriter.append(csvLine2).append("\n");
 				}
-			
+
 			}
 
 			for (Product b : products) {
@@ -185,7 +185,8 @@ public class Manage {
 
 					fileWriter.append(csvLine1).append("\n");
 
-				}if (b.productType.equals("Book") && b.getBorrower() != null) {
+				}
+				if (b.productType.equals("Book") && b.getBorrower() != null) {
 
 					Product product = (Product) b;
 
@@ -198,7 +199,7 @@ public class Manage {
 					fileWriter.append(csvLine2).append("\n");
 
 				}
-				
+
 			}
 
 		} catch (IOException e) {
@@ -251,18 +252,19 @@ public class Manage {
 	public static void printProducts() {
 
 		for (Product p : products) {
-			
-			if (p.getBorrower() == null) {
-			System.out.println(p.getProductType() + " Article number: " + p.getArticleNumber() + " Title: " + p.getProductName() + "\n");
-			
-			} else if (p.getBorrower() != null) {
-				System.out.println(p.getProductType() + " Article number: " + p.getArticleNumber() + " Title: " + p.getProductName() +
-				"\n Borrowed by: " + p.getBorrower().getCustomerName() + ", Phonenumber: " + p.getBorrower().getPhoneNumber() + "\n");
 
-				
+			if (p.getBorrower() == null) {
+				System.out.println(p.getProductType() + " Article number: " + p.getArticleNumber() + " Title: "
+						+ p.getProductName() + "\n");
+
+			} else if (p.getBorrower() != null) {
+				System.out.println(p.getProductType() + " Article number: " + p.getArticleNumber() + " Title: "
+						+ p.getProductName() + "\n Borrowed by: " + p.getBorrower().getCustomerName()
+						+ ", Phonenumber: " + p.getBorrower().getPhoneNumber() + "\n");
+
 			}
-			}
-		
+		}
+
 	}
 
 	public static List<Product> addBookToList(String input) {
@@ -333,7 +335,7 @@ public class Manage {
 
 	public static void info(String filepath, int removeArticlenumber, int position, String limit) {
 
-		//int pos = position - 1;
+		// int pos = position - 1;
 		String article = Integer.toString(removeArticlenumber);
 
 		String currentLine;
@@ -348,45 +350,42 @@ public class Manage {
 
 				data = currentLine.split(";");
 				if (data[1].equalsIgnoreCase(article)) {
-					
-				System.out.println("\nMovie/Book, Article nr, Title, Value in kr, Length in minutes/pages, IMDB rating/author, Customer name, Customer phonenumber\n");
 
-					 	for (String element : data) {
+					System.out.println(
+							"\nMovie/Book, Article nr, Title, Value in kr, Length in minutes/pages, IMDB rating/author, Customer name, Customer phonenumber\n");
+
+					for (String element : data) {
 						System.out.print(element + ",  ");
-						
-				}
-					 	System.out.println(" ");
+
+					}
+					System.out.println(" ");
 				}
 			}
 			fr.close();
 			br.close();
-			
-			}
-			catch (Exception e) {
 
-		}
-		}
-	
-	public static void checkArticleNumber(String input) {
-		
-		for(Product p : products) {
-			try {
-			if (p.toString().equalsIgnoreCase(input)) {
-				
-			
-				Exception error = new Exception("ERROR; Product already exists.");
-				throw error;
-				}
-				
+		} catch (Exception e) {
 
-			}		
-			
-			catch (Exception error){
-				System.out.println(error.getMessage());
-}
 		}
 	}
 
+	public static void checkArticleNumber(String input) {
+
+		for (Product p : products) {
+			try {
+				if (p.toString().equalsIgnoreCase(input)) {
+
+					Exception error = new Exception("ERROR; Product already exists.");
+					throw error;
+				}
+
+			}
+
+			catch (Exception error) {
+				System.out.println(error.getMessage());
+			}
+		}
+	}
 
 	public static void handleListCommand() {
 		// make it only show article number and titel, and also if a customer has
@@ -399,52 +398,47 @@ public class Manage {
 	}
 
 	public static void handleCheckoutCommand(int articleArgs) {
-		
-		
+
 		try {
-			for(Product p : products) {
-			if (p.getArticleNumber() == articleArgs) {
-				
-				if (p.getBorrower() != null) {
-					
-					Exception e = new Exception("ERROR: Product has already been borrowed");
-					throw e;
+			for (Product p : products) {
+				if (p.getArticleNumber() == articleArgs) {
+
+					if (p.getBorrower() != null) {
+
+						Exception e = new Exception("ERROR: Product has already been borrowed");
+						throw e;
+					}
+
 				}
-
-			} 
-			}  
-			
-			
-		
-		
-		System.out.println("Enter name: ");
-		String customerName = scanner.nextLine();
-		System.out.println("Enter phonenumber: ");
-		String phoneNumber = scanner.nextLine();
-
-		Customer customer = new Customer(customerName, phoneNumber);
-
-		for (final Product product : products) {
-			if (product.getArticleNumber() == articleArgs) {
-				product.setBorrower(customer);
 			}
-			/*
-			 * if(product.getBorrower().equals(customer)) {
-			 * 
-			 * }
-			 */
+
+			System.out.println("Enter name: ");
+			String customerName = scanner.nextLine();
+			System.out.println("Enter phonenumber: ");
+			String phoneNumber = scanner.nextLine();
+
+			Customer customer = new Customer(customerName, phoneNumber);
+
+			for (final Product product : products) {
+				if (product.getArticleNumber() == articleArgs) {
+					product.setBorrower(customer);
+				}
+				/*
+				 * if(product.getBorrower().equals(customer)) {
+				 * 
+				 * }
+				 */
+			}
+
+			writeCsvProducts();
 		}
 
-		writeCsvProducts();
-			}
-		
 		catch (Exception e) {
 			System.out.println(e.getMessage());
-			//continue;
-            //System.exit(0);
+			// continue;
+			// System.exit(0);
 
 		}
-
 
 	}
 
@@ -453,38 +447,31 @@ public class Manage {
 		// ta emot artikelnr och kunna gora den tillganglig i listan igen
 		// koppla ifran produkten fran customer and make it available
 		for (Product product : products) {
-			
+
 			if (product.getArticleNumber() == articleArgs) {
-				
+
 				if (product.productType.equals("Movie")) {
-					
+
 					product.remove(null);
-					
-					
-					
+
 				} else if (product.productType.equals("Book")) {
-				
+
 					product.remove(null);
 
 				}
 			}
 			writeCsvProducts();
-/*
-			try {
-				if (!(products.contains(articleArgs))) {
-					Exception e = new Exception("ERROR: Articlenumber does not exist");
-					throw e;
-				}
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}*/
+			/*
+			 * try { if (!(products.contains(articleArgs))) { Exception e = new
+			 * Exception("ERROR: Articlenumber does not exist"); throw e; } } catch
+			 * (Exception e) { System.out.println(e.getMessage()); }
+			 */
 
 		}
 		System.out.println("checkin command handled");
 	}
 
 	public static void handleRegisterCommand() throws IOException {
-
 
 		System.out.println("hej enter b or m:");
 		String input = scanner.nextLine();
@@ -542,9 +529,7 @@ public class Manage {
 				return;
 			}
 		}
-		
 
-		
 		System.out.println("deregister command handled");
 //use for checkout?
 	}
@@ -552,8 +537,6 @@ public class Manage {
 	public static void handleInfoCommand(int articleArgs) {
 		// enter code
 		info("Products.csv", articleArgs, 1, ";");
-		
-		
 
 		// need to parse record from file using article number to print out info about
 		// product
@@ -576,25 +559,22 @@ public class Manage {
 		try {
 			int articleArguments = Integer.parseInt(arguments);
 
-		
 			for (Product product : products) {
 
-			if (product.getArticleNumber() == articleArguments && product.getBorrower() == null) {
-			
-				Exception error = new Exception("ERROR; Articlenumber already exists.");
-			throw error;
-			}
-			return articleArguments;
+				if (product.getArticleNumber() == articleArguments && product.getBorrower() == null) {
+
+					Exception error = new Exception("ERROR; Articlenumber already exists.");
+					throw error;
+				}
+				return articleArguments;
 
 			}
 		} catch (NumberFormatException e) {
 			System.err.println("SYNTAX ERROR: Articlenumber can only contain numbers");
 			System.out.print("\n\tEnter next command: \n\t > ");
 		}
-		
-		
-				
-		catch (Exception error){
+
+		catch (Exception error) {
 			System.out.println(error.getMessage());
 
 		}
