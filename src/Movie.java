@@ -39,11 +39,6 @@ public class Movie extends Product  {
 		return "(Movie) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName();	
 		}
 
-	@Override
-	public int hashCode() {
-		String s = "(Movie) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName();
-		return s.hashCode();
-	}
 
 
 	@Override
