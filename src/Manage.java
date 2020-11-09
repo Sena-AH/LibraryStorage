@@ -17,11 +17,14 @@ public class Manage {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
-		System.out.println(" Welcome to the Library system. ");
-		System.out.println(" Below you can see the current inventory: ");
+		System.out.println(" °-*-° Welcome to the Library system °-*-° ");
+		System.out.println(" - Below you can see the current inventory - \n");
 
 		readFile();
 		printProducts();
+		
+		System.out.print("\n\tEnter command: \n\t > ");
+
 
 		boolean on = true;
 
@@ -74,8 +77,8 @@ public class Manage {
 
 			} else if (command == Command.UNKNOWN) {
 
-				System.err.println("\nERROR: Unknown command.\n");
-				System.out.print("\n\tEnter next command: \n\t > ");
+				System.err.println("\n\tERROR: Unknown command.\n");
+				System.out.println("\n\tEnter next command: \n\t > ");
 
 				continue;
 
@@ -135,7 +138,7 @@ public class Manage {
 			// String title = " Article nr; Title; Value in kr; Length in minutes; IMDB
 			// rating\n";
 			// fileWriter.append(title);
-			String title = "Movie/Book; Article nr; Title; Value in kr; Length in minutes/pages ; IMDB rating/author\n";
+			String title = "Movie/Book; Article nr; Title; Value in kr; Length in minutes/pages; IMDB rating/author; Customer name; Customer phonenumber\n";
 			fileWriter.append(title);
 			for (Product m : products) {
 
@@ -250,11 +253,11 @@ public class Manage {
 		for (Product p : products) {
 			
 			if (p.getBorrower() == null) {
-			System.out.println(p.getProductType() + " Article number: " + p.getArticleNumber() + " Title: " + p.getProductName());
+			System.out.println(p.getProductType() + " Article number: " + p.getArticleNumber() + " Title: " + p.getProductName() + "\n");
 			
 			} else if (p.getBorrower() != null) {
 				System.out.println(p.getProductType() + " Article number: " + p.getArticleNumber() + " Title: " + p.getProductName() +
-				"\n Borrowed by: " + p.getBorrower().getCustomerName() + ", phonenumber: " + p.getBorrower().getPhoneNumber());
+				"\n Borrowed by: " + p.getBorrower().getCustomerName() + ", Phonenumber: " + p.getBorrower().getPhoneNumber() + "\n");
 
 				
 			}
@@ -330,7 +333,7 @@ public class Manage {
 
 	public static void info(String filepath, int removeArticlenumber, int position, String limit) {
 
-		int pos = position - 1;
+		//int pos = position - 1;
 		String article = Integer.toString(removeArticlenumber);
 
 		String currentLine;
@@ -345,21 +348,26 @@ public class Manage {
 
 				data = currentLine.split(";");
 				if (data[1].equalsIgnoreCase(article)) {
+					
+				System.out.println("\nMovie/Book, Article nr, Title, Value in kr, Length in minutes/pages, IMDB rating/author, Customer name, Customer phonenumber\n");
 
-					for (String element : data) {
-						System.out.println(element);
-					}
-
+					 	for (String element : data) {
+						System.out.print(element + ",  ");
+						
+				}
+					 	System.out.println(" ");
 				}
 			}
-
 			fr.close();
 			br.close();
-
-		} catch (Exception e) {
+			
+			}
+			catch (Exception e) {
 
 		}
-	}
+		}
+	
+
 
 	public static void handleListCommand() {
 		// make it only show article number and titel, and also if a customer has
@@ -372,16 +380,24 @@ public class Manage {
 	}
 
 	public static void handleCheckoutCommand(int articleArgs) {
-		// enter code
-		// nested objects!!!!!!
+		
+		
+		try {
+			for(Product p : products) {
+			if (p.getArticleNumber() == articleArgs) {
+				
+				if (p.getBorrower() != null) {
+					
+					Exception e = new Exception("ERROR: Product has already been borrowed");
+					throw e;
+				}
 
-		// CREATE CUSTOMER ATTRIBUTE IN MOVIE AND BOOK CLASS AND ADD SETTER METHOD TO
-		// SET CUSTOMER TO PRODUCT!!!!!!!
-
-		// when printing out product in list command, print out customer
-
-		// customer enters name and phonenumber
-		// connect product to customer and make it unavailable until checkinCommand()
+			} 
+			}  
+			
+			
+		
+		
 		System.out.println("Enter name: ");
 		String customerName = scanner.nextLine();
 		System.out.println("Enter phonenumber: ");
@@ -401,8 +417,15 @@ public class Manage {
 		}
 
 		writeCsvProducts();
+			}
+		
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			//continue;
+            //System.exit(0);
 
-		System.out.println("\ncheckout command handled");
+		}
+
 
 	}
 
@@ -509,6 +532,8 @@ public class Manage {
 	public static void handleInfoCommand(int articleArgs) {
 		// enter code
 		info("Products.csv", articleArgs, 1, ";");
+		
+		
 
 		// need to parse record from file using article number to print out info about
 		// product

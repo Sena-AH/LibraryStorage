@@ -1,2 +1,5 @@
-Movie/Book; Article nr; Title; Value in kr; Length in minutes/pages ; IMDB rating/author
-Book;45;The Ring;50;500;ghost
+Movie/Book; Article nr; Title; Value in kr; Length in minutes/pages; IMDB rating/author; Customer name; Customer phonenumber
+Movie;313;pirates of the carribean;3123;232;10.0;Julia Berg;123123
+Book;45;The Ring;50;500;ghost;sena;12321
+Book;21;Memoirs of a Geisha;4000;31;vettinte;thiti;233424
+Book;12321;qwewq;123;321;dfgfd
