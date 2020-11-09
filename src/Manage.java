@@ -369,11 +369,23 @@ public class Manage {
 		}
 	}
 
-	public static void checkArticleNumber(String input) {
+	public static void checkArticleNumber(String input) throws IOException {
 
-		for (Product p : products) {
+		
+		try {
+			FileReader fr = new FileReader("Products.csv");
+		
+		BufferedReader br = new BufferedReader(fr);
+		
+		
+		String currentLine;
+
+		while ((currentLine = br.readLine()) != null) {
+		
+	
 			try {
-				if (p.toString().equalsIgnoreCase(input)) {
+				
+				if (currentLine.equalsIgnoreCase(input)) {
 
 					Exception error = new Exception("ERROR; Product already exists.");
 					throw error;
@@ -384,6 +396,11 @@ public class Manage {
 			catch (Exception error) {
 				System.out.println(error.getMessage());
 			}
+		}
+		fr.close();
+		br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -461,11 +478,19 @@ public class Manage {
 				}
 			}
 			writeCsvProducts();
-			/*
-			 * try { if (!(products.contains(articleArgs))) { Exception e = new
-			 * Exception("ERROR: Articlenumber does not exist"); throw e; } } catch
-			 * (Exception e) { System.out.println(e.getMessage()); }
-			 */
+			
+			 try {
+				 if (!(product.contains(articleArgs))) { 
+					 Exception e = new Exception("ERROR: Articlenumber does not exist"); 
+					 throw e; 
+					 } 
+				 
+			 } catch (Exception e) 
+			 
+			 { System.out.println(e.getMessage()); 
+			 
+			 }
+			 
 
 		}
 		System.out.println("checkin command handled");
