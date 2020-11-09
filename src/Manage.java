@@ -394,7 +394,7 @@ public class Manage {
 			}
 
 			catch (Exception error) {
-				System.out.println(error.getMessage());
+				System.err.println(error.getMessage());
 			}
 		}
 		fr.close();
@@ -416,7 +416,22 @@ public class Manage {
 
 	public static void handleCheckoutCommand(int articleArgs) {
 
+		
 		try {
+			for (Product p : products) {
+
+			if (!(p.equals(articleArgs))) { 
+			 Exception error = new Exception("ERROR: Articlenumber does not exist"); 
+			 throw error; 
+			  }
+			}
+			}catch (Exception error) { 
+		
+			  
+				  System.err.println(error.getMessage()); 
+				  } 
+		try {
+			
 			for (Product p : products) {
 				if (p.getArticleNumber() == articleArgs) {
 
@@ -426,9 +441,11 @@ public class Manage {
 						throw e;
 					}
 
-				}
-			}
-
+				} 
+				  
+			 
+		
+		
 			System.out.println("Enter name: ");
 			String customerName = scanner.nextLine();
 			System.out.println("Enter phonenumber: ");
@@ -449,6 +466,7 @@ public class Manage {
 
 			writeCsvProducts();
 		}
+		}
 
 		catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -456,7 +474,9 @@ public class Manage {
 			// System.exit(0);
 
 		}
-
+		
+		
+	
 	}
 
 	public static void handleCheckinCommand(int articleArgs) {
@@ -487,7 +507,7 @@ public class Manage {
 				 
 			 } catch (Exception e) 
 			 
-			 { System.out.println(e.getMessage()); 
+			 { System.err.println(e.getMessage()); 
 			 
 			 }
 			 
