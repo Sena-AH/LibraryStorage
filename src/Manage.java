@@ -421,7 +421,7 @@ public class Manage {
 				}
 			}
 			writeCsvProducts();
-
+/*
 			try {
 				if (!(products.contains(articleArgs))) {
 					Exception e = new Exception("ERROR: Articlenumber does not exist");
@@ -429,7 +429,7 @@ public class Manage {
 				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
-			}
+			}*/
 
 		}
 		System.out.println("checkin command handled");
