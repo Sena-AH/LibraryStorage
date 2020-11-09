@@ -372,6 +372,9 @@ public class Manage {
 	public static void checkArticleNumber(String input) throws IOException {
 
 		
+		String[] inputArray = input.split(";");
+		
+		
 		try {
 			FileReader fr = new FileReader("Products.csv");
 		
@@ -380,21 +383,30 @@ public class Manage {
 		
 		String currentLine;
 
-		while ((currentLine = br.readLine()) != null) {
-		
-	
+		while ((currentLine = br.readLine()) != null) { 
+			
+			String[] fileArray = currentLine.split(";");
+			
+			for (Product p : products) {
+				
 			try {
 				
-				if (currentLine.equalsIgnoreCase(input)) {
+				String article = String.valueOf(p.getArticleNumber());
+				
+				if ((inputArray[1].equalsIgnoreCase(article)) && (fileArray[1].equalsIgnoreCase(inputArray[1]))) {
 
-					Exception error = new Exception("ERROR; Product already exists.");
+					Exception error = new Exception("ERROR; Product already exists. Exiting library");
 					throw error;
 				}
+				
 
-			}
-
+				}
+			
 			catch (Exception error) {
 				System.err.println(error.getMessage());
+			}
+			//System.exit(0);
+		
 			}
 		}
 		fr.close();
@@ -402,16 +414,19 @@ public class Manage {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
+		System.exit(0);
 
+		System.out.println(" HEJ HEJ E INNE I DEN KODEN DU VET");
+			}
+	
+	
+	
 	public static void handleListCommand() {
-		// make it only show article number and titel, and also if a customer has
-		// borrowed it
+		
 		System.out.println("This is a list of all our products: ");
 
 		printProducts();
 
-		// TRY ADDING IN MAIN METHOD TO FIX PRINTING PROBLEM!
 	}
 
 	public static void handleCheckoutCommand(int articleArgs) {
