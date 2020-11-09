@@ -416,7 +416,6 @@ public class Manage {
 		}
 		System.exit(0);
 
-		System.out.println(" HEJ HEJ E INNE I DEN KODEN DU VET");
 			}
 	
 	
