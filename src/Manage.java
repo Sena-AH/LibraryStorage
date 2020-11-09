@@ -414,7 +414,7 @@ public class Manage {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		System.exit(0);
+		//System.exit(0);
 
 			}
 	
@@ -431,23 +431,24 @@ public class Manage {
 	public static void handleCheckoutCommand(int articleArgs) {
 
 		
-		
-	//	try {
-			
+		try {
+
 			for (Product p : products) {
 				if (p.getArticleNumber() == articleArgs) {
 
 					if (p.getBorrower() != null) {
-						System.err.println("ERROR: Product has already been borrowed");
-					//	Exception e = new Exception("ERROR: Product has already been borrowed");
-						//throw e;
+						//System.err.println("ERROR: Product has already been borrowed");
+						Exception e = new Exception("ERROR: Product has already been borrowed");
+						throw e;
 					}
 
-				} 
-				  
+				}
+
 			}
-		
-		
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		} //System.exit(0);
+	
 			System.out.println("Enter name: ");
 			String customerName = scanner.nextLine();
 			System.out.println("Enter phonenumber: ");
@@ -481,7 +482,7 @@ public class Manage {
 	
 	//}
 
-	public static void handleCheckinCommand(int articleArgs) {
+	public static void handleCheckinCommand(int articleArgs) throws IOException {
 		// enter code
 		// ta emot artikelnr och kunna gora den tillganglig i listan igen
 		// koppla ifran produkten fran customer and make it available
@@ -500,7 +501,7 @@ public class Manage {
 				}
 			}
 			writeCsvProducts();
-			
+		/*	
 			 try {
 				 if (!(product.equals(articleArgs))) { 
 					 Exception e = new Exception("ERROR: Articlenumber does not exist"); 
@@ -512,9 +513,9 @@ public class Manage {
 			 { System.err.println(e.getMessage()); 
 			 
 			 }
-			 
-
-		}
+			 */
+			
+		} 
 		System.out.println("checkin command handled");
 	}
 
@@ -582,52 +583,34 @@ public class Manage {
 	}
 
 	public static void handleInfoCommand(int articleArgs) {
-		// enter code
+		
 		info("Products.csv", articleArgs, 1, ";");
 
-		// need to parse record from file using article number to print out info about
-		// product
-		// solve when solving handleDeregisterCommand()
+	
 
 	}
 
 	public static int parseArgument(String playerInput) {
 
-		// CHANGE SO IT WORKS WITH ARRAY LIST AND NOT JUST ARRAY!!
-		// MAKE IT PARSE ARTICLENUMBERS
 
-		String[] fullInput = playerInput.split(" ");
-		String arguments = new String();
+        String[] fullInput = playerInput.split(" ");
+        String arguments = new String();
 
-		for (int i = 1; i < fullInput.length; i++) {
-			arguments = fullInput[i];
-			// int articleArguments = Integer.parseInt(arguments);
-		}
-		try {
-			int articleArguments = Integer.parseInt(arguments);
+        for (int i = 1; i < fullInput.length; i++) {
+            arguments = fullInput[i];
 
-			for (Product product : products) {
+        }
+        try {
+            int articleArguments = Integer.parseInt(arguments);
+            
+            return articleArguments;
+        } catch (NumberFormatException e) {
+            System.err.println("SYNTAX ERROR: Articlenumber can only contain numbers");
+            System.out.print("\n\tEnter next command: \n\t > ");
+        }
+        return 0;
 
-				if (product.getArticleNumber() == articleArguments && product.getBorrower() == null) {
-					
-					System.err.println("ERROR; Articlenumber already exists.");
-					//Exception error = new Exception("ERROR; Articlenumber already exists.");
-					//throw error;
-				}
-				return articleArguments;
-
-			}
-		} catch (NumberFormatException e) {
-			System.err.println("SYNTAX ERROR: Articlenumber can only contain numbers");
-			System.out.print("\n\tEnter next command: \n\t > ");
-		}
-
-	//catch (Exception error) {
-	//	System.out.println(error.getMessage());
-
-	//}
-		return 0;
-	}
+    }
 
 	public static Command parseCommand(String playerInput) {
 

@@ -1,6 +1,6 @@
 Movie/Book; Article nr; Title; Value in kr; Length in minutes/pages; IMDB rating/author; Customer name; Customer phonenumber
 Movie;313;pirates of the carribean;3123;232;10.0
-Movie;8888;apple;565;88;8.8
+Movie;8888;apple;565;88;8.8;Sena;34242344
 Book;45;The Ring;50;500;ghost
 Book;45;the lord of the rings;213;213;hej
 Book;21;Memoirs of a Geisha;4000;31;vettinte;thiti;37658743
