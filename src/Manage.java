@@ -417,33 +417,21 @@ public class Manage {
 	public static void handleCheckoutCommand(int articleArgs) {
 
 		
-		try {
-			for (Product p : products) {
-
-			if (!(p.equals(articleArgs))) { 
-			 Exception error = new Exception("ERROR: Articlenumber does not exist"); 
-			 throw error; 
-			  }
-			}
-			}catch (Exception error) { 
 		
-			  
-				  System.err.println(error.getMessage()); 
-				  } 
-		try {
+	//	try {
 			
 			for (Product p : products) {
 				if (p.getArticleNumber() == articleArgs) {
 
 					if (p.getBorrower() != null) {
-
-						Exception e = new Exception("ERROR: Product has already been borrowed");
-						throw e;
+						System.err.println("ERROR: Product has already been borrowed");
+					//	Exception e = new Exception("ERROR: Product has already been borrowed");
+						//throw e;
 					}
 
 				} 
 				  
-			 
+			}
 		
 		
 			System.out.println("Enter name: ");
@@ -466,18 +454,18 @@ public class Manage {
 
 			writeCsvProducts();
 		}
-		}
+		//}
 
-		catch (Exception e) {
-			System.out.println(e.getMessage());
+		//catch (Exception e) {
+		//	System.out.println(e.getMessage());
 			// continue;
 			// System.exit(0);
 
-		}
+		//}
 		
 		
 	
-	}
+	//}
 
 	public static void handleCheckinCommand(int articleArgs) {
 		// enter code
@@ -607,9 +595,10 @@ public class Manage {
 			for (Product product : products) {
 
 				if (product.getArticleNumber() == articleArguments && product.getBorrower() == null) {
-
-					Exception error = new Exception("ERROR; Articlenumber already exists.");
-					throw error;
+					
+					System.err.println("ERROR; Articlenumber already exists.");
+					//Exception error = new Exception("ERROR; Articlenumber already exists.");
+					//throw error;
 				}
 				return articleArguments;
 
@@ -619,10 +608,10 @@ public class Manage {
 			System.out.print("\n\tEnter next command: \n\t > ");
 		}
 
-		catch (Exception error) {
-			System.out.println(error.getMessage());
+	//catch (Exception error) {
+	//	System.out.println(error.getMessage());
 
-		}
+	//}
 		return 0;
 	}
 
