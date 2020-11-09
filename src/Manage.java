@@ -480,7 +480,7 @@ public class Manage {
 			writeCsvProducts();
 			
 			 try {
-				 if (!(product.contains(articleArgs))) { 
+				 if (!(product.equals(articleArgs))) { 
 					 Exception e = new Exception("ERROR: Articlenumber does not exist"); 
 					 throw e; 
 					 } 
