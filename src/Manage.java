@@ -17,7 +17,7 @@ public class Manage {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
-		System.out.println(" °-*-° Welcome to the Library system °-*-° ");
+		System.out.println(" ï¿½-*-ï¿½ Welcome to the Library system ï¿½-*-ï¿½ ");
 		System.out.println(" - Below you can see the current inventory - \n");
 
 		readFile();
@@ -242,11 +242,11 @@ public class Manage {
 		for (Product p : products) {
 
 			if (p.getBorrower() == null) {
-				System.out.println(p.getProductType() + " Article number: " + p.getArticleNumber() + " Title: "
+				System.out.println("(" +p.getProductType() + ")" + " Article number: " + p.getArticleNumber() + " Title: "
 						+ p.getProductName() + "\n");
 
 			} else if (p.getBorrower() != null) {
-				System.out.println(p.getProductType() + " Article number: " + p.getArticleNumber() + " Title: "
+				System.out.println("("+ p.getProductType() + ")" + " Article number: " + p.getArticleNumber() + " Title: "
 						+ p.getProductName() + "\n Borrowed by: " + p.getBorrower().getCustomerName()
 						+ ", Phonenumber: " + p.getBorrower().getPhoneNumber() + "\n");
 
@@ -357,7 +357,7 @@ public class Manage {
 		}
 	}
 
-	public static void checkArticleNumber(String input) throws IOException {
+	public static void checkArticleNumber(String input) {
 
 		
 		String[] inputArray = input.split(";");
@@ -379,7 +379,7 @@ public class Manage {
 			for (Product p : products) {
 				
 				String article = String.valueOf(p.getArticleNumber());
-				if(imdb > 10.0) {
+				if((p.getProductType() == "Movie") && imdb > 10.0) {
 					RuntimeException e = new RuntimeException("INPUT ERROR: IMDB rating too high. Needs to be less than 10.0.");
 					throw e;
 				}
@@ -396,9 +396,8 @@ public class Manage {
 		fr.close();
 		br.close();
 		}
-		catch (Exception e) {
+		catch (IOException e) {
 			e.getMessage();
-			//System.err.println("INPUT ERROR: IMDB rating too high. Needs to be less than 10.0.");
 		
 		}
 
@@ -547,7 +546,8 @@ public class Manage {
 				writeCsvProducts();
 			
 			} catch (RuntimeException e) {
-				System.err.println("ERROR; Product already exists or input is not valid.");
+				System.err.println(e.getMessage());
+				
 				System.out.print("\n\tEnter next command: \n\t > ");		
 				}
 
@@ -562,7 +562,7 @@ public class Manage {
 			addBookToList(input3);
 			writeCsvProducts();
 			} catch (RuntimeException e) {
-				System.err.println("ERROR; Product already exists or input is not valid.");
+				System.err.println(e.getMessage());
 				System.out.print("\n\tEnter next command: \n\t > ");		
 				}
 

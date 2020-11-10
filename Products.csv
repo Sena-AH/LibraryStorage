@@ -1,6 +1,9 @@
-Movie/Book; Article nr; Title; Value in kr; Length in minutes/pages; IMDB rating/author; Customer name; Customer phonenumber
+Movie/Book;Article nr;Title;Value in kr;Length in minutes/pages;IMDB rating/author;Customer name;Customer phonenumber
 Movie;313;hej;23;123;1.0
 Movie;123;inte shawshank;123;213;2.0
 Movie;8888;pear;123;123;2.0
 Movie;555;Split;55;33;11.0
+Movie;1234567890;qweasd;72727272;323232;5.0
+Movie;1111;ett;111;111;1.1
 Book;2332;en bok;123;123;arthur;thitii;8587587
+Book;43;fe;43;43;2.0
