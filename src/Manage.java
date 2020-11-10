@@ -361,8 +361,9 @@ public class Manage {
 
 		
 		String[] inputArray = input.split(";");
-		
-		
+
+		double imdb = Double.parseDouble(inputArray[5]);
+	
 		try {
 			FileReader fr = new FileReader("Products.csv");
 		
@@ -378,10 +379,13 @@ public class Manage {
 			for (Product p : products) {
 				
 				String article = String.valueOf(p.getArticleNumber());
-				
+				if(imdb > 10.0) {
+					RuntimeException e = new RuntimeException("INPUT ERROR: IMDB rating too high. Needs to be less than 10.0.");
+					throw e;
+				}
 				if ((inputArray[1].equalsIgnoreCase(article)) && (fileArray[1].equalsIgnoreCase(inputArray[1]))) {
 
-					RuntimeException error = new RuntimeException("ERROR; Product already exists or input is not valid.");
+					RuntimeException error = new RuntimeException("ERROR: Product already exists or input is not valid.");
 					throw error;
 				} 
 				
@@ -391,55 +395,15 @@ public class Manage {
 		}
 		fr.close();
 		br.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		}
-		//System.exit(0);
-
-			}
-	/*
-	public static void articleNumberDoesNotExist(int articleArgs) throws IOException {
+		catch (Exception e) {
+			e.getMessage();
+			//System.err.println("INPUT ERROR: IMDB rating too high. Needs to be less than 10.0.");
 		
-	//	try {
-			
-			FileReader fr = new FileReader("Products.csv");
-		
-		BufferedReader br = new BufferedReader(fr);
-		
-		
-		String currentLine;
-
-		while ((currentLine = br.readLine()) != null) { 
-			
-			for (Product p : products) {
-				
-			
-			String[] fileArray = currentLine.split(";");
-			String article = String.valueOf(articleArgs);
-			
-				
-				String articleList = String.valueOf(p.getArticleNumber());
-			
-
-			//	if((!(article.equalsIgnoreCase(fileArray[1])) || (!(article.equalsIgnoreCase(articleList))))) {
-				if(article.equalsIgnoreCase(articleList)) {
-			 if(!(products.contains(p.getArticleNumber()))) {
-			//if((!(article.equalsIgnoreCase(fileArray[1])) || (!(article.equalsIgnoreCase(articleList))))) {
-				RuntimeException error = new RuntimeException("ERROR: Article number does not exist hejhejhej");
-				throw error;
-			}
-			}
-			}
 		}
-		fr.close();
-		br.close();
-	//	}catch(FileNotFoundExeption e) {
-	//		e.printStackTrace();
 
-			
-	//	}
-	}
-	 */
+			}
+	
 	
 	 public static void articleNumberDoesNotExist(int articleArgs) {
 
