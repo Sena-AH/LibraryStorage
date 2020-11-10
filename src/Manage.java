@@ -228,7 +228,10 @@ public class Manage {
 		int value = Integer.parseInt(values[3]);
 		int lengthInMinutes = Integer.parseInt(values[4]);
 		double rating = Double.parseDouble(values[5]);
-
+		if (rating <10.0) {
+			RuntimeException e = new RuntimeException("INPUT ERROR: IMDB rating too high. Needs to be less than 10.0.");
+			throw e;
+		}
 		if (values.length == 8) {
 			Customer borrower = new Customer(values[6], values[7]);
 
@@ -378,14 +381,8 @@ public class Manage {
 			for (Product p : products) {
 				
 				String article = String.valueOf(p.getArticleNumber());
-				if(p.getProductType() == "Movie"){
-					double imdb = Double.parseDouble(inputArray[5]);
-
-					if(imdb > 10.0) {
-						RuntimeException e = new RuntimeException("INPUT ERROR: IMDB rating too high. Needs to be less than 10.0.");
-						throw e;
-				}
-				}
+				
+				
 				if ((inputArray[1].equalsIgnoreCase(article)) && (fileArray[1].equalsIgnoreCase(inputArray[1]))) {
 
 					RuntimeException error = new RuntimeException("ERROR: Product already exists or input is not valid.");
