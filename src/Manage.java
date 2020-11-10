@@ -17,7 +17,7 @@ public class Manage {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
-		System.out.println(" �-*-� Welcome to the Library system �-*-� ");
+		System.out.println(" -- Welcome to the Library system -- ");
 		System.out.println(" - Below you can see the current inventory - \n");
 
 		readFile();
