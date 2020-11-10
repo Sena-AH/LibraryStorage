@@ -409,7 +409,7 @@ public class Manage {
 		//System.exit(0);
 
 			}
-	
+	/*
 	public static void articleNumberDoesNotExist(int articleArgs) throws IOException {
 		
 	//	try {
@@ -451,7 +451,28 @@ public class Manage {
 			
 	//	}
 	}
+	 */
 	
+	 public static void articleNumberDoesNotExist(int articleArgs) {
+
+	        boolean articleNumberDoesNotExist = true;
+
+	        for (Product p : products) {
+
+	            String article = String.valueOf(articleArgs);
+
+	            String articleList = String.valueOf(p.getArticleNumber());
+
+	            if (article.equalsIgnoreCase(articleList)) {
+	                articleNumberDoesNotExist = false;
+	            }
+	        }
+
+	        if (articleNumberDoesNotExist) {
+	            throw new RuntimeException("ERROR: Article number does not exist hejhejhej");
+	        }
+
+	    }
 	
 	public static void handleListCommand() {
 		
@@ -532,14 +553,16 @@ public class Manage {
 		
 		for (Product product : products) {
 
-			// try {
-				// if (!(product.equals(articleArgs))) { 
-				//	 Exception e = new Exception("ERROR: Articlenumber does not exist"); 
-				//	 throw e; 
-				//	 } 	
+			
 			
 			
 			if (product.getArticleNumber() == articleArgs) {
+				
+				if(product.getBorrower() == null) {
+					
+					Exception E = new Exception("ERROR: Product needs to be borrowed before customer can checkin product");
+					throw E;
+				}
 
 				if (product.productType.equals("Movie")) {
 
@@ -553,21 +576,18 @@ public class Manage {
 			}
 			writeCsvProducts();
 			
-		/*	 try {
-				 if (!(product.equals(articleArgs))) { 
-					 Exception e = new Exception("ERROR: Articlenumber does not exist"); 
-					 throw e; 
-					 } 
-			*/	 
+		 
 			 } 
-		}catch (RuntimeException e) 
+		}catch (RuntimeException e)  {
+			System.err.println(e.getMessage()); 
 			 
-			 { System.err.println(e.getMessage()); 
-			 
-			 }
+			 } catch (Exception E) {
+		 System.err.println(E.getMessage()); 
+	}
 		System.out.println("checkin command handled");
 			
 		} 
+
 	
 
 

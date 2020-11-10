@@ -1,4 +1,4 @@
 Movie/Book; Article nr; Title; Value in kr; Length in minutes/pages; IMDB rating/author; Customer name; Customer phonenumber
-Movie;313;pirates of the carribean;3123;232;10.0;Lina;7126537213
-Movie;8888;apple;565;88;8.8;Sena;34242344
+Movie;313;pirates of the carribean;3123;232;10.0
+Movie;8888;apple;565;88;8.8
 Movie;2222;movie;23;23;4.3
