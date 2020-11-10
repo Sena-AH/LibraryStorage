@@ -3,6 +3,8 @@ import java.io.*;
 
 public class Manage {
 
+	//This class manages all the commands from the user
+	
 	boolean isRunning;
 
 	protected enum Command {
@@ -32,7 +34,9 @@ public class Manage {
 			String playerInput = scanner.nextLine();
 
 			Command command = parseCommand(playerInput);
-
+			
+			//if statements to handle command methods
+			
 			if (command == Command.LIST) {
 				handleListCommand();
 				System.out.print("\n\tEnter next command: \n\t > ");
@@ -94,7 +98,9 @@ public class Manage {
 	}
 
 	public static void readFile() {
-
+		
+		//method to read the csv file and calling a method for adding products in the list
+		
 		String filePathMovie = "Products.csv";
 		FileInputStream fin;
 		try {
@@ -120,6 +126,9 @@ public class Manage {
 	}
 
 	public static void addProduct(String line) throws FileNotFoundException, ClassCastException {
+		
+		//method to split movie and book products 
+		
 		if (line.startsWith("Movie")) {
 			addMovieToList(line);
 		} else if (line.startsWith("Book")) {
@@ -129,18 +138,19 @@ public class Manage {
 
 	private static void writeCsvProducts() {
 
-		// exports objects in arraylist to CSV file
+		// this method exports products in list to CSV file
 
 		String objFilePath = "Products.csv";
 		try (FileWriter fileWriter = new FileWriter(objFilePath)) {
 
 			String title = "Movie/Book;Article nr;Title;Value in kr;Length in minutes/pages;IMDB rating/author;Customer name;Customer phonenumber\n";
 			fileWriter.append(title);
+			
+			//export movie products
 			for (Product m : products) {
 
-
 				if (m.productType.equals("Movie") && m.getBorrower() == null) {
-					
+
 					Movie movie = (Movie) m;
 
 					String csvLine1 = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";"
@@ -149,6 +159,7 @@ public class Manage {
 					fileWriter.append(csvLine1).append("\n");
 
 				}
+				//checks if product has been borrowed by customer
 				if (m.productType.equals("Movie") && m.getBorrower() != null) {
 
 					Product product = (Product) m;
@@ -161,7 +172,7 @@ public class Manage {
 				}
 
 			}
-
+			//export book products
 			for (Product b : products) {
 
 				if (b.productType.equals("Book") && b.getBorrower() == null) {
@@ -174,6 +185,8 @@ public class Manage {
 					fileWriter.append(csvLine1).append("\n");
 
 				}
+				
+				//checks if product has been borrowed by customer		
 				if (b.productType.equals("Book") && b.getBorrower() != null) {
 
 					Product product = (Product) b;
@@ -191,13 +204,14 @@ public class Manage {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();	
-			}
+			e.printStackTrace();
+		}
 	}
 
 	public static Book parseBook(String csvLine) throws NumberFormatException {
-		// this method creates book object
-
+		
+		// this method parses input to initialize book objects
+		
 		String[] values = csvLine.split(";");
 
 		String productType = values[0];
@@ -207,7 +221,7 @@ public class Manage {
 		int value = Integer.parseInt(values[3]);
 		int pages = Integer.parseInt(values[4]);
 		String author = values[5];
-
+		
 		if (values.length == 8) {
 			Customer borrower = new Customer(values[6], values[7]);
 
@@ -218,7 +232,9 @@ public class Manage {
 	}
 
 	public static Movie parseMovie(String csvLine) {
-		// this method creates movie object
+
+		// this method parses input to initialize movie objects
+
 		String[] values = csvLine.split(";");
 
 		String productType = values[0];
@@ -228,7 +244,7 @@ public class Manage {
 		int value = Integer.parseInt(values[3]);
 		int lengthInMinutes = Integer.parseInt(values[4]);
 		double rating = Double.parseDouble(values[5]);
-		if (rating >10.0) {
+		if (rating > 10.0) {
 			RuntimeException e = new RuntimeException("INPUT ERROR: IMDB rating too high. Needs to be less than 10.0.");
 			throw e;
 		}
@@ -242,15 +258,17 @@ public class Manage {
 
 	public static void printProducts() {
 
+		//this method prints out the products in the list to the console	
+		
 		for (Product p : products) {
 
 			if (p.getBorrower() == null) {
-				System.out.println("(" +p.getProductType() + ")" + " Article number: " + p.getArticleNumber() + " Title: "
-						+ p.getProductName() + "\n");
+				System.out.println("(" + p.getProductType() + ")" + " Article number: " + p.getArticleNumber()
+						+ " Title: " + p.getProductName() + "\n");
 
 			} else if (p.getBorrower() != null) {
-				System.out.println("("+ p.getProductType() + ")" + " Article number: " + p.getArticleNumber() + " Title: "
-						+ p.getProductName() + "\n Borrowed by: " + p.getBorrower().getCustomerName()
+				System.out.println("(" + p.getProductType() + ")" + " Article number: " + p.getArticleNumber()
+						+ " Title: " + p.getProductName() + "\n Borrowed by: " + p.getBorrower().getCustomerName()
 						+ ", Phonenumber: " + p.getBorrower().getPhoneNumber() + "\n");
 
 			}
@@ -260,6 +278,8 @@ public class Manage {
 
 	public static List<Product> addBookToList(String input) {
 
+		//method to add initialized book objects in list
+		
 		Product book = parseBook(input);
 		if (!(products.contains(book))) {
 
@@ -269,7 +289,10 @@ public class Manage {
 
 	}
 
-	public static List<Product> addMovieToList(String input) throws FileNotFoundException {
+	public static List<Product> addMovieToList(String input) {		//	throws FileNotFoundException {
+
+		//method to add initialized movie objects in list
+
 		Product movie = parseMovie(input);
 		if (!(products.contains(movie))) {
 
@@ -282,6 +305,8 @@ public class Manage {
 
 	public static void removeProduct(String filepath, int removeArticlenumber, int position, String limit) {
 
+		//this method removes a record from the csv file by duplicating the wanted objects onto a new file, leaving the unwanted object, then deleting the old file
+		
 		int pos = position - 1;
 		String article = Integer.toString(removeArticlenumber);
 		String tempFile = "temp.csv";
@@ -290,7 +315,7 @@ public class Manage {
 		String currentLine;
 		String[] data;
 
-	try {
+		try {
 
 			FileWriter fw = new FileWriter(tempFile, true);
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -326,7 +351,8 @@ public class Manage {
 
 	public static void info(String filepath, int removeArticlenumber, int position, String limit) {
 
-		// int pos = position - 1;
+		//a method to print out a products full information by parsing the values of the product into an array 
+		
 		String article = Integer.toString(removeArticlenumber);
 
 		String currentLine;
@@ -361,84 +387,87 @@ public class Manage {
 	}
 
 	public static void checkArticleNumber(String input) {
-
 		
+		//a method using the article number input to check if the product already exists or if its not a valid input
+
 		String[] inputArray = input.split(";");
 
-	
 		try {
 			FileReader fr = new FileReader("Products.csv");
-		
-		BufferedReader br = new BufferedReader(fr);
-		
-		
-		String currentLine;
 
-		while ((currentLine = br.readLine()) != null) { 
-			
-			String[] fileArray = currentLine.split(";");
-			
-			for (Product p : products) {
-				
-				String article = String.valueOf(p.getArticleNumber());
-				
-				
-				if ((inputArray[1].equalsIgnoreCase(article)) && (fileArray[1].equalsIgnoreCase(inputArray[1]))) {
+			BufferedReader br = new BufferedReader(fr);
 
-					RuntimeException error = new RuntimeException("ERROR: Product already exists or input is not valid.");
-					throw error;
-				} 
-				
+			String currentLine;
+
+			while ((currentLine = br.readLine()) != null) {
+
+				String[] fileArray = currentLine.split(";");
+
+				for (Product p : products) {
+
+					String article = String.valueOf(p.getArticleNumber());
+
+					if ((inputArray[1].equalsIgnoreCase(article)) && (fileArray[1].equalsIgnoreCase(inputArray[1]))) {
+
+						RuntimeException error = new RuntimeException(
+								"ERROR: Product already exists or input is not valid.");
+						throw error;
+					}
 
 				}
-		
-		}
-		fr.close();
-		br.close();
-		}
-		catch (IOException e) {
-			e.getMessage();
-		
-		}
 
 			}
-	
-	
-	 public static void articleNumberDoesNotExist(int articleArgs) {
+			fr.close();
+			br.close();
+		} catch (IOException e) {
+			e.getMessage();
 
-	        boolean articleNumberDoesNotExist = true;
+		}
 
-	        for (Product p : products) {
+	}
 
-	            String article = String.valueOf(articleArgs);
+	public static void articleNumberDoesNotExist(int articleArgs) {
+		
+		//a method to check if the article number does not exist in the list, meaning that the product does not exist
 
-	            String articleList = String.valueOf(p.getArticleNumber());
+		boolean articleNumberDoesNotExist = true;
 
-	            if (article.equalsIgnoreCase(articleList)) {
-	                articleNumberDoesNotExist = false;
-	            }
-	        }
+		for (Product p : products) {
 
-	        if (articleNumberDoesNotExist) {
-	            throw new RuntimeException("ERROR: Article number does not exist.");
-	        }
+			String article = String.valueOf(articleArgs);
 
-	    }
-	
+			String articleList = String.valueOf(p.getArticleNumber());
+
+			if (article.equalsIgnoreCase(articleList)) {
+				articleNumberDoesNotExist = false;
+			}
+		}
+
+		if (articleNumberDoesNotExist) {
+			throw new RuntimeException("ERROR: Article number does not exist.");
+		}
+
+	}
+
 	public static void handleListCommand() {
 		
-		System.out.println("This is a list of all our products: ");
+		//prints out the products in the inventory
+
+		System.out.println("This is a list of all our products: \n");
 
 		printProducts();
 
 	}
 
 	public static void handleCheckoutCommand(int articleArgs) {
-
 		
+		//checks out the specified product to the customer
+
 		try {
-			articleNumberDoesNotExist(articleArgs);
 			
+			//if product if already borrowed by a customer, an exception will be thrown
+			articleNumberDoesNotExist(articleArgs);
+
 			for (Product p : products) {
 				if (p.getArticleNumber() == articleArgs) {
 
@@ -450,8 +479,8 @@ public class Manage {
 				}
 
 			}
-		
-	
+			
+			//creates new customer object that connects with the specified product by adding the customer as an attribute to the product
 			System.out.println("Enter name: ");
 			String customerName = scanner.nextLine();
 			System.out.println("Enter phonenumber: ");
@@ -463,108 +492,102 @@ public class Manage {
 				if (product.getArticleNumber() == articleArgs) {
 					product.setBorrower(customer);
 				}
-				
-			} 
-			
+
+			}
+
 			writeCsvProducts();
 
 		} catch (RuntimeException E) {
-				System.err.println("ERROR: Article number does not exist.");
+			System.err.println("ERROR: Article number does not exist.");
 
-			}
-	 catch (Exception e) {
-		System.err.println(e.getMessage());
-	} 
-		
-			
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
 		}
-	
+
+	}
 
 	public static void handleCheckinCommand(int articleArgs) throws IOException {
-		// enter code
-		// ta emot artikelnr och kunna gora den tillganglig i listan igen
-		// koppla ifran produkten fran customer and make it available
 		
-		
+		//customer returns the product, making it available again by removing the customer as an attribute in the product
+
 		try {
 			articleNumberDoesNotExist(articleArgs);
-		
-		for (Product product : products) {
 
-			
-			
-			
-			if (product.getArticleNumber() == articleArgs) {
-				
-				if(product.getBorrower() == null) {
+			for (Product product : products) {
+
+				if (product.getArticleNumber() == articleArgs) {
 					
-					Exception E = new Exception("ERROR: Product needs to be borrowed before customer can checkin product.");
-					throw E;
+					//checks if there is a customer connected to the product to make sure the product can be returned
+					if (product.getBorrower() == null) {
+
+						Exception E = new Exception(
+								"ERROR: Product needs to be borrowed before customer can checkin product.");
+						throw E;
+					}
+					
+					//removes customer as attribute in product
+					if (product.productType.equals("Movie")) {
+
+						product.remove(null);
+
+					} else if (product.productType.equals("Book")) {
+
+						product.remove(null);
+
+					}
 				}
+				writeCsvProducts();
 
-				if (product.productType.equals("Movie")) {
-
-					product.remove(null);
-
-				} else if (product.productType.equals("Book")) {
-
-					product.remove(null);
-
-				}
 			}
-			writeCsvProducts();
-			
-		 
-			 } 
-		}catch (RuntimeException e)  {
-			System.err.println(e.getMessage()); 
-			 
-			 } catch (Exception E) {
-		 System.err.println(E.getMessage()); 
-	}
+		} catch (RuntimeException e) {
+			System.err.println(e.getMessage());
+
+		} catch (Exception E) {
+			System.err.println(E.getMessage());
+		}
 		System.out.println("checkin command handled");
-			
-		} 
 
-	
-
+	}
 
 	public static void handleRegisterCommand() throws IOException {
+		
+		////this method registers new products into the list and file. customer types in the values of the attributes, and if the input is valid, a new product will be created
 
-		System.out.println("hej enter b or m:");
+		System.out.println("To register new product, enter the type of product. Enter m/M for movie or b/B for book: ");
 		String input = scanner.nextLine();
 		char c = input.charAt(0);
+		
+		//separates books from movies and adds product to list
+		if (c == 'm' || c == 'M') {
 
-		if (c == 'm') {
-
-			System.out.println("you have chosen movie");
-			System.out.println("Enter: product type; article nr; title; value; length in minutes; rating ");
+			System.out.println("You have chosen movie");
+			System.out.println("Enter (without spacing): product type;article number;name of movie;price;length in minutes;rating ");
 			String input2 = scanner.nextLine();
 			try {
 				checkArticleNumber(input2);
 				addMovieToList(input2);
 				writeCsvProducts();
-			
+
 			} catch (RuntimeException e) {
 				System.err.println(e.getMessage());
-				
-				System.out.print("\n\tEnter next command: \n\t > ");		
-				}
 
-		} else if (c == 'b') {
+				System.out.print("\n\tEnter next command: \n\t > ");
+			}
 
-			System.out.println("you have chosen book");
-			System.out.println("Enter: product type; article nr; title; value; pages; author ");
+		} else if (c == 'b' || c == 'B') {
+
+			System.out.println("You have chosen book");
+			System.out.println("Enter(without spacing): product type;article number;name of book;price;amount of pages;author ");
 			String input3 = scanner.nextLine();
-			
+
 			try {
-			checkArticleNumber(input3);
-			addBookToList(input3);
-			writeCsvProducts();
+				checkArticleNumber(input3);
+				addBookToList(input3);
+				writeCsvProducts();
 			} catch (RuntimeException e) {
 				System.err.println(e.getMessage());
-				System.out.print("\n\tEnter next command: \n\t > ");		
-				}
+				System.out.print("\n\tEnter next command: \n\t > ");
+			}
 
 		}
 
@@ -573,36 +596,38 @@ public class Manage {
 	}
 
 	public static void handleDeregisterCommand(int articleArgs) {
-		// remove product from the list
-		try {
 		
-		articleNumberDoesNotExist(articleArgs);
-		removeProduct("Products.csv", articleArgs, 1, ";");
-		Product movieToBeRemoved;
-		Product bookToBeRemoved;
-		for (int i = 0; i < products.size(); i++) {
+		//removes product from the list and copying the list to the file
+		
+		try {
 
-			if (products.get(i).getArticleNumber() == articleArgs) {
-				movieToBeRemoved = products.get(i);
-				products.remove(movieToBeRemoved);
-				writeCsvProducts();
+			articleNumberDoesNotExist(articleArgs);
+			removeProduct("Products.csv", articleArgs, 1, ";");
+			Product movieToBeRemoved;
+			Product bookToBeRemoved;
+			for (int i = 0; i < products.size(); i++) {
 
-				return;
+				if (products.get(i).getArticleNumber() == articleArgs) {
+					movieToBeRemoved = products.get(i);
+					products.remove(movieToBeRemoved);
+					writeCsvProducts();
+
+					return;
+				}
+
 			}
 
-		}
+			for (Product b : products) {
+				int i = 0;
+				if (products.get(i).getArticleNumber() == articleArgs) {
+					bookToBeRemoved = products.get(i);
+					products.remove(bookToBeRemoved);
+					writeCsvProducts();
 
-		for (Product b : products) {
-			int i = 0;
-			if (products.get(i).getArticleNumber() == articleArgs) {
-				bookToBeRemoved = products.get(i);
-				products.remove(bookToBeRemoved);
-				writeCsvProducts();
-
-				return;
+					return;
+				}
 			}
-		}
-		} catch(RuntimeException e) {
+		} catch (RuntimeException e) {
 			System.err.println("ERROR: Article number does not exist.");
 		}
 
@@ -610,41 +635,45 @@ public class Manage {
 	}
 
 	public static void handleInfoCommand(int articleArgs) {
+
+		//prints full information about product
 		
 		try {
-		articleNumberDoesNotExist(articleArgs);
-		info("Products.csv", articleArgs, 1, ";");
-		
-		}catch(RuntimeException e) {
-		System.err.println("ERROR: Article number does not exist.");
+			articleNumberDoesNotExist(articleArgs);
+			info("Products.csv", articleArgs, 1, ";");
+
+		} catch (RuntimeException e) {
+			System.err.println("ERROR: Article number does not exist.");
 		}
-	
 
 	}
 
 	public static int parseArgument(String playerInput) {
 
+		//parses argument from input and checks for syntax error
+		
+		String[] fullInput = playerInput.split(" ");
+		String arguments = new String();
 
-        String[] fullInput = playerInput.split(" ");
-        String arguments = new String();
+		for (int i = 1; i < fullInput.length; i++) {
+			arguments = fullInput[i];
 
-        for (int i = 1; i < fullInput.length; i++) {
-            arguments = fullInput[i];
+		}
+		try {
+			int articleArguments = Integer.parseInt(arguments);
 
-        }
-        try {
-            int articleArguments = Integer.parseInt(arguments);
-            
-            return articleArguments;
-        } catch (NumberFormatException e) {
-            System.err.println("SYNTAX ERROR: Articlenumber can only contain numbers");
-            System.out.print("\n\tEnter next command: \n\t > ");
-        }
-        return 0;
+			return articleArguments;
+		} catch (NumberFormatException e) {
+			System.err.println("SYNTAX ERROR: Articlenumber can only contain numbers");
+			System.out.print("\n\tEnter next command: \n\t > ");
+		}
+		return 0;
 
-    }
+	}
 
 	public static Command parseCommand(String playerInput) {
+		
+		//parses command from input
 
 		String commandString = playerInput.split(" ")[0];
 

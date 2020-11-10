@@ -1,32 +1,27 @@
 
 public class Book extends Product {
 
-	protected static String identifier = "b";
+	// This class is a subclass of Product and handles the book objects
+
 	private int pages;
 	private String author;
-	
 
+	// Main constructor
 	public Book(String productType, int article, String name, int price, int pageNumber, String writer) {
 		super(productType, article, name, price);
 		this.pages = pageNumber;
 		this.author = writer;
-		
 
 	}
 
+	// When a customer is added, the main constructor will change to this
+	// constructor so that it can have customer as an attribute
 	public Book(String productType, int article, String name, int price, int pageNumber, String writer,
 			Customer borrower) {
 		super(productType, article, name, price, borrower);
 		this.pages = pageNumber;
 		this.author = writer;
-		
-		
-		
-	
-	}
 
-	public String getIdentifier() {
-		return identifier;
 	}
 
 	public int getPages() {
@@ -36,25 +31,6 @@ public class Book extends Product {
 	public String getAuthor() {
 		return author;
 	}
-/*	
-	public static Customer setCustomerBook(String name, String number) {
-		Customer customer = new Customer(name, number);
-		
-		
-		return customer;
-		
-	}
-*/
-	
-	
-	public static boolean isBook() {
-		return true;
-	}
-	
-	public String printList() {
-	return "(Book) Article number: " + this.getArticleNumber() + " Title: " + this.getProductName();	
-	
-		}
 
 	@Override
 	public String toString() {
@@ -63,5 +39,3 @@ public class Book extends Product {
 
 	}
 }
-	
-
