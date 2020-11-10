@@ -1,2 +1,9 @@
 Movie/Book;Article nr;Title;Value in kr;Length in minutes/pages;IMDB rating/author;Customer name;Customer phonenumber
 Movie;1234;V for Vendetta;120;132;8.2
+Movie;1235;Million Dollar Baby;99;132;8.1;Thiti;070432864958
+Movie;1236;Room;99;118;8.1
+Movie;1237;Juno;99;96;7.4
+Book;1238;The Terrible;150;500;Yrsa Daley-Ward
+Book;1239;The Secret History;199;300;Donna Tartt 
+Book;1240;The Amateur Marriage;200;400;Anne Tyler
+Book;1241;Jane Eyre;99;250;Charlotte Bronte;Sena;07384758495
