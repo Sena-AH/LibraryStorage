@@ -228,7 +228,7 @@ public class Manage {
 		int value = Integer.parseInt(values[3]);
 		int lengthInMinutes = Integer.parseInt(values[4]);
 		double rating = Double.parseDouble(values[5]);
-		if (rating <10.0) {
+		if (rating >10.0) {
 			RuntimeException e = new RuntimeException("INPUT ERROR: IMDB rating too high. Needs to be less than 10.0.");
 			throw e;
 		}
