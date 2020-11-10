@@ -362,7 +362,6 @@ public class Manage {
 		
 		String[] inputArray = input.split(";");
 
-		double imdb = Double.parseDouble(inputArray[5]);
 	
 		try {
 			FileReader fr = new FileReader("Products.csv");
@@ -379,9 +378,13 @@ public class Manage {
 			for (Product p : products) {
 				
 				String article = String.valueOf(p.getArticleNumber());
-				if((p.getProductType() == "Movie") && imdb > 10.0) {
-					RuntimeException e = new RuntimeException("INPUT ERROR: IMDB rating too high. Needs to be less than 10.0.");
-					throw e;
+				if(p.getProductType() == "Movie"){
+					double imdb = Double.parseDouble(inputArray[5]);
+
+					if(imdb > 10.0) {
+						RuntimeException e = new RuntimeException("INPUT ERROR: IMDB rating too high. Needs to be less than 10.0.");
+						throw e;
+				}
 				}
 				if ((inputArray[1].equalsIgnoreCase(article)) && (fileArray[1].equalsIgnoreCase(inputArray[1]))) {
 
