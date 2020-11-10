@@ -17,7 +17,7 @@ public class Manage {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
-		System.out.println(" Â°-*-Â° Welcome to the Library system Â°-*-Â° ");
+		System.out.println(" °-*-° Welcome to the Library system °-*-° ");
 		System.out.println(" - Below you can see the current inventory - \n");
 
 		readFile();
@@ -134,7 +134,7 @@ public class Manage {
 		String objFilePath = "Products.csv";
 		try (FileWriter fileWriter = new FileWriter(objFilePath)) {
 
-			String title = "Movie/Book; Article nr; Title; Value in kr; Length in minutes/pages; IMDB rating/author; Customer name; Customer phonenumber\n";
+			String title = "Movie/Book;Article nr;Title;Value in kr;Length in minutes/pages;IMDB rating/author;Customer name;Customer phonenumber\n";
 			fileWriter.append(title);
 			for (Product m : products) {
 
