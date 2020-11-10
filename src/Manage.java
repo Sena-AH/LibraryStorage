@@ -134,21 +134,13 @@ public class Manage {
 		String objFilePath = "Products.csv";
 		try (FileWriter fileWriter = new FileWriter(objFilePath)) {
 
-			// String title = " Article nr; Title; Value in kr; Length in minutes; IMDB
-			// rating\n";
-			// fileWriter.append(title);
 			String title = "Movie/Book; Article nr; Title; Value in kr; Length in minutes/pages; IMDB rating/author; Customer name; Customer phonenumber\n";
 			fileWriter.append(title);
 			for (Product m : products) {
 
-				// Movie movie = (Movie)m;
-
-				// instancof product m instance of movie ist för ifsats
 
 				if (m.productType.equals("Movie") && m.getBorrower() == null) {
-					// String title = "(Movie) Article nr; Title; Value in kr; Length in minutes;
-					// IMDB rating\n";
-					// fileWriter.append(title);
+					
 					Movie movie = (Movie) m;
 
 					String csvLine1 = m.getProductType() + ";" + m.getArticleNumber() + ";" + m.getProductName() + ";"
@@ -172,12 +164,8 @@ public class Manage {
 
 			for (Product b : products) {
 
-				// Book book =(Book)b;
-				// Product product = (Product)b;
-
 				if (b.productType.equals("Book") && b.getBorrower() == null) {
 
-					// Product.castToBook(b);
 					Book book = (Book) b;
 
 					String csvLine1 = b.getProductType() + ";" + b.getArticleNumber() + ";" + b.getProductName() + ";"
@@ -203,8 +191,8 @@ public class Manage {
 			}
 
 		} catch (IOException e) {
-			System.out.println("Error while writing csv");
-		}
+			e.printStackTrace();	
+			}
 	}
 
 	public static Book parseBook(String csvLine) throws NumberFormatException {
@@ -299,7 +287,7 @@ public class Manage {
 		String currentLine;
 		String[] data;
 
-		try {
+	try {
 
 			FileWriter fw = new FileWriter(tempFile, true);
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -328,8 +316,8 @@ public class Manage {
 			File products = new File(filepath);
 			newFile.renameTo(products);
 
-		} catch (Exception e) {
-
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -469,7 +457,7 @@ public class Manage {
 	        }
 
 	        if (articleNumberDoesNotExist) {
-	            throw new RuntimeException("ERROR: Article number does not exist hejhejhej");
+	            throw new RuntimeException("ERROR: Article number does not exist.");
 	        }
 
 	    }
@@ -486,12 +474,12 @@ public class Manage {
 
 		
 		try {
-
+			articleNumberDoesNotExist(articleArgs);
+			
 			for (Product p : products) {
 				if (p.getArticleNumber() == articleArgs) {
 
 					if (p.getBorrower() != null) {
-						//System.err.println("ERROR: Product has already been borrowed");
 						Exception e = new Exception("ERROR: Product has already been borrowed");
 						throw e;
 					}
@@ -512,35 +500,22 @@ public class Manage {
 				if (product.getArticleNumber() == articleArgs) {
 					product.setBorrower(customer);
 				}
-				/*
-				 * if(product.getBorrower().equals(customer)) {
-				 * 
-				 * }
-				 */
-			}
-
+				
+			} 
+			
 			writeCsvProducts();
-			
-			
-	} catch (Exception e) {
+
+		} catch (RuntimeException E) {
+				System.err.println("ERROR: Article number does not exist.");
+
+			}
+	 catch (Exception e) {
 		System.err.println(e.getMessage());
 	} 
+		
 			
 		}
-		//}
-
-
 	
-		//catch (Exception e) {
-		//	System.out.println(e.getMessage());
-			// continue;
-			// System.exit(0);
-
-		//}
-		
-		
-	
-	//}
 
 	public static void handleCheckinCommand(int articleArgs) throws IOException {
 		// enter code
@@ -560,7 +535,7 @@ public class Manage {
 				
 				if(product.getBorrower() == null) {
 					
-					Exception E = new Exception("ERROR: Product needs to be borrowed before customer can checkin product");
+					Exception E = new Exception("ERROR: Product needs to be borrowed before customer can checkin product.");
 					throw E;
 				}
 
@@ -635,7 +610,9 @@ public class Manage {
 
 	public static void handleDeregisterCommand(int articleArgs) {
 		// remove product from the list
-
+		try {
+		
+		articleNumberDoesNotExist(articleArgs);
 		removeProduct("Products.csv", articleArgs, 1, ";");
 		Product movieToBeRemoved;
 		Product bookToBeRemoved;
@@ -661,15 +638,22 @@ public class Manage {
 				return;
 			}
 		}
+		} catch(RuntimeException e) {
+			System.err.println("ERROR: Article number does not exist.");
+		}
 
 		System.out.println("deregister command handled");
-//use for checkout?
 	}
 
 	public static void handleInfoCommand(int articleArgs) {
 		
+		try {
+		articleNumberDoesNotExist(articleArgs);
 		info("Products.csv", articleArgs, 1, ";");
-
+		
+		}catch(RuntimeException e) {
+		System.err.println("ERROR: Article number does not exist.");
+		}
 	
 
 	}
