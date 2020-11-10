@@ -389,25 +389,17 @@ public class Manage {
 			
 			for (Product p : products) {
 				
-			try {
-				
 				String article = String.valueOf(p.getArticleNumber());
 				
 				if ((inputArray[1].equalsIgnoreCase(article)) && (fileArray[1].equalsIgnoreCase(inputArray[1]))) {
 
-					Exception error = new Exception("ERROR; Product already exists. Exiting library");
+					RuntimeException error = new RuntimeException("ERROR; Product already exists or input is not valid.");
 					throw error;
-				}
+				} 
 				
 
 				}
-			
-			catch (Exception error) {
-				System.err.println(error.getMessage());
-			}
-			//System.exit(0);
 		
-			}
 		}
 		fr.close();
 		br.close();
@@ -418,6 +410,47 @@ public class Manage {
 
 			}
 	
+	public static void articleNumberDoesNotExist(int articleArgs) throws IOException {
+		
+	//	try {
+			
+			FileReader fr = new FileReader("Products.csv");
+		
+		BufferedReader br = new BufferedReader(fr);
+		
+		
+		String currentLine;
+
+		while ((currentLine = br.readLine()) != null) { 
+			
+			for (Product p : products) {
+				
+			
+			String[] fileArray = currentLine.split(";");
+			String article = String.valueOf(articleArgs);
+			
+				
+				String articleList = String.valueOf(p.getArticleNumber());
+			
+
+			//	if((!(article.equalsIgnoreCase(fileArray[1])) || (!(article.equalsIgnoreCase(articleList))))) {
+				if(article.equalsIgnoreCase(articleList)) {
+			 if(!(products.contains(p.getArticleNumber()))) {
+			//if((!(article.equalsIgnoreCase(fileArray[1])) || (!(article.equalsIgnoreCase(articleList))))) {
+				RuntimeException error = new RuntimeException("ERROR: Article number does not exist hejhejhej");
+				throw error;
+			}
+			}
+			}
+		}
+		fr.close();
+		br.close();
+	//	}catch(FileNotFoundExeption e) {
+	//		e.printStackTrace();
+
+			
+	//	}
+	}
 	
 	
 	public static void handleListCommand() {
@@ -445,9 +478,7 @@ public class Manage {
 				}
 
 			}
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		} //System.exit(0);
+		
 	
 			System.out.println("Enter name: ");
 			String customerName = scanner.nextLine();
@@ -468,9 +499,17 @@ public class Manage {
 			}
 
 			writeCsvProducts();
+			
+			
+	} catch (Exception e) {
+		System.err.println(e.getMessage());
+	} 
+			
 		}
 		//}
 
+
+	
 		//catch (Exception e) {
 		//	System.out.println(e.getMessage());
 			// continue;
@@ -486,8 +525,20 @@ public class Manage {
 		// enter code
 		// ta emot artikelnr och kunna gora den tillganglig i listan igen
 		// koppla ifran produkten fran customer and make it available
+		
+		
+		try {
+			articleNumberDoesNotExist(articleArgs);
+		
 		for (Product product : products) {
 
+			// try {
+				// if (!(product.equals(articleArgs))) { 
+				//	 Exception e = new Exception("ERROR: Articlenumber does not exist"); 
+				//	 throw e; 
+				//	 } 	
+			
+			
 			if (product.getArticleNumber() == articleArgs) {
 
 				if (product.productType.equals("Movie")) {
@@ -501,23 +552,24 @@ public class Manage {
 				}
 			}
 			writeCsvProducts();
-		/*	
-			 try {
+			
+		/*	 try {
 				 if (!(product.equals(articleArgs))) { 
 					 Exception e = new Exception("ERROR: Articlenumber does not exist"); 
 					 throw e; 
 					 } 
-				 
-			 } catch (Exception e) 
+			*/	 
+			 } 
+		}catch (RuntimeException e) 
 			 
 			 { System.err.println(e.getMessage()); 
 			 
 			 }
-			 */
+		System.out.println("checkin command handled");
 			
 		} 
-		System.out.println("checkin command handled");
-	}
+	
+
 
 	public static void handleRegisterCommand() throws IOException {
 
@@ -530,18 +582,30 @@ public class Manage {
 			System.out.println("you have chosen movie");
 			System.out.println("Enter: product type; article nr; title; value; length in minutes; rating ");
 			String input2 = scanner.nextLine();
-			checkArticleNumber(input2);
-			addMovieToList(input2);
-			writeCsvProducts();
+			try {
+				checkArticleNumber(input2);
+				addMovieToList(input2);
+				writeCsvProducts();
+			
+			} catch (RuntimeException e) {
+				System.err.println("ERROR; Product already exists or input is not valid.");
+				System.out.print("\n\tEnter next command: \n\t > ");		
+				}
 
 		} else if (c == 'b') {
 
 			System.out.println("you have chosen book");
 			System.out.println("Enter: product type; article nr; title; value; pages; author ");
 			String input3 = scanner.nextLine();
+			
+			try {
 			checkArticleNumber(input3);
 			addBookToList(input3);
 			writeCsvProducts();
+			} catch (RuntimeException e) {
+				System.err.println("ERROR; Product already exists or input is not valid.");
+				System.out.print("\n\tEnter next command: \n\t > ");		
+				}
 
 		}
 
